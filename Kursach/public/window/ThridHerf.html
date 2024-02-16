@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Главная страница</title>
+</head>
+
+<body>
+  <header>
+    <div class="head">
+      <div class="link_head">
+        <div class="maoy">
+          <div class="herfLink paddHead">
+            <a class="fullver" href="../index.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Кружки</div>
+          </div>
+
+        </div>
+        <div>
+          <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="posBlockfir">
+      <div class="block relev">
+        <div class="textCircle">Найти свой круг общения! <br> Если нет то создай, в чем проблема?</div>
+        <div class="mainblock">
+          <div class="posblockheadmain">
+            <form class="displayF" onsubmit="ok()">
+              <div class="mainFilter">
+                <div class="blockfilter">
+                  <button id="filterButton" type="button" class="filterBut">Фильтры</button>
+
+                  <!-- Боковая панель с фильтрами -->
+                  <div id="filterPanel" class="filterPanel">
+                    <!-- Здесь добавьте ваши фильтры и содержимое боковой панели -->
+                    <div class="textStylefilter">Фильтры</div>
+                    <div class="blockFilterlink">
+                      <div class="blockFilterlink">
+                        <div class="interesUser">
+                          <div class="postBlock">
+
+                          </div>
+                        </div>
+                        <div class="ClassUser">
+                          <div class="FiltelclassStulr">Класс</div>
+                          <select onchange="kk(this)" name="schoolClass" id="schoolClass"
+                            class="form-control circleFiltter">
+                            <optgroup label="Выберите класс">
+                              <option></option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                            </optgroup>
+                          </select>
+                        </div>
+                        <div class="QuantityUser">
+                          <div></div>
+                          <div class="FiltelclassStulr">Максимальное количесвто людей в кружке:</div>
+                          <div class="chaekSloi">
+                            <div class="chekF">
+                              <label for="happy" class="stulenumberfilter">15</label>
+                              <input onchange="people(this)" class="chekInputFilter" type="checkbox" id="Fifteen"
+                                name="Fifteen" value="15">
+
+                              <label for="happy" class="stulenumberfilter">12</label>
+                              <input onchange="people(this)" class="chekInputFilter" type="checkbox" id="Twety"
+                                name="Twety" value="12">
+
+                              <label for="happy" class="stulenumberfilter">10</label>
+                              <input onchange="people(this)" class="chekInputFilter" type="checkbox" id="Ten" name="Ten"
+                                value="10">
+
+
+                            </div>
+                            <div class="chekF">
+                              <label for="happy" class="stulenumberfilter">8</label>
+                              <input onchange="people(this)" class="chekInputFilter" type="checkbox" id="enght"
+                                name="enght" value="8">
+
+                              <label for="happy" class="stulenumberfilter">6</label>
+                              <input onchange="people(this)" class="chekInputFilter" type="checkbox" id="six" name="six"
+                                value="6">
+
+                              <label for="happy" class="stulenumberfilter">4</label>
+                              <input onchange="people(this)" class="chekInputFilter" type="checkbox" id="four"
+                                name="four" value="4">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="Filteraccept">
+                        </div>
+                        <div class="CreatCirle">
+                          <a class="btnSucMain" href="CreateCircle.html">Создать</a>
+                        </div>
+                        <div class="cenAdapt">
+                          <button class="btnSerch btnSerchAdap" type="button" onclick="getInt()">
+                            <div class="ablostBtn"> <span class="contentbtn bntAcceptAdapt">Применить</span></div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="CreatCirleApap">
+                  <a class="btnSucMainApap" href="CreateCircle.html">Создать</a>
+                </div>
+              </div>
+              <div class="blockheadmain">
+                <div class="blockheadmain">
+                  <div class="posmainblock">
+                    <div class="">
+                      <div class="d1">
+                        <input type="text" id="serch" name="serch" placeholder="Искать здесь...">
+                        <button class="btnSerch" type="button" onclick="getInt()">
+                          <div class="ablostBtn"> <span class="contentbtn">найти</span></div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="MaincricleBlock" id="Cricle">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    </div>
+
+  </section>
+  <div class="navigation_main">
+    <div class="block_nav">
+      <a class="herflinkhov " href="FourHerf.html ">
+        <div class="profil">
+          <img class="profilImg " src="../img/supportNoAc.svg" alt="">
+          <p class="textNav noac">Поддержка</p>
+
+        </div>
+      </a>
+      <a class="herflinkhov " href="FirstHerf.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+          <p class="textNav noac">Главная</p>
+        </div>
+      </a>
+      <a class="herflinkhov " href="ThridHerf.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/cricle.svg" alt="">
+          <p class="textNav">Кружки</p>
+        </div>
+      </a>
+      <a class="herflinkhov " href="Profil.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+          <p class="textNav noac ">Кабинет</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="conbalck"></div>
+  <footer>
+
+  </footer>
+</body>
+
+</html>
+
+
+<script>
+
+  function getCookie(name) {
+    let cookie = {};
+    document.cookie.split(';').forEach(function (el) {
+      let split = el.split('=');
+      cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+    })
+    return cookie[name];
+  }
+
+  const select = document.getElementById("schoolClass")
+  const serch = document.getElementById("serch")
+
+  let maxPeople = []
+  function people(e) {
+    if (maxPeople.includes(e.value)) {
+      delete maxPeople[maxPeople.indexOf(e.value)]
+      maxPeople = maxPeople.filter(el => Boolean(el))
+    } else {
+      maxPeople.push(e.value)
+    }
+  }
+
+  function Joinbtn(id) {
+    if (id == getCookie("idcircle")) {
+      fetch('/outcricle', {
+        method: 'PATCH'
+      })
+        .then(data => {
+          getInt()
+        })
+    } else {
+      fetch('/joincricle', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: id,
+        })
+      })
+        .then(data => {
+          getInt()
+        })
+    }
+  }
+
+
+  function getInt() {
+    fetch('/getSercle', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        classNum: select.value,
+        serch: serch.value,
+        maxPeople: maxPeople
+      })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok. Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const btn = document.getElementById('Cricle')
+        btn.innerHTML = ""
+        data.forEach(el => {
+          btn.innerHTML += `
+                                <div class="posblockcirle ">
+                                    <div class="blockcirle">
+                                    <div class = "flexCriclebtn ">
+                                      <div class= "cocntetnCricle">
+                                        <div class= "StyleTetxCircle">${el.namecricel}</div>
+                                        <div class= "StyleTetxCircle linkstulecircle">Максимальное количсетво участников: ${el.quantityuser}</div>
+                                        <div class= "StyleTetxCircle linkstulecircle">Для учеников ${el.userclass}-x классов</div>
+                                      </div>
+                                      <button onclick="Joinbtn(${el.cricleid})" class = "Joinbtn" style="${el.cricleid == getCookie("idcircle") ? "background-color: red" : "background-color: #0bda51"}" type='button'>${el.cricleid == getCookie("idcircle") ? "Выйти" : "Вступить"}</button>
+                                    </div>
+                                  </div>`
+        });
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error.message);
+      });
+  }
+
+  function kk(e) {
+    console.log(select.value);
+  }
+
+
+
+  document.getElementById('filterButton').addEventListener('click', toggleFilterPanel);
+
+  function toggleFilterPanel() {
+    var filterPanel = document.getElementById('filterPanel');
+    filterPanel.classList.toggle('active');
+    sessionStorage.setItem('filterPanelState', filterPanel.classList.contains('active'));
+
+    if (filterPanel.classList.contains('active')) {
+
+      getInt();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterPanel = document.getElementById('filterPanel');
+    const filterPanelState = sessionStorage.getItem('filterPanelState');
+    if (filterPanelState === 'true') {
+      filterPanel.classList.add('active');
+    }
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const filterPanel = document.querySelector('.filterPanel');
+    const btnSerchAdap = document.querySelector('.btnSerchAdap');
+
+    // Обработчик события клика на кнопке
+    btnSerchAdap.addEventListener('click', function () {
+      // Добавление/удаление класса active у панели с фильтрами
+      filterPanel.classList.toggle('active');
+    });
+  });
+
+
+
+  window.onload = () => {
+    const loginLinkElement = document.getElementById('UsName');
+    loginLinkElement.innerHTML = getCookie('username')
+
+    getInt();
+
+
+
+
+  }
+
+</script>

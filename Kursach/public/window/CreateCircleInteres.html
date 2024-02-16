@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Главная страница</title>
+</head>
+
+<body>
+  <header>
+    <div class="head">
+      <div class="link_head">
+        <div class="maoy">
+          <div class="herfLink paddHead">
+            <a class="fullver" href="../index.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Создания кружка</div>
+          </div>
+
+        </div>
+        <div>
+          <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="posBlockfir">
+      <div class="block relev">
+        <div class="textCircle">Создания куржка</div>
+        <div class="mainblock createMain">
+          <div class="posblockheadmain">
+            <form action="/createCricle" method="post">
+              <div class="mainFilter CreatCirleWi">
+                <div class="blockfilter paddcreat">
+                  <div class="QuantityUser paddcreat">
+                    <div class="CreatName">
+                      <div class="classPosbnt">
+                        <label for="">Выберете интересы для кружка:</label>
+                        <div class="StyleTetxInteresCreate" id="InteresBtn"></div>
+                      </div>
+                      
+                    </div>
+                    </div>
+                    <div class="BtnsCreat twotap ">
+                      <div class="">
+                        <button class="btnCreateMain" type="submit"><a href="CircleSucces.html">Создать</a></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </form>
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="navigation_main">
+      <div class="block_nav">
+        <a class="herflinkhov " href="FourHerf.html ">
+          <div class="profil">
+            <img class="profilImg " src="../img/supportNoAc.svg" alt="">
+            <p class="textNav noac">Поддержка</p>
+  
+          </div>
+        </a>
+        <a class="herflinkhov " href="FirstHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+            <p class="textNav noac">Главная</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="ThridHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/cricle.svg" alt="">
+            <p class="textNav">Кружки</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="Profil.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+            <p class="textNav noac ">Кабинет</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="conbalck"></div>
+  </section>
+  <footer></footer>
+  <script>
+    function getCookie(name) {
+      let cookie = {};
+      document.cookie.split(';').forEach(function (el) {
+        let split = el.split('=');
+        cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+      })
+      return cookie[name];
+    }
+
+
+    // function getInt() {
+    //   fetch('/interesCricleCreate')
+    //     .then(response => {
+    //       if (!response.ok) {
+    //         throw new Error(`Network response was not ok. Status: ${response.status}`);
+    //       }
+    //       return response.json();
+    //     })
+    //     .then(data => {
+    //       const btn = document.getElementById('InteresBtn')
+    //       btn.innerHTML = ""
+    //       data.forEach(el => {
+    //         console.log(el);
+    //         btn.innerHTML += `<font class = "btnOtsup"> <button class="intbtn" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
+    //       });
+    //     })
+    //     .catch(error => {
+    //       console.error('There was a problem with the fetch operation:', error.message);
+    //     });
+    // }
+
+    // const addTo = async (id) => {
+    //   fetch("/interesCricleCreate", {
+    //     method: 'POST',
+    //     mode: "cors",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       id: id
+    //     })
+    //   })
+    //     .then(data => data.json())
+    //     .then(data => {
+    //       console.log(data);
+    //       getInt()
+    //     })
+    // }
+
+    // const removeFrom = async (id) => {
+    //   fetch("/interesCricleCreate", {
+    //     method: 'DELETE',
+    //     mode: "cors",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       id: id
+    //     })
+    //   })
+    //     .then(data => data.json())
+    //     .then(data => {
+    //       // console.log(data);
+    //       getInt()
+    //     })
+    // }
+
+    window.onload = () => {
+
+
+      getInt()
+
+      const loginLinkElement = document.getElementById('UsName');
+      loginLinkElement.innerHTML = getCookie('username')
+
+
+    }
+  </script>
+</body>
+
+</html>

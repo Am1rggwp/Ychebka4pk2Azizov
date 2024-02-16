@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Главная страница</title>
+</head>
+<body>
+  <header >
+    <div class="head">
+      <div class="link_head" >
+        <div class="maoy"> 
+          <div class="herfLink paddHead">
+            <a class="fullver" href="../index.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Главная</div>
+          </div>
+          
+        </div>
+        <div>
+          <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div><div  class="herfLink"><a href="ThridHerf.html"> Кружки</a></div></div>
+        <div><div  class="herfLink"><a href="FourHerf.html"> Поддержка</a></div></div>
+        <div><div class="herfLink"><a href="Profil.html" id="UsName"></a></div></div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="posBlockfir">
+      <div class="block">
+        <div class="headIndex">
+          <div class="styleFontHead">О школе</div>
+        </div>
+        <div class="link_Text"> 
+          <div class="text2">
+            <div class="flex">
+              <div class="pos">
+                Полное наименование: Муниципальное автономное общеобразовательное учреждение "Средняя общеобразовательная школа Экодолье" Оренбургского района
+                Сокращенное название:  МАОУ "Школа Экодолье" 
+                <div class="headIndex2">
+                  <div class="styleFontHead">История школы</div>
+                </div>
+                <div class="link_Text2">
+                  <div class="text2">
+                    1 сентября 2017г.  в Оренбургском районе распахнула свои двери новая школа жилого комплекса «Экодолье». В школу пошли более 600 ребят, в том числе – 115 первоклассников. 
+                    Строительство школы было осуществлено компанией ООО «ЛистПромСтрой» на средства федерального, областного и муниципального бюджетов. 
+                    Изначально образовательная организация являлась филиалом МБОУ "Ивановская СОШ". В июне 2019 г. школа отделилась и стала являться  Муниципальным автономным общеобразовательным учреждением "Средняя общеобразовательная школа Экодолье".
+                    Сегодня школе обучаются более 2250 ребят, работают 104 педагога и более 20 сотрудников. 
+                  </div>
+              </div>
+            </div>
+            <div class="imgPos">
+              <img class="shoolimg" src="../img/school.jpg" alt="">
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navigation_main">
+      <div class="block_nav">
+        <a class="herflinkhov " href="FourHerf.html ">
+          <div class="profil">
+            <img class="profilImg " src="../img/supportNoAc.svg" alt="">
+            <p class="textNav noac ">Поддержка</p>
+
+          </div>
+        </a>
+        <a class="herflinkhov " href="FirstHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/home.svg" alt="">
+            <p class="textNav ">Главная</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="ThridHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+            <p class="textNav noac ">Кружки</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="Profil.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+          <p class="textNav noac">Кабинет</p>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="conbalck"></div>
+  </section>
+  <footer></footer>
+  <script>
+		window.onload = () => {
+			function getCookie(name) {
+				let cookie = {};
+				document.cookie.split(';').forEach(function (el) {
+					let split = el.split('=');
+					cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+				})
+				return cookie [name];
+			}
+      const loginLinkElement = document.getElementById('UsName');
+			loginLinkElement.innerHTML = getCookie('username')
+			
+		}
+	</script>
+</body>
+</html>

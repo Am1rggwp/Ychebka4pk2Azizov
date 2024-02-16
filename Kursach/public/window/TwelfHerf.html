@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Главная страница</title>
+</head>
+
+<body>
+  <header>
+    <div class="head">
+      <div class="link_head">
+        <div class="maoy">
+          <div class="herfLink paddHead">
+            <a class="fullver" href="../index.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Добро пожаловать</div>
+          </div>
+
+        </div>
+        <div>
+          <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="posBlockfir">
+      <div class="block">
+        <div class="headIndex1">
+          <div class="styleFontHead">Новости</div>
+        </div>
+        <div class="posBorder">
+          <div class="borderHeading"></div>
+        </div>
+        <div class="MainPostBlock">В разработке...
+          <div class="posheadBlock">
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navigation_main">
+      <div class="block_nav">
+        <a class="herflinkhov " href="FourHerf.html ">
+          <div class="profil">
+            <img class="profilImg " src="../img/support.svg" alt="">
+            <p class="textNav">Поддержка</p>
+
+          </div>
+        </a>
+        <a class="herflinkhov " href="FirstHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+            <p class="textNav noac">Главная</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="ThridHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+            <p class="textNav noac">Кружки</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="Profil.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+          <p class="textNav noac">Кабинет</p>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="conbalck"></div>
+  </section>
+  <footer></footer>
+  <script>
+    window.onload = () => {
+      function getCookie(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function (el) {
+          let split = el.split('=');
+          cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+        })
+        return cookie[name];
+      }
+      const loginLinkElement = document.getElementById('UsName');
+      loginLinkElement.innerHTML = getCookie('username')
+
+    }
+  </script>
+</body>
+
+</html>

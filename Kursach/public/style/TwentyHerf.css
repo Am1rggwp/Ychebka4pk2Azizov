@@ -1,0 +1,29 @@
+.borderHeading{
+    border:1px #808080 solid;
+    width: 99%;
+}
+.posBorder{
+    padding: 1%;
+}
+.posimg{
+    padding: 8px 10px 0 10px;
+    width: 7%;
+    width: 6%;
+}
+
+
+.imgavacircle{
+    clip-path: circle(30%);
+    height: 5vh;
+}
+.radiusimgava{
+    
+}
+.headBlock{
+    display: flex;
+}
+.Namecircle{
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Montserrat';
+}

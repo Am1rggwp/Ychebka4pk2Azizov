@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Регистрация</title>
+</head>
+
+<body>
+  <div id="form-container">
+    <div id="form-inner-container-heigtForm">
+      <div id="sign-up-container">
+        <div class="img_logo">
+          <div class="imgcon">
+            <img src="../img/logo.png" alt="">
+          </div>
+          <div class="textcon">
+            <h3 class="colorShcool paddReg">МАОУ "Школа Экодолье"</h3>
+          </div>
+        </div>
+        <form action="/reg.html" method="post">
+          <div id="errorTable" class="error-table">
+            <p>Такое ФИО уже используется</p>
+            <label for="name">ФИО</label>
+            <input type="text" name="name" id="name" placeholder="фио обучающего"
+              pattern="^[а-яА-ЯёЁ]{2,}(\s[а-яА-ЯёЁ]{2,}){2,}$" required>
+  
+            <label for="email">Почта</label>
+            <input type="email" name="email" id="email" placeholder="почта" required>
+  
+            <label for="tel">Телефон</label>
+            <input type="tel" name="tel" id="tel" pattern="89\d{9}" required>
+  
+            <div class="form-group">
+              <div>
+                <label for="schoolClass" class="form-label" required>Класс</label>
+              </div>
+              <div>
+                <select name="schoolClass" id="schoolClass" class="form-control" required>
+                  <optgroup label="1 класс">
+                    <option value="1А">1А</option>
+                    <option value="1Б">1Б</option>
+                    <option value="1В">1В</option>
+                  </optgroup>
+                  <optgroup label="2 класс">
+                    <option value="2А">2А</option>
+                    <option value="2Б">2Б</option>
+                    <option value="2В">2В</option>
+                  </optgroup>
+                  <optgroup label="3 класс">
+                    <option value="3А">3А</option>
+                    <option value="3Б">3Б</option>
+                    <option value="3В">3В</option>
+                  </optgroup>
+                  <optgroup label="4 класс">
+                    <option value="4А">4А</option>
+                    <option value="4Б">4Б</option>
+                    <option value="4В">4В</option>
+                  </optgroup>
+                  <optgroup label="5 класс">
+                    <option value="5А">5А</option>
+                    <option value="5Б">5Б</option>
+                    <option value="5В">5В</option>
+                  </optgroup>
+                  <optgroup label="6 класс">
+                    <option value="6А">6А</option>
+                    <option value="6Б">6Б</option>
+                    <option value="6В">6В</option>
+                  </optgroup>
+                  <optgroup label="7 класс">
+                    <option value="7А">7А</option>
+                    <option value="7Б">7Б</option>
+                    <option value="7В">7В</option>
+                  </optgroup>
+                  <optgroup label="8 класс">
+                    <option value="8А">8А</option>
+                    <option value="8Б">8Б</option>
+                    <option value="8В">8В</option>
+                  </optgroup>
+                  <optgroup label="9 класс">
+                    <option value="9А">9А</option>
+                    <option value="9Б">9Б</option>
+                    <option value="9В">9В</option>
+                  </optgroup>
+                </select>
+              </div>
+  
+            </div>
+  
+            <label for="password">Пароль</label>
+  
+            <input type="password" name="password" id="password"
+              placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
+
+          <div id="form-controls">
+            <button type="submit">Зарегистрироватся</button>
+            <button class="btnLog" type="button" id="toggleSignIn"> <a href="../login.html">Войти</a></button>
+          </div>
+      </div>
+      <!-- Lottie animation -->
+      <div id="animation-container">
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_aesgckiv.json" background="transparent"
+          speed="1" style="width: 520px; height: 520px;" loop autoplay></lottie-player>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

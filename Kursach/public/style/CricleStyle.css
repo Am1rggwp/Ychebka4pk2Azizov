@@ -1,0 +1,428 @@
+.relev {
+  height: 98vh;
+}
+
+.mainblock {
+  background-color: #E5E4E2;
+  max-width: 70%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px gainsboro;
+  height: 70vh;
+  margin: 0 auto;
+}
+
+.searchcricle {
+  border-radius: 8px;
+}
+
+
+.posmainblock {
+  padding: 1%;
+}
+
+.textCircle {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 3%;
+}
+
+
+.posblockheadmain {
+  
+}
+
+
+.blockheadmain {
+  background-color: #ffff;
+  width: 100%;
+  height: 10vh;
+  max-width: 100%;
+  border-radius: 0px 10px 0 0;
+}
+.MaincricleBlock{
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  
+  border-radius: 10px 10px 00px 10px;
+  overflow: auto;
+
+
+}
+.MaincricleBlock::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 25px;
+}
+.MaincricleBlock::-webkit-scrollbar-track {
+  background: linear-gradient(171deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+.MaincricleBlock::-webkit-scrollbar-thumb {
+  background: #0bda51;
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+.MaincricleBlock::-webkit-scrollbar-thumb:hover {
+  background: #0bda51;
+}
+
+
+.oblastcricleBlock{
+  top:-7px;
+  right: 0;
+  position: absolute;
+  background-color: #E5E4E2;
+  width: 100%;
+  height: 60vh;
+  max-width: 100%;
+  border: 1px solid #E5E4E2;
+  border-radius: 10px 10px 00px 10px;
+}
+
+
+form {
+  position: relative;
+  margin: 0 auto;
+}
+.displayF{
+  display: flex;
+}
+
+.d1 {
+  background: #E5E4E2;
+  position: relative;
+}
+
+.d1 input {
+  width: 100%;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid #0bda51;
+
+  /* box-shadow: 0 0 20px gainsboro; */
+  border-radius: 30px;
+  outline: none;
+  background: #ffff;
+  color: #000;
+  position: absolute;
+
+}
+
+.d1 button {
+  position: absolute;
+  top: 10px;
+  right: -1px;
+  width: 11%;
+  height: 44px;
+  border: 2px solid;
+  background: #ffff;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+}
+
+.d1 button:before {
+  text-align: center;
+  font-size: 16px;
+  color: #F9F0DA;
+}
+
+.ablostBtn {
+  position: relative;
+}
+
+.contentbtn {
+  position: absolute;
+  top: -20px;
+  right: -19px;
+  width: 100px;
+  padding: 10px;
+}
+
+.mainFilter{
+  background-color: #ffff;
+  width: 30%;
+  height: 70vh;
+  max-width: 100%;
+  border-radius: 10px 0px 0 10px;
+  
+}
+.blockfilter {
+   padding: 9% 10% 0 10% ;
+}
+.textStylefilter{
+  text-align: center;
+  padding-top: 8px
+}
+
+.circleFiltter{
+  height: 4vh;
+  margin :0px;
+  padding:  0 10px;
+
+}
+.ClassUser{
+  padding: 27% 0 0 0 ;
+}
+.chekInputFilter{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 60%;
+  padding-right: 5px;
+}
+.chekF{
+  display: flex;
+  padding: 10% 0 0 0;
+}
+.QuantityUser{
+  padding: 15% 0 0 0;
+}
+.chaekSloi{
+  width: 100%;
+}
+.stulenumberfilter{
+  padding-right: 10px;
+}
+
+.CreatCirle{
+  margin: 110% 0 0 0;
+}
+
+.Filteraccept,.CreatCirle{
+  margin: 30% 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.posblockcirle{
+  padding: 1%;
+}
+.btnaccept,.Creatbnt{
+  cursor: pointer;
+  box-shadow:  none;
+  width: 30%;
+  border: #fff;
+  position: relative;
+  height: 5vh;
+}
+.Creatbnt{
+  width: 30%;
+}
+.styleaccept,.stylecreat{
+  position: absolute;
+  top: 14px;
+  right: 17px;
+}
+.stylecreat{
+  right: 37px;
+  top: 14px;
+}
+
+
+.blockcirle{
+  background-color: #fff;
+  width: 100%;
+  height: 20vh;
+  max-width: 100%;
+  border: 1px solid #E5E4E2;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.StyleTetxCircle{
+  margin: 3%;
+  font-size: 25px;
+  font-weight: 600;
+}
+.linkstulecircle{
+  font-size: 18px;
+  font-weight: 400;
+
+}
+.Joinbtn{
+  border: 0;
+  width: 24%; 
+  height: 6vh;
+  margin: 12% 3% 1% 1%; 
+
+}
+.flexCriclebtn{
+  display: flex;
+  justify-content: space-between;
+}
+.cocntetnCricle{
+  width: 100%;
+}
+.Joinbtn{
+  padding: 0;
+  color: #fff;
+  transition: .5s;
+}
+.filterBut{
+  display: none;
+}
+.CreatCirleApap{
+  display: none;
+}
+.cenAdapt{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mainFilter,
+  .mainblock {
+      width: 100%;
+
+  }
+  .mainFilter{
+    height: 10%;
+  }
+
+  .blockheadmain {
+      height: auto;
+  }
+
+  .posmainblock {
+      padding: 5%;
+  }
+
+  .blockcirle {
+      height: auto;
+  }
+
+  .FlexCriclebtn {
+      flex-direction: column;
+  }
+
+  .Joinbtn {
+      margin: 3% 0;
+      width: 100%;
+  }
+  .filterBut{
+    color: #fff;
+    display: block;
+    padding: 10px 10px;
+    background-color: #0bda51;
+    border-radius: 10px  ;
+    border: 1px solid #fff;
+    color: #FFF;
+    box-shadow: 0 0 0px gainsboro;
+    transition: all .4s;
+    cursor: pointer;
+  }
+  .filterPanel {
+    position: fixed;
+    right: -107%;
+    top: 35% ; /* Скрываем панель за пределами экрана */
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-out;
+    z-index: 1000;
+  }  
+
+  /* Анимация для выдвигающейся боковой панели */
+  .filterPanel.active {
+    right: 0;
+  }
+  .mainblock{
+    margin: 0 auto;
+    
+    max-width: 95%;
+    width: 100%;
+    height: 63vh;
+  }
+  .displayF {
+    display: block;
+  }
+  .MaincricleBlock{
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    margin-top: 14%;
+  }
+  .blockfilter{
+    padding: 3% 5%;
+    
+    
+  }
+  .blockheadmain{
+    border-radius: 0px;
+  }
+  .mainFilter{
+    border-radius: 0px
+  }
+  .d1 input {
+    font-size: 12px;
+  }
+  .d1 button{
+    width: 24%;
+    font-size: 14px;
+  }
+  .contentbtn{
+    top: -19px;
+    right: -35px;
+  }
+  .QuantityUser{
+    padding: 8%;
+  }
+  .ClassUser{
+    padding: 10% 5% 0% 5%;
+  }
+  .mainFilter{
+    display: flex;
+  }
+  .CreatCirleApap{
+    display: block;
+    padding: 6% 00% 0% 23%;
+  }
+  .btnSucMainApap{
+    padding: 10px 22px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    color: #0bda51;
+    transition: all .4s;
+  }
+  .StyleTetxCircle{
+    font-size: 18px;
+  }
+  .linkstulecircle{
+    font-size: 16px;
+  }
+  .Joinbtn{
+    width: 55%;
+    height: 4vh;
+    margin: 14% 2% 0%;
+  }
+  .CreatCirle{
+    display: none;
+  }
+  .textCircle{
+    font-size: 20px;
+    padding: 8% 3%;
+  }
+  .btnSerchAdap{
+    padding: 5% 18%;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    border: 1px solid #0bda51;
+    color: #0bda51;
+    transition: all .4s;
+    
+  }
+  .bntAcceptAdapt{
+    top: -19px;
+    right: -42px;
+  }
+  .cenAdapt{
+    display: flex;
+    justify-content: right;
+    margin: 0 5%;
+  }
+  .Filteraccept{
+    margin: 0 0 0 5%;
+  }
+  
+}

@@ -1,0 +1,190 @@
+.CreatCirleWi{
+    width: 100%;
+    padding: 4%;
+
+}
+.paddcreat{
+    padding: 0;
+    width: 100%;
+}
+.classPosbnt{
+    width: 71%;
+}
+.inputCreatname, .creatCriclew{
+    height: 3vh;
+    width: 50%; 
+
+}
+.inputCreatnameError{
+    width: 100%; 
+}
+.creatCriclewError{
+    width: 38%;
+}
+
+.ChekFlex{
+    display: flex;
+    height: 5vh;
+    width: 89px;
+
+}
+.CreateCircleRadio{
+    width: 40%;
+    height: 2vh;
+}
+.CreateCircleRadio2{
+    width: 40%;
+    height: 2vh;
+}
+.paddDivRadio,.ChekFle{
+    padding-top: 2%;
+    display: flex;
+    width: 100%;
+}
+.btnCreateMain{
+    border: 0;
+    width: 100%;
+    margin-bottom: 4%;
+}
+.PosCreatebtnCircle{
+    margin-top: 2%;
+    
+}
+.BtnsCreat{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14% ;
+}
+.btnBack{
+    padding: 16px 95px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    color: #0bda51;
+    transition: all .4s;
+}
+.btnBack:hover{
+    background-color: red;
+    color: #fff;
+    transition: all .4s;
+
+}
+.creatCriclew{
+    padding: 0 0 0 10px;
+    height: 4vh;
+}
+
+
+.FlexError{
+    display: flex;
+    justify-content: space-between;
+}
+.errorcricle{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    
+}
+.paadTextCricle{
+    padding-top:7px ;
+}
+
+
+
+
+
+
+.succescricle{
+    width: 30%;
+    height: 10vh;
+    background-color: #0bda51;
+}
+
+.PosSuccesbtnCircle{
+    display: flex;
+    justify-content: center;
+    margin-top: 6%;
+}
+.styleSuc{
+    color: #FFF;
+    font-size: 25px;
+    text-align: center;
+    padding: 7%;
+}
+.btnSucMain{
+    padding: 16px 75px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    color: #0bda51;
+    transition: all .4s;
+}
+.btnSucMain:hover{
+    background-color: #0bda51;
+    color: #fff;
+}
+
+
+.StyleTetxInteresCreate{
+    margin-top: 4%;
+}
+.twotap{
+    margin-top: 26%;
+    justify-content: flex-end;
+}
+.btnCreateMain{
+    padding: 16px 95px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    color: #0bda51;
+    transition: all .4s;
+    cursor: pointer;
+}
+.btnCreateMain:hover{
+    background-color: #0bda51;
+    color: #FFF;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .inputCreatname, .creatCriclew{
+        height: 4vh;
+        width: 100%;
+    }
+    .inputCreatname{
+        height: 2vh;
+    }
+    .paddDivRadio, .ChekFle{
+        padding-top: 5%;
+    }
+    .PosCreatebtnCircle{
+        margin-top: 4.5%;
+    }
+    .btnBack{
+        padding:13px 37px;
+    }
+    .styleSuc{
+        font-size: 18px;
+    }
+    .succescricle{
+        width: 70%;
+        height: 10vh;
+    }
+    .bntCreateMainAdapt{
+        display: block;
+        padding: 14px 30px;
+        background-color: #FFF;
+        border-radius: 10px;
+        box-shadow: 0 0 20px gainsboro;
+        color: #0bda51;
+        transition: all .4s;
+        cursor: pointer;
+    }
+    .btnSucMain{
+        padding: 15px 25px;
+    }
+
+
+}

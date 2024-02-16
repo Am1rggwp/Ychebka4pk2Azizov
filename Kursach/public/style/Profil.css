@@ -1,0 +1,56 @@
+.BlockAva{
+    width: 20%;
+}
+.posvavaprof{
+    padding: 10%;
+}
+.paddBlock{
+    padding: 2% 2% 0 2%;
+    display: flex;
+}
+
+.posBlockdata{
+    padding: 3% 0 0 5%;
+    width: 100%;
+    display: flex;
+}
+.poslable{
+    display: flex;
+}
+.blockdata{
+    padding-left: 1%;
+}
+.padata{
+    padding-bottom: 10px;
+}
+.btndow{
+    padding: 10px;
+}
+
+.intbtn{
+    border: 0;
+    padding: 14px 45px;
+    margin: 0.2%;
+    background-color: #FFF;
+    border-radius: 10px;
+    color: #000;
+    transition: all .4s;
+}
+.posExitbtn{
+    margin: 10% 1% 1% 5%;
+    position: absolute;
+}
+.posBlockfir{
+    position: relative;
+}
+.btnBack{
+    border: 0;
+}
+@media screen and (max-width: 768px) {
+    .intbtn{
+        padding: 3% 7%;
+        margin: 1.2%;
+    }
+
+
+}

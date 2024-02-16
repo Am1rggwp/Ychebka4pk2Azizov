@@ -1,0 +1,272 @@
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+
+.headIndex{
+    display: flex;
+    padding: 3% 0 0 4%;
+}
+.headIndex1{
+    display: flex;
+    padding: 3% 0 0 4%;
+    justify-content: center;
+}
+.styleFontHead,.headIndex2{
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Montserrat';
+}
+.headIndex2{
+    padding-top: 3%;
+}
+.headingIndex{
+    display: flex;
+    padding-left: 10px;
+
+}
+
+.posBlock{
+    display: flex;
+    justify-content: center;
+   padding-top: 2%;
+}
+.posBlockfir{
+    display: flex;
+   justify-content: center;
+   height: 68vh;
+   padding-top: 2%;
+}
+.block{
+    background-color: white;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px gainsboro;
+    width: 88%;
+    
+}
+.link_Text{
+    padding: 2% 4%;
+}
+.link_Text2{
+    padding-top: 3%;
+}
+.text{
+    font-size: 20px;
+    font-weight:300;
+    font-family: 'Montserrat';
+    line-height: 2;
+}
+.linkPosText{
+    text-align: center;
+}
+
+body {
+    font-size: 16px;
+}
+
+
+
+
+/* Стили для хедера */
+.head {
+    padding: 0% 2%;
+}
+
+.link_head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.herfLink {
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Стили для блока в секции */
+.posBlock,
+.block {
+    width: 100%;
+    max-width: 100%;
+    
+}
+
+.headIndex,
+.headIndex1 {
+    padding: 3% 2% 0 4%;
+}
+
+.styleFontHead,
+.headIndex2 {
+    font-size: 20px;
+}
+
+/* Стили для текста в блоке */
+.link_Text {
+    padding: 2% 4%;
+}
+
+.text {
+    font-size: 16px;
+}
+
+.navigation{
+    display: none;
+}
+.blokFeck{
+    display: none;
+}
+.conbalck{
+    display: none;
+}
+.block_nav{
+    display: none;
+}
+.mobtitle{
+    display: none;
+}
+
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .headIndex {
+        padding:4% 3% 0px 4%;
+    }
+    .link_Text {
+        padding:4% 0%;
+    }
+    
+
+    .styleFontHead,
+    .headIndex2 {
+        font-size: 18px;
+        display: block;
+        padding-left: 0;
+        text-align: center;
+    }
+    .linkPosText{
+        margin: 0 1%;
+    }
+    
+    .navigation_main{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 8.7vh;
+        background-color: #03c03c;
+        display: flex;
+        /* margin: 97.9% 0 0 0 ; */
+
+    }
+    .flexMain{
+        align-items: end;
+    }
+    .conbalck{
+        display: block;
+        background-color: #000;
+        height: 2vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+    }
+    .block_nav{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding: 0 10px;
+        
+    }
+    .profilImg{
+        width: 30px;
+        height: 30px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .textNav{
+        color: #fff;
+        font-size: 8px ;
+        font-weight: 600;
+        text-align: center;
+    }
+    .profil{
+        padding-top: 6px;
+        justify-content: center;
+    }
+    .herfLink{
+        display: none;
+    }
+    .paddHead{
+        display: block;
+    }
+    .maoy{
+        padding: 32px 0 0 1px;
+
+    }
+    .herflinkhov{
+        
+        width:60px;
+        height: 6.5vh;
+        transition: 0.1s;
+        text-decoration: none;
+
+
+    }
+    .herflinkhov:hover{
+        opacity: 0.1;
+        z-index: 1000;
+        border-radius: 40px;
+        background: #013220;
+        
+        
+    }
+    .posBlockfir{
+        height: 106vh;
+    }
+    .fullver{
+        display: none;
+    }
+    .mobtitle{
+        display: block;
+        font-size: 17px;
+        font-weight: 400;
+    }
+    .noac{
+        color: #888888;
+    }
+
+}
+@media screen and (max-width: 768px) {
+    .link_head {
+        padding: 2% 0px 0;
+        
+    }
+
+    .herfLink {
+        padding-top:0.01% ;
+        font-size: 12px;
+    }
+    .link_head {
+    }
+    .head {
+        width: auto;
+        height: 10vh;
+        background: #03c03c;
+        padding: 2% 2%;
+        
+    }
+    .textMain{
+        text-align: center;
+        margin: 0 1%;
+    }
+}
+@media screen and (max-height: 770px) {
+    .head{
+    height: 8vh;
+
+    }
+    .maoy{
+        padding: 10px 0 0 1px;
+    }
+}

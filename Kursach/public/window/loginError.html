@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../allStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Document</title>
+</head>
+<body>
+   
+    <div id="form-container">
+        <div id="form-inner-container-error">
+          <!-- Sign up form -->
+          <div id="sign-in-container">
+            <div class="img_logo">
+              <div class="imgcon">
+                <img src="../img/logo.png" alt="">
+              </div>
+              <div class="textcon">
+                <h3 class="colorShcool paddReg">МАОУ "Школа Экодолье"</h3>
+              </div>
+            </div>
+            <form action="/window/login.html" method="post">
+              <div id="errorTable" class="error-table">
+                <p>Логин или пароль неверны</p>
+              </div>
+              <label for="name">Введите логи, почту или номер телефона</label>
+              <input type="text" name="name" id="name" placeholder="Иванов Иван Иванович, ivan@mail.ru, +79******">
+  
+              <label for="password">Пароль</label>
+              <input type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+  
+              <div id="form-controls">
+                <button class="btnLog1" type="submit">Войти</button>
+                <button type="button" id="toggleSignIn"> <a href="reg.html">Зарегистрироватся</a></button>
+              </div>
+  
+            </form>
+          </div>
+          <!-- Lottie animation -->
+          <div id="animation-container">
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_aesgckiv.json"  background="transparent"  speed="1"  style="width: 520px; height: 520px;" loop autoplay></lottie-player>
+          </div>
+        </div>
+    </div>
+  
+
+</body>
+</html>

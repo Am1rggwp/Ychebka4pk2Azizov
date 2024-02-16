@@ -1,0 +1,58 @@
+.head{
+    width: auto;
+    height: 70px;
+    background: #03c03c;
+
+}
+.link_head{
+    display: flex;
+    color: #ffff;
+    padding: 0.75% 50px 0;
+    font-size: 16px;
+    font-weight: 400;
+    justify-content: center;
+    justify-content: space-between;
+    translate: .5s;
+}
+
+
+.herfLink{
+    padding-top:0.7em ;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+    transition: all 0.5s ease; 
+    
+
+}
+.herfLink:hover{
+    background-size: 100% 2px;
+    color: #fffdd0;
+    font-size: 20px;
+
+}
+
+.paddHead{
+    padding-top:2% ;
+}
+
+@media screen and (max-width: 768px) {
+    .link_head {
+        padding: 0.75% 10px 0;
+        
+    }
+
+    .herfLink {
+        padding-top: 0.5em;
+    }
+    .head {
+        width: auto;
+        height: 9vh;
+        background: #03c03c;
+        padding: 2% 2%;
+    }
+    
+}

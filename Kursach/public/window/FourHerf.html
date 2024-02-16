@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Главная страница</title>
+</head>
+
+<body>
+  <header>
+    <div class="head">
+      <div class="link_head">
+        <div class="maoy">
+          <div class="herfLink paddHead">
+            <a class="fullver" href="../index.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Поддержка</div>
+          </div>
+
+        </div>
+        <div>
+          <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="posBlockfir">
+      <div class="block paddFourlink">
+        <div class="headpos">
+          <div class="glav"> Часто задаваемы вопросы:</div>
+          <div class="blockFon">
+            <details>
+              <summary class="quest">Почему этот сайт работает не корректо?</summary>
+              <p class="answer">Ответ: потому что этот сайт делал студент, а что вы хотели?</p>
+            </details>
+          </div>
+
+          <div class="blockFon">
+            <details>
+              <summary class="quest"> Почему этот сайт работает?</summary>
+              <p class="answer">Ответ: пупупупупу, а че? </p>
+            </details>
+          </div>
+
+          <div class="blockFon">
+            <details>
+              <summary class="quest">Почему долго грузит сай?</summary>
+              <p class="answer">Ответ: потому что разработчик проел деньги для сервака</p>
+              </detalis>
+          </div>
+        </div>
+
+        <div class="blockFon">
+          <details>
+            <summary class="quest">Почему 10 и 11 классам нельзя зарегистрироватся на данном сайте?</summary>
+            <p class="answer">Ответ: выросли уже идите работать</p>
+            </detalis>
+        </div>
+
+        <!-- Кнопка -->
+        <div class="css-modal-target-container">
+          <a class="css-modal-open" href="#css-modal-target">Написать в поддержку</a>
+        </div>
+
+        <!-- Модальное окно -->
+        <div class="css-modal-target" id="css-modal-target">
+          <div class="cmt">
+            <form action="">
+              <textarea class="textareaForm" type="text" name="text" placeholder="Опишите свою проблему"
+                required></textarea>
+              <div class="posbtnform">
+                <button class="btnFormSup" type="button">Отправить</button>
+
+              </div>
+            </form>
+
+          </div>
+          <a href="#close" class="css-modal-close"></a>
+        </div>
+      </div>
+
+    </div>
+    </div>
+    </div>
+    <div class="navigation_main">
+      <div class="block_nav">
+        <a class="herflinkhov " href="FourHerf.html ">
+          <div class="profil">
+            <img class="profilImg " src="../img/support.svg" alt="">
+            <p class="textNav ">Поддержка</p>
+
+          </div>
+        </a>
+        <a class="herflinkhov " href="FirstHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+            <p class="textNav noac">Главная</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="ThridHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+            <p class="textNav noac">Кружки</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="Profil.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+            <p class="textNav noac">Кабинет</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+
+
+
+  </section>
+  <footer></footer>
+  <script>
+    window.onload = () => {
+      function getCookie(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function (el) {
+          let split = el.split('=');
+          cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+        })
+        return cookie[name];
+      }
+      const loginLinkElement = document.getElementById('UsName');
+      loginLinkElement.innerHTML = getCookie('username')
+      const loginform = document.getElementById('FomrName');
+      loginform.innerHTML = getCookie('username')
+
+    }
+  </script>
+</body>
+
+</html>

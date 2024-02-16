@@ -1,0 +1,51 @@
+.text2{
+    font-size: 20px;
+    font-weight:300;
+    font-family: 'Montserrat';
+    line-height: 1.25;
+}
+.shoolimg{
+    border-radius: 12px;
+    width: 100%;
+    
+}
+.pos{
+    width: 80%;
+    padding-right: 2%;
+}
+.flex{
+    display: flex;
+}
+
+
+@media screen and (max-width: 768px) {
+    .pos {
+        padding-right: 0; /* Убираем правый отступ на мобильных устройствах */
+    }
+
+    .styleFontHead{
+        
+    }
+    .flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Выравниваем элементы по центру на мобильных устройствах */
+    }
+    
+    .text {
+        font-size: 14px;
+    }
+    .pos{
+        width: 95%;
+        max-width: 100%;
+        padding-right: 0%;
+        text-align: justify;
+    }
+    .text2{
+        font-size: 14px;
+    }
+    .imgPos{
+        padding-top: 10%;
+    }
+    
+}

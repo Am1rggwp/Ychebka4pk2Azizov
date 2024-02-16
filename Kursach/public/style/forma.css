@@ -1,0 +1,279 @@
+body {
+    background-color: #F3F4F9;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+.error-table {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 5px 0 15px;
+}
+
+#form-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-inner-container {
+    background-color: white;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px gainsboro;
+    height: 600px;
+}
+#form-inner-container-heigtForm{
+    background-color: white;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px gainsboro;
+    margin: 10px;
+}
+#form-inner-container-error{
+    background-color: white;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px gainsboro;
+    height: 650px;
+}
+
+#sign-up-container,
+#sign-in-container {
+    padding: 60px 80px;
+    width: 545px;
+    display: inline-block;
+}
+
+form input {
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #E5E9F5;
+    background-color: #F6F7FA;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.form-control{
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #E5E9F5;
+    background-color: #F6F7FA;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+.classSel{
+    padding: 10px;
+    width: 20px;
+    height: 10px;
+}
+
+#form-controls {
+    margin-bottom: 20px;
+}
+
+.all_form {
+    width: 100%;
+}
+
+h3 {
+    color: red;
+    font-size: 150%;
+    font-weight: 500;
+}
+
+label {
+    color: #7369AB;
+}
+
+::placeholder {
+    color: #C0C7DB;
+    font-size: larger;
+    letter-spacing: 1.2px;
+}
+
+#form-controls button {
+    border: none;
+    font-size: 120%;
+    width: 100%;
+}
+
+#form-controls button:hover {
+    cursor: pointer;
+}
+
+button[type="submit"],
+[type="button"] {
+    padding: 16px 21px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    color: #0bda51;
+    transition: all .4s;
+    cursor: pointer;
+
+}
+
+button[type="submit"]:hover {
+    background-color: #0bda51;
+    transition: all .4s;
+    color: #ffff;
+
+}
+
+button[type="button"]:hover {
+    background-color: #0bda51;
+    transition: all .4s;
+    color: #ffff;
+
+}
+
+.btnLog {
+    margin-top: 5%;
+    width: 96%;
+}
+
+.btnLog1 {
+    margin-bottom: 5%;
+    width: 94%;
+}
+
+/* button[type="button"] {
+    padding: 16px 0 16px 35px;
+    background-color: transparent;
+    color: #0bda51;
+} */
+
+#terms {
+    width: 30px;
+    height: 30px;
+    appearance: none;
+    border: 2px solid #7369AB;
+    border-radius: 4px;
+    position: relative;
+}
+
+#terms:checked:after {
+    content: '\2713';
+    color: #7369AB;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    left: 3px;
+}
+
+label[for="terms"] {
+    display: inline-block;
+    width: 80%;
+    margin-left: 10px;
+}
+
+.termsLink {
+    color: #0bda51;
+    text-decoration: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+#animation-container {
+    display: inline-block;
+}
+
+.colorShcool {
+    color: #0bda51;
+}
+
+.paddReg {
+    padding-bottom: 10%;
+}
+
+.img_logo {
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+.imgcon{
+    padding-right: 30px;
+}
+.textcon{
+    padding-top: 8px;
+}
+
+
+/* responsive display */
+
+@media(max-width:1438px) {
+    lottie-player {
+        width: 300px!important;
+    }
+}
+
+@media(max-width:1124px) {
+    #animation-container {
+        display: none;
+    }
+
+    #form-inner-container{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 684px) {
+    #form-container {
+        height: auto;
+        padding: 19% 20px 0; 
+    }
+
+    #form-inner-container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #sign-up-container,
+    #sign-in-container {
+        padding: 20px; 
+        width: 100%; 
+    }
+
+    #animation-container {
+        display: none; 
+    }
+
+    lottie-player {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .img_logo {
+        text-align: center; 
+        width: 100%;
+        height: 120px;
+        display: block;
+    }
+    .adapt{
+        font-size: 20px;
+        padding: 0 auto;
+    }
+    .imgcon{
+        padding-right: 0px;
+    }
+    .textcon{
+        padding-top: 0px;
+    }
+    
+  
+}
