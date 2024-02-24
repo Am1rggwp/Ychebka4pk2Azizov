@@ -50,7 +50,7 @@
         <div class="headpos">
           <div class="glav"> Часто задаваемы вопросы:</div>
           <div class="blockFon">
-            <details>
+            <details class="radius">
               <summary class="quest">Почему этот сайт работает не корректо?</summary>
               <p class="answer">Ответ: потому что этот сайт делал студент, а что вы хотели?</p>
             </details>
@@ -86,11 +86,17 @@
         <!-- Модальное окно -->
         <div class="css-modal-target" id="css-modal-target">
           <div class="cmt">
-            <form action="">
-              <textarea class="textareaForm" type="text" name="text" placeholder="Опишите свою проблему"
+            <form action="#" id="formSupport" method="post">
+              <textarea class="textareaForm" type="text" id="tetxProblema" name="text" placeholder="Опишите свою проблему"
                 required></textarea>
+                <div class="mail"> 
+                    <label for="">
+                      Почта на которую придет обратная связь:
+                      <label for=""id="MailUser"></label>
+                    </label>
+                </div>
               <div class="posbtnform">
-                <button class="btnFormSup" type="button">Отправить</button>
+                <button class="btnFormSup" type="submit">Отправить</button>
 
               </div>
             </form>
@@ -151,10 +157,18 @@
       }
       const loginLinkElement = document.getElementById('UsName');
       loginLinkElement.innerHTML = getCookie('username')
-      const loginform = document.getElementById('FomrName');
-      loginform.innerHTML = getCookie('username')
+      const emailUser = document.getElementById('MailUser');
+      emailUser.innerHTML = getCookie('email')
+      
 
     }
+
+
+
+
+
+
+
   </script>
 </body>
 

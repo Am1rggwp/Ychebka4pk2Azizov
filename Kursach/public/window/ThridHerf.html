@@ -121,7 +121,7 @@
                         </div>
                         <div class="Filteraccept">
                         </div>
-                        <div class="CreatCirle">
+                        <div class="CreatCirle" id="bntcreatecirle">
                           <a class="btnSucMain" href="CreateCircle.html">Создать</a>
                         </div>
                         <div class="cenAdapt">
@@ -336,6 +336,17 @@
   window.onload = () => {
     const loginLinkElement = document.getElementById('UsName');
     loginLinkElement.innerHTML = getCookie('username')
+
+    var role = getCookie('role'); // Получение значения role из cookie
+    var element = document.getElementById('bntcreatecirle'); // Находим элемент по ID
+
+    if (role === '2') {
+        // Если role равно 2, скрываем элемент
+        if (element) element.style.display = 'none';
+    } else {
+        // Иначе показываем элемент
+        if (element) element.style.display = 'block';
+    }
 
     getInt();
 

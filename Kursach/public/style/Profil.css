@@ -10,12 +10,14 @@
 }
 
 .posBlockdata{
-    padding: 3% 0 0 5%;
+    padding: 1% 0 0 5%;
     width: 100%;
     display: flex;
 }
 .poslable{
     display: flex;
+
+
 }
 .blockdata{
     padding-left: 1%;
@@ -37,7 +39,7 @@
     transition: all .4s;
 }
 .posExitbtn{
-    margin: 10% 1% 1% 5%;
+    margin: 1% 1% 1% 5%;
     position: absolute;
 }
 .posBlockfir{
@@ -46,6 +48,21 @@
 .btnBack{
     border: 0;
 }
+.golovok{
+    font-size: 32px;
+    font-weight: 600;
+    margin: 10px 0 0 5%;
+    
+
+}
+.edit{
+    
+    margin: 5% 1% 1% 5%;
+    
+}
+
+
+
 @media screen and (max-width: 768px) {
     .intbtn{
         padding: 3% 7%;

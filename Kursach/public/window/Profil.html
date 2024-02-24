@@ -48,8 +48,12 @@
     <section>
         <div class="posBlockfir">
             <div class="block">
+                <div class="golovok">
+                    Профиль
+                </div>
                 <div class="paddBlock">
                     <div class="posBlockdata">
+                        
                         <div class="blockLable">
                             <div class="poslable padata">
                                 <div class="name">ФИО:</div>
@@ -77,11 +81,11 @@
                         </div>
                     </div>
                 </div>
-                
                     
                 <div class="posExitbtn">
                     <button onclick="out()" class="btnBack" id="logoutButton">Выйти</button>
                 </div>
+
 
             </div>
         </div>
@@ -207,7 +211,6 @@
             const classUser = document.getElementById('classUserIDProfil');
             classUser.innerHTML = getCookie('classus')
             
-
             getInt()
 
             const loginLinkElement = document.getElementById('UsName');

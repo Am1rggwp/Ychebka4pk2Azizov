@@ -34,6 +34,9 @@
     padding: 5px 0 0 25px;
     background:#E5E4E2 ;
     height: 30px;
+    border: 1px solid #E5E4E2 ;
+    border-radius:0px 0px 10px 10px;
+    width: 97%;
 }
 .quest{
     font-size: 22px;
@@ -93,9 +96,11 @@ details{
 
 .blockFon{
     background: #fff;
-    width: 50%;
-    border-radius: 50px solid #fff;
+    width: 50%; 
+    border: 1px solid #fff;
+    border-radius: 10px;
     box-shadow: 0 0 20px gainsboro;
+    margin-bottom: 20px;
 }
 
 
@@ -188,7 +193,7 @@ details{
     content: "";
     width: 50px;
     height: 50px;
-    border: 6px solid red;
+    border: 6px solid #fff;
     border-radius: 50px;
     position: fixed;
     z-index: 10;
@@ -196,7 +201,7 @@ details{
     right: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
     background-image: url("../img/close.svg");
-    background-color: red;
+    background-color: #fff;
     background-size: cover;
     animation: move 0.5s ease;
 }
@@ -210,6 +215,7 @@ details{
     cursor: default;
 }
  
+
 /* Анимации */
 @keyframes scale {
     0% {

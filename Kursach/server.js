@@ -39,6 +39,8 @@ app.post('/window/login.html' || '/window/loginError.html', async (req, res) => 
       res.cookie('tel', result.tel, { maxAge: 9000000000, httpOnly: false });
       res.cookie('email', result.email, { maxAge: 9000000000, httpOnly: false });
       res.cookie('classus', result.classuser, { maxAge: 9000000000, httpOnly: false });
+      res.cookie('role', result.role, { maxAge: 9000000000, httpOnly: false });
+
       res.redirect('/index.html');
     } else { }
 
@@ -131,8 +133,8 @@ app.post('/reg.html', async (req, res) => {
       res.redirect('/window/windowError/regErrorNumber.html');
     } else {
       const insert = await sql`
-        INSERT INTO users (fio, email, tel, ClassUser ,PasswordHash)
-        VALUES (${name}, ${email}, ${tel},${classUser} ,${password})
+        INSERT INTO users (fio, email, tel, ClassUser ,PasswordHash, Role)
+        VALUES (${name}, ${email}, ${tel},${classUser} ,${password}, 2)
       `;
 
       res.redirect('/window/login.html');
@@ -256,9 +258,22 @@ const start = async () => {
     Tel VARCHAR(11) NOT NULL unique,
     ClassUser VARCHAR(3)NOT NULL,
     PasswordHash VARCHAR(100) NOT NULL,
+    Role int NOT NULL,
     IdCircle int null
     )
     `;
+  await sql`CREATE TABLE if not exists Role(
+      RoleId SERIAL PRIMARY KEY,
+      NameRole VARCHAR(70) NOT NULL
+    )`
+  
+  await sql`CREATE TABLE if not exists RoleUser(
+      UserInterestId SERIAL PRIMARY KEY,
+      UserId INT REFERENCES Users(UserId),
+      RoleId INT REFERENCES Role(RoleId),
+      UNIQUE(UserId, RoleId)
+      ) `;
+
   await sql`CREATE TABLE if not exists Interests (
     InterestsId SERIAL PRIMARY KEY,
     Name VARCHAR(70) NOT NULL unique
@@ -282,6 +297,11 @@ const start = async () => {
         InterestsId INT REFERENCES Interests(InterestsId),
         UNIQUE(CricleID, InterestsId)
         ) `;
+
+  // await sql`INSERT INTO Role (NameRole) VALUES
+  // ('Учитель'),
+  // ('Учиник')`;
+
   // await sql`INSERT INTO Interests (Name) VALUES
   // ('Спорт'),
   // ('Музыка'),
@@ -290,12 +310,13 @@ const start = async () => {
   // ('Чтение'),
   // ('Игры'),
   // ('Фотография'),
-  // ('Искусство'),
+  // ('Искусство'), 
   // ('Танцы'),
   // ('Программирование')`;
 
   app.listen(port, () => {
-    console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
+    // console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
+    console.log(`Сервер запущен  http://192.168.0.108:${port}/window/login.html`);
 
   });
 
