@@ -115,17 +115,19 @@
                           </div>
                         </div>
                       </div>
+                      <div id="InteresBtn" onclick=""></div>
+                      <div class="btnOtsup"></div>
                     </div>
                     <div class="BtnsCreat">
                       <div class="PosCreatebtnCircle">
                         <a href="ThridHerf.html" class="btnBack">Назад</a>
                       </div>
                       <div class="BtnsCreated">
-                        <button class="btnCreateMain bntCreateMainAdapt">Создать</button>
+                        <button class="btnCreateMain bntCreateMainAdapt"><a href="CreateCircleInteres.html">Создать </a></button>
                       </div>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
           </div>
@@ -148,7 +150,7 @@
           <div class="profil">
             <img class="profilImg " src="../img/supportNoAc.svg" alt="">
             <p class="textNav noac">Поддержка</p>
-  
+
           </div>
         </a>
         <a class="herflinkhov " href="FirstHerf.html">
@@ -175,17 +177,76 @@
   </section>
   <footer></footer>
   <script>
+
+function getInt() {
+            fetch('/interesCircle')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const btn = document.getElementById('InteresBtn')
+                    btn.innerHTML = ""
+                    data.forEach(el => {
+                        // console.log(el);
+                        btn.innerHTML += `<font class = "btnOtsup"> <button class="intbtn" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        }
+
+        const addTo = async (id) => {
+            fetch("/interesCircle", {
+                method: 'POST',
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: id
+                })
+            })
+                .then(data => data.json())
+                .then(data => {
+                    // console.log(data);
+                    getInt()
+                })
+        }
+
+        const removeFrom = async (id) => {
+            fetch("/interesCircle", {
+                method: 'DELETE',
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: id
+                })
+            })
+                .then(data => data.json())
+                .then(data => {
+                    // console.log(data);
+                    getInt()
+                })
+        }
+
+
     window.onload = () => {
       function getCookie(name) {
-				let cookie = {};
-				document.cookie.split(';').forEach(function (el) {
-					let split = el.split('=');
-					cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
-				})
-				return cookie [name];
-			}
+        let cookie = {};
+        document.cookie.split(';').forEach(function (el) {
+          let split = el.split('=');
+          cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+        })
+        return cookie[name];
+      }
       const loginLinkElement = document.getElementById('UsName');
-			loginLinkElement.innerHTML = getCookie('username')
+      loginLinkElement.innerHTML = getCookie('username')
 
 
     }

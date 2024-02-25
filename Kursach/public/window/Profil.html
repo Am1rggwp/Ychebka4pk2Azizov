@@ -53,7 +53,7 @@
                 </div>
                 <div class="paddBlock">
                     <div class="posBlockdata">
-                        
+
                         <div class="blockLable">
                             <div class="poslable padata">
                                 <div class="name">ФИО:</div>
@@ -65,10 +65,10 @@
                                 <div class="name">телефон:</div>
                             </div>
                             <div class="poslable padata">
-                                <div class="name">Класс:</div>
+                                <div class="name" id="classuse">Класс:</div>
                             </div>
                             <div class="poslable padata">
-                                <div class="name">Интересы:</div>
+                                <div class="name" id="interesId">Интересы:</div>
                             </div>
                         </div>
                         <div class="blockdata">
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                    
+
                 <div class="posExitbtn">
                     <button onclick="out()" class="btnBack" id="logoutButton">Выйти</button>
                 </div>
@@ -91,34 +91,34 @@
         </div>
         <div class="navigation_main">
             <div class="block_nav">
-              <a class="herflinkhov " href="FourHerf.html ">
-                <div class="profil">
-                  <img class="profilImg " src="../img/supportNoAc.svg" alt="">
-                  <p class="textNav noac">Поддержка</p>
-      
-                </div>
-              </a>
-              <a class="herflinkhov " href="FirstHerf.html">
-                <div class="profil">
-                  <img class="profilImg " src="../img/homeNoAc.svg" alt="">
-                  <p class="textNav noac">Главная</p>
-                </div>
-              </a>
-              <a class="herflinkhov " href="ThridHerf.html">
-                <div class="profil">
-                  <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
-                  <p class="textNav noac">Кружки</p>
-                </div>
-              </a>
-              <a class="herflinkhov " href="Profil.html">
-              <div class="profil">
-                <img class="profilImg " src="../img/Profil.svg" alt="">
-                <p class="textNav ">Кабинет</p>
-              </div>
-              </a>
+                <a class="herflinkhov " href="FourHerf.html ">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/supportNoAc.svg" alt="">
+                        <p class="textNav noac">Поддержка</p>
+
+                    </div>
+                </a>
+                <a class="herflinkhov " href="FirstHerf.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+                        <p class="textNav noac">Главная</p>
+                    </div>
+                </a>
+                <a class="herflinkhov " href="ThridHerf.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+                        <p class="textNav noac">Кружки</p>
+                    </div>
+                </a>
+                <a class="herflinkhov " href="Profil.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/Profil.svg" alt="">
+                        <p class="textNav ">Кабинет</p>
+                    </div>
+                </a>
             </div>
-          </div>
-          <div class="conbalck"></div>
+        </div>
+        <div class="conbalck"></div>
     </section>
 
 
@@ -201,16 +201,38 @@
 
             const Fio = document.getElementById('UsNameProfil');
             Fio.innerHTML = getCookie('username')
-            
+
             const emal = document.getElementById('pochtaUserIDProfil');
             emal.innerHTML = getCookie('email')
-            
+
             const tel = document.getElementById('NumberUserIDProfil');
             tel.innerHTML = getCookie('tel')
-           
+
             const classUser = document.getElementById('classUserIDProfil');
             classUser.innerHTML = getCookie('classus')
-            
+
+            var role = getCookie('role'); // Получение значения role из cookie
+            var element = document.getElementById('classUserIDProfil'); // Находим элемент по ID
+            var element1 = document.getElementById('classuse');
+            var element2 = document.getElementById('interesId');
+            var element3 = document.getElementById('InteresBtn');
+            if (role === '1') {
+                if (element) {
+                    element.style.display = 'none';
+                    element1.style.display = 'none';
+                    element2.style.display = 'none';
+                    element3.style.display = 'none';
+                }
+            } else {
+                if (element) {
+                    element.style.display = 'block';
+                    element1.style.display = 'block';
+                    element2.style.display = 'none';
+                    element3.style.display = 'none';
+
+                }
+            }
+
             getInt()
 
             const loginLinkElement = document.getElementById('UsName');

@@ -128,62 +128,62 @@
     }
 
 
-    // function getInt() {
-    //   fetch('/interesCricleCreate')
-    //     .then(response => {
-    //       if (!response.ok) {
-    //         throw new Error(`Network response was not ok. Status: ${response.status}`);
-    //       }
-    //       return response.json();
-    //     })
-    //     .then(data => {
-    //       const btn = document.getElementById('InteresBtn')
-    //       btn.innerHTML = ""
-    //       data.forEach(el => {
-    //         console.log(el);
-    //         btn.innerHTML += `<font class = "btnOtsup"> <button class="intbtn" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
-    //       });
-    //     })
-    //     .catch(error => {
-    //       console.error('There was a problem with the fetch operation:', error.message);
-    //     });
-    // }
+    function getInt() {
+            fetch('/interesCircle')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const btn = document.getElementById('InteresBtn')
+                    btn.innerHTML = ""
+                    data.forEach(el => {
+                        // console.log(el);
+                        btn.innerHTML += `<font class = "btnOtsup"> <button class="intbtn" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        }
 
-    // const addTo = async (id) => {
-    //   fetch("/interesCricleCreate", {
-    //     method: 'POST',
-    //     mode: "cors",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       id: id
-    //     })
-    //   })
-    //     .then(data => data.json())
-    //     .then(data => {
-    //       console.log(data);
-    //       getInt()
-    //     })
-    // }
+        const addTo = async (id) => {
+            fetch("/interesCircle", {
+                method: 'POST',
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: id
+                })
+            })
+                .then(data => data.json())
+                .then(data => {
+                    // console.log(data);
+                    getInt()
+                })
+        }
 
-    // const removeFrom = async (id) => {
-    //   fetch("/interesCricleCreate", {
-    //     method: 'DELETE',
-    //     mode: "cors",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       id: id
-    //     })
-    //   })
-    //     .then(data => data.json())
-    //     .then(data => {
-    //       // console.log(data);
-    //       getInt()
-    //     })
-    // }
+        const removeFrom = async (id) => {
+            fetch("/interesCircle", {
+                method: 'DELETE',
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: id
+                })
+            })
+                .then(data => data.json())
+                .then(data => {
+                    // console.log(data);
+                    getInt()
+                })
+        }
 
     window.onload = () => {
 

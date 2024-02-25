@@ -182,6 +182,7 @@ app.post('/createCricle', async (req, res) => {
         INSERT INTO Сircle (NameCricel, QuantityUser, userclass)
         VALUES (${name},${quantitu},${ClassUsers})
       `;
+      res.cookie('userid', cricleID, { maxAge: 9000000000, httpOnly: false });
       res.redirect('/window/CircleSucces.html');
     }
 
@@ -189,8 +190,58 @@ app.post('/createCricle', async (req, res) => {
     console.error('Error registering user', err);
     res.status(500).send(err.message);
   }
-});
 
+
+
+
+
+
+
+});
+app.get('/interesCircle', async (req, res) => {
+  
+
+
+
+  const СircleID = await sql`SELECT CricleID FROM Сircle WHERE СircleID = ${req.cookies.cricleID}`;
+  res.cookie('circleid', СircleID.cricleID, { maxAge: 9000000000, httpOnly: false });
+  const interes = await sql`select * from Interests`
+  const Circleinteres = await sql`select * from InterestsСircle where CricleID = ${req.cookies.cricleID}`
+
+
+  try {
+    const result = interes.map(el => {
+      el.joined = Circleinteres.find((item, index, array) => {
+        if (item.interestsid == el.interestsid) return true
+      }) ? true : false
+      return el
+    })
+    res.send(result)
+  }
+  catch (err) {
+    res.redirect('/login.html');
+  }
+
+
+
+
+
+  app.post('/interesCircle', async (req, res) => {
+    const idCricelInteres = req.body.id;
+    const result = await sql`insert into InterestsСircle(CricleID, InterestsId) values(${req.cookies.cricleID}, ${idCricelInteres})`
+    res.send(result)
+  });
+  
+  app.delete('/interesCircle', async (req, res) => {
+    const iduserInteres = req.body.id;
+    const result = await sql`DELETE FROM InterestsСircle WHERE CricleID = ${req.cookies.cricleID} and InterestsId = ${iduserInteres}`
+    res.send(result)
+  });
+
+
+
+
+});
 
 
 
@@ -256,7 +307,7 @@ const start = async () => {
     FIO VARCHAR(70) NOT NULL unique, 
     Email VARCHAR(70) NOT NULL unique,
     Tel VARCHAR(11) NOT NULL unique,
-    ClassUser VARCHAR(3)NOT NULL,
+    ClassUser VARCHAR(3) NULL,
     PasswordHash VARCHAR(100) NOT NULL,
     Role int NOT NULL,
     IdCircle int null
@@ -266,7 +317,7 @@ const start = async () => {
       RoleId SERIAL PRIMARY KEY,
       NameRole VARCHAR(70) NOT NULL
     )`
-  
+
   await sql`CREATE TABLE if not exists RoleUser(
       UserInterestId SERIAL PRIMARY KEY,
       UserId INT REFERENCES Users(UserId),
@@ -290,6 +341,7 @@ const start = async () => {
       NameCricel varchar(50) NOT NULL unique,
       QuantityUser int NOT NULL,
       userclass varchar(2) NOT NULL
+
       ) `;
   await sql`CREATE TABLE if not exists InterestsСircle(
         СircleInterestId SERIAL PRIMARY KEY,
@@ -297,6 +349,9 @@ const start = async () => {
         InterestsId INT REFERENCES Interests(InterestsId),
         UNIQUE(CricleID, InterestsId)
         ) `;
+
+  // await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role)
+  //       VALUES ('Азизов Амир Наилевич', 'amir.azizov2015@mil.ru', '89619370939',1, 1)`
 
   // await sql`INSERT INTO Role (NameRole) VALUES
   // ('Учитель'),

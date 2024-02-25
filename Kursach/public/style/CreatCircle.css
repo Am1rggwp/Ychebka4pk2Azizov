@@ -44,16 +44,15 @@
 .btnCreateMain{
     border: 0;
     width: 100%;
-    margin-bottom: 4%;
 }
 .PosCreatebtnCircle{
-    margin-top: 2%;
+    margin: 16px 0 0 0;
     
 }
 .BtnsCreat{
     display: flex;
     justify-content: space-between;
-    margin-top: 14% ;
+    margin-top: 10% ;
 }
 .btnBack{
     padding: 16px 95px;
