@@ -6,6 +6,7 @@ import { multiAuthStrategy } from './authStrategies.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
 import request from 'supertest';
+import { log } from 'console';
 const app = express();
 const port = 8189;
 // module.exports = app;
@@ -182,7 +183,7 @@ app.post('/createCricle', async (req, res) => {
         INSERT INTO Сircle (NameCricel, QuantityUser, userclass)
         VALUES (${name},${quantitu},${ClassUsers})
       `;
-      res.cookie('userid', cricleID, { maxAge: 9000000000, httpOnly: false });
+      res.cookie('cricleID', insert.idcircle, { maxAge: 9000000000, httpOnly: false });
       res.redirect('/window/CircleSucces.html');
     }
 
@@ -203,11 +204,9 @@ app.get('/interesCircle', async (req, res) => {
 
 
 
-  const СircleID = await sql`SELECT CricleID FROM Сircle WHERE СircleID = ${req.cookies.cricleID}`;
-  res.cookie('circleid', СircleID.cricleID, { maxAge: 9000000000, httpOnly: false });
   const interes = await sql`select * from Interests`
   const Circleinteres = await sql`select * from InterestsСircle where CricleID = ${req.cookies.cricleID}`
-
+  
 
   try {
     const result = interes.map(el => {
@@ -221,22 +220,23 @@ app.get('/interesCircle', async (req, res) => {
   catch (err) {
     res.redirect('/login.html');
   }
+  console.log(Circleinteres);
 
 
 
 
 
-  app.post('/interesCircle', async (req, res) => {
-    const idCricelInteres = req.body.id;
-    const result = await sql`insert into InterestsСircle(CricleID, InterestsId) values(${req.cookies.cricleID}, ${idCricelInteres})`
-    res.send(result)
-  });
+//   app.post('/interesCircle', async (req, res) => {
+//     const idCricelInteres = req.body.id;
+//     const result = await sql`insert into InterestsСircle(CricleID, InterestsId) values(${req.cookies.cricleID}, ${idCricelInteres})`
+//     res.send(result)
+//   });
   
-  app.delete('/interesCircle', async (req, res) => {
-    const iduserInteres = req.body.id;
-    const result = await sql`DELETE FROM InterestsСircle WHERE CricleID = ${req.cookies.cricleID} and InterestsId = ${iduserInteres}`
-    res.send(result)
-  });
+//   app.delete('/interesCircle', async (req, res) => {
+//     const iduserInteres = req.body.id;
+//     const result = await sql`DELETE FROM InterestsСircle WHERE CricleID = ${req.cookies.cricleID} and InterestsId = ${iduserInteres}`
+//     res.send(result)
+//   });
 
 
 
@@ -252,7 +252,9 @@ app.get('/interesCircle', async (req, res) => {
 app.post('/getSercle', async (req, res) => {
   const { classNum, serch, maxPeople } = req.body
   console.log(classNum, serch, maxPeople);
-  let select = await sql`select * from Сircle`;
+  const classn = req.cookies.classus;
+  const classuser = classn.slice(0,1);
+  let select = await sql`select * from Сircle where userclass = ${classuser}`;
   if (classNum.trim().length != 0) {
     select = select.filter(el => el.userclass == classNum)
   }
@@ -370,8 +372,8 @@ const start = async () => {
   // ('Программирование')`;
 
   app.listen(port, () => {
-    // console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
-    console.log(`Сервер запущен  http://192.168.0.108:${port}/window/login.html`);
+    console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
+    // console.log(`Сервер запущен  http://192.168.0.108:${port}/window/login.html`);
 
   });
 
