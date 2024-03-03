@@ -49,7 +49,7 @@
         <div class="posBlockfir">
             <div class="block">
                 <div class="golovok">
-                    Профиль
+                    Личный кабинет <samp id="userrole"></samp><samp id="schoolhuman"></samp>
                 </div>
                 <div class="paddBlock">
                     <div class="posBlockdata">
@@ -76,7 +76,7 @@
                             <div class="Userdata padata" id="pochtaUserIDProfil"></div>
                             <div class="Userdata padata" id="NumberUserIDProfil"></div>
                             <div class="Userdata padata" id="classUserIDProfil"></div>
-                            <div id="InteresBtn" onclick=""></div>
+                            <div class="contenerbnt" id="InteresBtn" onclick=""></div>
                             <div class="btnOtsup"></div>
                         </div>
                     </div>
@@ -126,15 +126,21 @@
     <script>
 
         function out() {
+            clearCookies();
             fetch('/out')
                 .then(res => window.location.href = '/window/login.html')
+        }
+        function clearCookies() {
+            document.cookie.split(';').forEach(function (c) {
+                document.cookie = c.trim().split('=')[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+            });
         }
 
         function getCookie(name) {
             let cookie = {};
             document.cookie.split(';').forEach(function (el) {
                 let split = el.split('=');
-                cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+                cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("="));
             })
             return cookie[name];
         }
@@ -211,17 +217,23 @@
             const classUser = document.getElementById('classUserIDProfil');
             classUser.innerHTML = getCookie('classus')
 
+            const userrolename = document.getElementById('userrole');
+            userrolename.innerHTML = getCookie('rolename');
+
             var role = getCookie('role'); // Получение значения role из cookie
             var element = document.getElementById('classUserIDProfil'); // Находим элемент по ID
             var element1 = document.getElementById('classuse');
             var element2 = document.getElementById('interesId');
             var element3 = document.getElementById('InteresBtn');
+            var element4 = document.getElementById('schoolhuman');
+
             if (role === '1') {
                 if (element) {
                     element.style.display = 'none';
                     element1.style.display = 'none';
                     element2.style.display = 'none';
                     element3.style.display = 'none';
+                    element4.innerHTML = 'я';
                 }
             } else {
                 if (element) {
@@ -229,6 +241,7 @@
                     element1.style.display = 'block';
                     element2.style.display = 'block';
                     element3.style.display = 'block';
+                    element4.innerHTML = 'a';
 
                 }
             }

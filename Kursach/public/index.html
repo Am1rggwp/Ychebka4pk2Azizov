@@ -51,8 +51,9 @@
         <div class="posBlock">
           <div class="block">
             <div class="headIndex1">
-              <div id="UsName" class="styleFontHead headingIndex">Привествую<a href="window/Profil.html"
-                  class="headingIndex" id="users"></a></div>
+              <div id="UsName" class="styleFontHead headingIndex">Привествую <samp>, </samp> <samp class="styleFontHead"
+                  id="userrole"></samp><samp id="russynx"></samp><a href="window/Profil.html" class="headingIndex"
+                  id="users"></a></div>
             </div>
             <div class="link_Text">
               <div class="text">
@@ -94,10 +95,10 @@
             </div>
           </a>
           <a class="herflinkhov " href="window/Profil.html">
-          <div class="profil">
-            <img class="profilImg " src="./img/Profil.svg" alt="">
-            <p class="textNav ">Кабинет</p>
-          </div>
+            <div class="profil">
+              <img class="profilImg " src="./img/Profil.svg" alt="">
+              <p class="textNav ">Кабинет</p>
+            </div>
           </a>
         </div>
       </div>
@@ -106,7 +107,13 @@
   </section>
   <footer></footer>
   <script>
+
+
+
     window.onload = () => {
+
+
+
       function getCookie(name) {
         let cookie = {};
         document.cookie.split(';').forEach(function (el) {
@@ -119,7 +126,22 @@
       loginLinkElement.innerHTML = getCookie('username')
       const hellowuser = document.getElementById('users');
       hellowuser.innerHTML = getCookie('username')
+      const userrolename = document.getElementById('userrole');
+      userrolename.innerHTML = getCookie('rolename');
 
+
+      var role = getCookie('role');
+      var element = document.getElementById('russynx');
+      if (role === '1') {
+        if (element) {
+          element.innerHTML = 'ь';
+        } else {
+          element.innerHTML = '';
+
+
+        }
+
+      }
     }
   </script>
 </body>

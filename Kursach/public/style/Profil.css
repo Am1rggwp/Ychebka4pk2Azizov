@@ -32,7 +32,7 @@
 .intbtn{
     border: 0;
     padding: 14px 45px;
-    margin: 0.2%;
+    margin: 0.8%;
     background-color: #FFF;
     border-radius: 10px;
     color: #000;
@@ -49,9 +49,9 @@
     border: 0;
 }
 .golovok{
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
-    margin: 10px 0 0 5%;
+    margin: 30px 0 0 5%;
     
 
 }
@@ -59,6 +59,10 @@
     
     margin: 5% 1% 1% 5%;
     
+}
+
+.contenerbnt{
+    width: 70%;
 }
 
 

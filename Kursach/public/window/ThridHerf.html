@@ -55,10 +55,7 @@
               <div class="mainFilter">
                 <div class="blockfilter">
                   <button id="filterButton" type="button" class="filterBut">Фильтры</button>
-
-                  <!-- Боковая панель с фильтрами -->
                   <div id="filterPanel" class="filterPanel">
-                    <!-- Здесь добавьте ваши фильтры и содержимое боковой панели -->
                     <div class="textStylefilter">Фильтры</div>
                     <div class="blockFilterlink">
                       <div class="blockFilterlink">
@@ -67,7 +64,7 @@
 
                           </div>
                         </div>
-                        <div class="ClassUser">
+                        <div class="ClassUser" id="classuserselect">
                           <div class="FiltelclassStulr">Класс</div>
                           <select onchange="kk(this)" name="schoolClass" id="schoolClass"
                             class="form-control circleFiltter">
@@ -118,12 +115,20 @@
                                 name="four" value="4">
                             </div>
                           </div>
+                          <div class="positionbntfilter">
+                            <button class="btnfilterCricle" type="button" onclick="getInt()">
+                              <div class="ablostBtn"> <span class="">Применит</span></div>
+                            </button>
+                          </div>
                         </div>
                         <div class="Filteraccept">
                         </div>
-                        <div class="CreatCirle" id="bntcreatecirle">
-                          <a class="btnSucMain" href="CreateCircle.html">Создать</a>
+                        <div class="flexcent">
+                          <div class="CreatCirle" id="bntcreatecirle">
+                            <a class="btnSucMain" href="CreateCircle.html">Создать</a>
+                          </div>
                         </div>
+                        
                         <div class="cenAdapt">
                           <button class="btnSerch btnSerchAdap" type="button" onclick="getInt()">
                             <div class="ablostBtn"> <span class="contentbtn bntAcceptAdapt">Применить</span></div>
@@ -136,6 +141,7 @@
                 <div class="CreatCirleApap">
                   <a class="btnSucMainApap" href="CreateCircle.html">Создать</a>
                 </div>
+
               </div>
               <div class="blockheadmain">
                 <div class="blockheadmain">
@@ -339,13 +345,18 @@
 
     var role = getCookie('role'); // Получение значения role из cookie
     var element = document.getElementById('bntcreatecirle'); // Находим элемент по ID
-
+    var element1 = document.getElementById('classuserselect');
     if (role === '2') {
-        // Если role равно 2, скрываем элемент
-        if (element) element.style.display = 'none';
+
+      if (element) {
+        element.style.display = 'none';
+        element1.style.display = 'none';
+      }
     } else {
-        // Иначе показываем элемент
-        if (element) element.style.display = 'block';
+      if (element) {
+        element.style.display = 'block';
+        element1.style.display = 'block';
+      }
     }
 
     getInt();

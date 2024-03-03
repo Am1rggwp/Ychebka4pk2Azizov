@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors'
 import request from 'supertest';
 import { log } from 'console';
+import e from 'express';
 const app = express();
 const port = 8189;
 // module.exports = app;
@@ -32,7 +33,9 @@ app.post('/window/login.html' || '/window/loginError.html', async (req, res) => 
       res.redirect('/window/windowError/loginError.html');
       return;
     }
-
+    const roleid = result.role;
+    const rolenamesql = await sql `select namerole from role where roleid = ${roleid}`;
+    const rolename = rolenamesql[0].namerole;
     if (result) {
       res.cookie('userid', result.userid, { maxAge: 9000000000, httpOnly: false });
       res.cookie('idcircle', result.idcircle, { maxAge: 9000000000, httpOnly: false });
@@ -41,8 +44,11 @@ app.post('/window/login.html' || '/window/loginError.html', async (req, res) => 
       res.cookie('email', result.email, { maxAge: 9000000000, httpOnly: false });
       res.cookie('classus', result.classuser, { maxAge: 9000000000, httpOnly: false });
       res.cookie('role', result.role, { maxAge: 9000000000, httpOnly: false });
-
+      res.cookie('rolename', rolename, { maxAge: 9000000000, httpOnly: false });
       res.redirect('/index.html');
+      
+      
+      
     } else { }
 
   } catch (err) {
@@ -137,6 +143,7 @@ app.post('/reg.html', async (req, res) => {
         INSERT INTO users (fio, email, tel, ClassUser ,PasswordHash, Role)
         VALUES (${name}, ${email}, ${tel},${classUser} ,${password}, 2)
       `;
+      const insertInteresCri = await sql``
 
       res.redirect('/window/login.html');
     }
@@ -158,33 +165,27 @@ app.get('/', (req, res) => {
 app.post('/createCricle', async (req, res) => {
   const name = req.body.name;
   const ClassUsers = req.body.schoolClass;
-  const fifteenValue = req.body.Fifteen;
-  const twelveValue = req.body.Twety;
-  const tenValue = req.body.Ten;
-  const eightValue = req.body.enght;
-  const sixValue = req.body.six;
-  const fourValue = req.body.four;
-  let quantitu = undefined;
-
-
-  if (fifteenValue !== undefined) quantitu = fifteenValue;
-  else if (twelveValue !== undefined) quantitu = twelveValue;
-  else if (tenValue !== undefined) quantitu = tenValue;
-  else if (eightValue !== undefined) quantitu = eightValue;
-  else if (sixValue !== undefined) quantitu = sixValue;
-  else if (fourValue !== undefined) quantitu = fourValue;
+  const quantitu = req.body.counthuman;
+  const interesactive = req.body.activeIntereses;
   // console.log(quantitu)
+  const Circle = await sql`select * from Сircle where namecricel = ${name}`;
   try {
-    const Сircle = await sql`SELECT * FROM Сircle WHERE NameCricel = ${name}`;
-    if (Сircle.length > 0) {
+    if (Circle.length > 0) {
       res.redirect('window/windowError/CreateCircleError.html');
     } else {
       const insert = await sql`
         INSERT INTO Сircle (NameCricel, QuantityUser, userclass)
         VALUES (${name},${quantitu},${ClassUsers})
       `;
-      res.cookie('cricleID', insert.idcircle, { maxAge: 9000000000, httpOnly: false });
-      res.redirect('/window/CircleSucces.html');
+      const criclecreat = await sql`select CricleID from Сircle where namecricel = ${name}`;
+      const cricleID = criclecreat[0].cricleid;
+      for (const interestId of interesactive) {
+        await sql`
+          INSERT INTO InterestsСircle (CricleID, InterestsId)
+          VALUES (${cricleID}, ${interestId})
+        `;
+      }
+
     }
 
   } catch (err) {
@@ -192,56 +193,26 @@ app.post('/createCricle', async (req, res) => {
     res.status(500).send(err.message);
   }
 
-
-
-
-
-
-
 });
-app.get('/interesCircle', async (req, res) => {
-  
 
 
+app.get('/interesFind', async (req, res) => {
 
-  const interes = await sql`select * from Interests`
-  const Circleinteres = await sql`select * from InterestsСircle where CricleID = ${req.cookies.cricleID}`
-  
-
+  const interes = await sql`select * from Interests`;
   try {
     const result = interes.map(el => {
-      el.joined = Circleinteres.find((item, index, array) => {
-        if (item.interestsid == el.interestsid) return true
-      }) ? true : false
-      return el
-    })
-    res.send(result)
+      el.joined = false;
+      return el;
+    });
+
+    res.send(result);
   }
   catch (err) {
-    res.redirect('/login.html');
+    console.error('Error registering user', err);
   }
-  console.log(Circleinteres);
-
-
-
-
-
-//   app.post('/interesCircle', async (req, res) => {
-//     const idCricelInteres = req.body.id;
-//     const result = await sql`insert into InterestsСircle(CricleID, InterestsId) values(${req.cookies.cricleID}, ${idCricelInteres})`
-//     res.send(result)
-//   });
-  
-//   app.delete('/interesCircle', async (req, res) => {
-//     const iduserInteres = req.body.id;
-//     const result = await sql`DELETE FROM InterestsСircle WHERE CricleID = ${req.cookies.cricleID} and InterestsId = ${iduserInteres}`
-//     res.send(result)
-//   });
-
-
-
 
 });
+
 
 
 
@@ -250,23 +221,56 @@ app.get('/interesCircle', async (req, res) => {
 
 //////////////////////////////////////////////////////////// Получение кружков
 app.post('/getSercle', async (req, res) => {
-  const { classNum, serch, maxPeople } = req.body
-  console.log(classNum, serch, maxPeople);
+  const { classNum, serch, maxPeople, interes } = req.body
+  // console.log(classNum, serch, maxPeople);
   const classn = req.cookies.classus;
-  const classuser = classn.slice(0,1);
-  let select = await sql`select * from Сircle where userclass = ${classuser}`;
-  if (classNum.trim().length != 0) {
-    select = select.filter(el => el.userclass == classNum)
+  const classuser = classn.slice(0, 1);
+  const matchingCircles = await sql`
+    SELECT DISTINCT ic.CricleID
+    FROM InterestsСircle ic
+    INNER JOIN InterestsUser iu ON ic.InterestsId = iu.InterestsId
+    WHERE iu.UserId = ${req.cookies.userid}
+  `;
+
+  const circleIds = matchingCircles.map(cricleid =>cricleid.cricleid);
+  const role = req.cookies.role;
+  
+  if(role == 1){
+    let select = await sql`select * from Сircle`
+    if (classNum.trim().length != 0) {
+      select = select.filter(el => el.userclass == classNum)
+    }
+    if (maxPeople.length != 0) {
+      select = select.filter(el => maxPeople.includes(`${el.quantityuser}`))
+    }
+    if (serch.trim().length != 0) {
+      select = select.filter(el => el.namecricel.includes(serch.trim()))
+    }
+    // console.log(select);
+    res.send(select)
   }
-  if (maxPeople.length != 0) {
-    select = select.filter(el => maxPeople.includes(`${el.quantityuser}`))
+  else{
+    let select = await sql`select * from Сircle where userclass = ${classuser} and cricleid in ${sql ([circleIds])}`
+    if (classNum.trim().length != 0) {
+      select = select.filter(el => el.userclass == classNum)
+    }
+    if (maxPeople.length != 0) {
+      select = select.filter(el => maxPeople.includes(`${el.quantityuser}`))
+    }
+    if (serch.trim().length != 0) {
+      select = select.filter(el => el.namecricel.includes(serch.trim()))
+    }
+    // console.log(select);
+    res.send(select)
   }
-  if (serch.trim().length != 0) {
-    select = select.filter(el => el.namecricel.includes(serch.trim()))
-  }
-  console.log(select);
-  // console.log(select);
-  res.send(select)
+
+
+  
+
+
+
+
+  
 
 });
 app.get('/SerchCricleBlock', async (req, res) => () => {
@@ -277,13 +281,22 @@ app.get('/SerchCricleBlock', async (req, res) => () => {
 ////////////////////////////////////////////////////Встуаление
 app.post('/joincricle', async (req, res) => {
 
-  const { id } = req.body
+  const { id } = req.body;
+  const numericId = parseInt(id, 10); // Преобразование id в целое число
 
-  const result = await sql`update Users set IdCircle = ${id} where UserId = ${req.cookies.userid}`
+  if (isNaN(numericId)) {
+    return res.status(400).send({ error: 'Invalid ID format' });
+  }
 
-  res.cookie('idcircle', id, { maxAge: 9000000000, httpOnly: false });
+  res.cookie('idcircle', numericId, { maxAge: 9000000000, httpOnly: false });
 
-  res.send(result)
+  try {
+    const result = await sql`update Users set IdCircle = ${numericId} where UserId = ${req.cookies.userid}`;
+    res.send(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'An error occurred while updating the user.' });
+  }
 
 })
 ///////////////////////////////////////////////////Выход из кружка
@@ -356,8 +369,8 @@ const start = async () => {
   //       VALUES ('Азизов Амир Наилевич', 'amir.azizov2015@mil.ru', '89619370939',1, 1)`
 
   // await sql`INSERT INTO Role (NameRole) VALUES
-  // ('Учитель'),
-  // ('Учиник')`;
+  // ('учител'),
+  // ('ученик')`;
 
   // await sql`INSERT INTO Interests (Name) VALUES
   // ('Спорт'),
@@ -372,8 +385,8 @@ const start = async () => {
   // ('Программирование')`;
 
   app.listen(port, () => {
-    console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
-    // console.log(`Сервер запущен  http://192.168.0.108:${port}/window/login.html`);
+    // console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
+    console.log(`Сервер запущен  http://192.168.0.108:${port}/window/login.html`);
 
   });
 

@@ -33,7 +33,7 @@ a{
 .posBlockfir{
     display: flex;
    justify-content: center;
-   height: 68vh;
+   height: 75vh;
    padding-top: 2%;
 }
 .block{
@@ -65,7 +65,9 @@ body {
 }
 
 
-
+.famili{
+    font-family: 'Montserrat';
+}
 
 /* Стили для хедера */
 .head {
@@ -79,7 +81,6 @@ body {
 }
 
 .herfLink {
-    padding: 10px;
     font-size: 18px;
 }
 

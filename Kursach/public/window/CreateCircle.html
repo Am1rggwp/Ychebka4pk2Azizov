@@ -51,98 +51,98 @@
         <div class="textCircle">Создания куржка</div>
         <div class="mainblock createMain">
           <div class="posblockheadmain">
-            <form action="/createCricle" method="post">
+            <form action="" method="post" onsubmit="FunCreateCricle(event)">
               <div class="mainFilter CreatCirleWi">
                 <div class="blockfilter paddcreat flex">
                   <div class="QuantityUser paddcreat">
-                    <div class="CreatName">
-                      <label for="">Введите названия вашего будущего кружка:</label>
-                      <input class="inputCreatname" type="text" name="name" id="name" required>
-                    </div>
-                    <div class="CreateclassUser">
-                      <label for="">Выбирете какие классы могут вступить в ваш кружок:</label>
-                      <select name="schoolClass" id="schoolClass" class="form-control creatCriclew" required>
-                        <optgroup label="Класс">
-                          <option>-</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                        </optgroup>
-                      </select>
-                    </div>
-                    <div class="CreatquantyHuman">
-                      <label for="">Выберете максимальное количетво людей для кружка:</label>
-                      <div class="paddDivRadio">
-                        <div class="">
-                          <div class="ChekFlex">
-                            <label for="" class="stulenumberfilter ">15</label>
-                            <input class="chekInputFilter CreateCircleRadio" type="radio" id="Fifteen" name="Fifteen"
-                              value="15">
-                          </div>
-                          <div class="ChekFlex">
-                            <label for="" class="stulenumberfilter ">12</label>
-                            <input class="chekInputFilter CreateCircleRadio" type="radio" id="Twety" name="Twety"
-                              value="12">
-                          </div>
-                          <div class="ChekFlex">
-                            <label for="" class="stulenumberfilter ">10</label>
-                            <input class="chekInputFilter CreateCircleRadio" type="radio" id="Ten" name="Ten"
-                              value="10">
-                          </div>
+                    <div>
+                      <div>
+                        <div class="CreatName">
+                          <label for="">Введите названия вашего будущего кружка:</label>
+                          <input class="inputCreatname" type="text" name="name" id="name" required>
                         </div>
-                        <div class=" heightRadio">
-                          <div class="ChekFlex">
-                            <label for="" class="stulenumberfilter">8</label>
-                            <input class="chekInputFilter CreateCircleRadio2" type="radio" id="enght" name="enght"
-                              value="8">
-                          </div>
+                        <div class="CreateclassUser" >
+                          <label for="">Выбирете какие классы могут вступить в ваш кружок:</label>
+                          <select name="schoolClass" id="schoolClass" class="form-control creatCriclew" required>
+                            <optgroup label="Класс">
+                              <option>-</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                            </optgroup>
+                          </select>
+                        </div>
+                        <div class="CreatquantyHuman">
+                          <label for="">Выберете максимальное количетво людей для кружка:</label>
+                          <div class="paddDivRadio">
+                            <div class="">
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">15</label>
+                                <input class="chekInputFilter CreateCircleRadio" type="radio" id="Fifteen" name="radbnt"
+                                  value="15">
+                              </div>
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">12</label>
+                                <input class="chekInputFilter CreateCircleRadio" type="radio" id="Twety" name="radbnt"
+                                  value="12">
+                              </div>
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">10</label>
+                                <input class="chekInputFilter CreateCircleRadio" type="radio" id="Ten" name="radbnt"
+                                  value="10">
+                              </div>
+                            </div>
+                            <div class=" heightRadio">
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter">8</label>
+                                <input class="chekInputFilter CreateCircleRadio2" type="radio" id="enght" name="radbnt"
+                                  value="8">
+                              </div>
 
-                          <div class="ChekFlex">
-                            <label for="" class="stulenumberfilter ">6</label>
-                            <input class="chekInputFilter CreateCircleRadio2" type="radio" id="six" name="six"
-                              value="6">
-                          </div>
-                          <div class="ChekFlex">
-                            <label for="" class="stulenumberfilter">4</label>
-                            <input class="chekInputFilter CreateCircleRadio2" type="radio" id="four" name="four"
-                              value="4">
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">6</label>
+                                <input class="chekInputFilter CreateCircleRadio2" type="radio" id="six" name="radbnt"
+                                  value="6">
+                              </div>
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter">4</label>
+                                <input class="chekInputFilter CreateCircleRadio2" type="radio" id="four" name="radbnt"
+                                  value="4">
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div id="InteresBtn" onclick=""></div>
-                      <div class="btnOtsup"></div>
-                    </div>
-                    <div class="BtnsCreat">
-                      <div class="PosCreatebtnCircle">
-                        <a href="ThridHerf.html" class="btnBack">Назад</a>
-                      </div>
-                      <div class="BtnsCreated">
-                        <button class="btnCreateMain bntCreateMainAdapt"><a href="CreateCircleInteres.html">Создать </a></button>
                       </div>
                     </div>
                   </div>
+                  <div class="conbnt">
+                    <div class="interestText">
+                      <label for="" >Выберете интересы для вашего кружка!</label>
+                    </div>
 
+                    <div id="InteresBtn" class="interscon" onclick=""></div>
+                    <div class="btnOtsup"></div>
+                  </div>
+                </div>
+                <div class="BtnsCreat">
+                  <div class="PosCreatebtnCircle">
+                    <a href="ThridHerf.html" class="btnBack">Назад</a>
+                  </div>
+                  <div class="BtnsCreated">
+                    <button class="btnCreateMain bntCreateMainAdapt">Создать</button>
+                  </div>
                 </div>
               </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-
-    </form>
-    </div>
-    </div>
-    </div>
-
-    </div>
-    </div>
-    </div>
     </div>
     <div class="navigation_main">
       <div class="block_nav">
@@ -177,63 +177,79 @@
   </section>
   <footer></footer>
   <script>
+    var intereses = []
+    var activeInt = []
 
-function getInt() {
-            fetch('/interesCircle')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Network response was not ok. Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const btn = document.getElementById('InteresBtn')
-                    btn.innerHTML = ""
-                    data.forEach(el => {
-                        // console.log(el);
-                        btn.innerHTML += `<font class = "btnOtsup"> <button class="intbtn" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
-                    });
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error.message);
-                });
-        }
+    function getInt() {
+      fetch('/interesFind')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const btn = document.getElementById('InteresBtn')
+          btn.innerHTML = ""
+          data.forEach(el => {
+            intereses.push(el)
+            btn.innerHTML += `<font class = "btnOtsup"> <button type='button' class="intbtn marginintbnt ${el.joined ? 'active' : ''}" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
 
-        const addTo = async (id) => {
-            fetch("/interesCircle", {
-                method: 'POST',
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    id: id
-                })
-            })
-                .then(data => data.json())
-                .then(data => {
-                    // console.log(data);
-                    getInt()
-                })
-        }
+    function FunCreateCricle(event) {
+      event.preventDefault();
 
-        const removeFrom = async (id) => {
-            fetch("/interesCircle", {
-                method: 'DELETE',
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    id: id
-                })
-            })
-                .then(data => data.json())
-                .then(data => {
-                    // console.log(data);
-                    getInt()
-                })
+      var checkedList = document.querySelector("input:checked");
+      var activeIntereses = intereses.filter(e => e.joined).map(e => e.interestsid);
+
+      // console.log(checkedList);
+      fetch('/createCricle', {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: document.getElementById('name').value,
+          schoolClass: document.getElementById('schoolClass').value,
+          counthuman: checkedList.value,
+          activeIntereses: activeIntereses
+        })
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok. Status: ${response.status}`);
         }
+        window.location.href = 'CircleSucces.html'
+      })
+
+
+
+
+
+    }
+
+    const addTo = async (id) => {
+      intereses[intereses.findIndex(e => e.interestsid == id)].joined = true
+      const btn = document.getElementById('InteresBtn')
+      btn.innerHTML = ""
+      intereses.forEach(el => {
+        btn.innerHTML += `<font class = "btnOtsup"> <button type='button' class="intbtn ${el.joined ? 'active' : ''}" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
+      });
+    }
+
+    const removeFrom = async (id) => {
+      intereses[intereses.findIndex(e => e.interestsid == id)].joined = false
+      const btn = document.getElementById('InteresBtn')
+      btn.innerHTML = ""
+      intereses.forEach(el => {
+        btn.innerHTML += `<font class = "btnOtsup"> <button type='button' class="intbtn ${el.joined ? 'active' : ''}" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"};} '   onclick ="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`
+      });
+    }
 
 
     window.onload = () => {
@@ -245,6 +261,26 @@ function getInt() {
         })
         return cookie[name];
       }
+
+      getInt()
+
+      var element3 = document.getElementById('InteresBtn');
+            if (role === '1') {
+                if (element) {
+                    element.style.display = 'none';
+                    element1.style.display = 'none';
+                    element2.style.display = 'none';
+                    element3.style.display = 'none';
+                }
+            } else {
+                if (element) {
+                    element.style.display = 'block';
+                    element1.style.display = 'block';
+                    element2.style.display = 'block';
+                    element3.style.display = 'block';
+
+                }
+            }
       const loginLinkElement = document.getElementById('UsName');
       loginLinkElement.innerHTML = getCookie('username')
 

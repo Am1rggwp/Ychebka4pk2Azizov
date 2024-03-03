@@ -28,9 +28,31 @@
 }
 
 
-.posblockheadmain {
+.positionbntfilter{
+  margin: 50px 0 0 0 ;
+  display: flex;
+  justify-content: center;
   
 }
+
+
+.btnfilterCricle {
+  padding: 10px 50px;
+  background-color: #FFF;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 20px gainsboro;
+  color: #0bda51;
+  transition: all .4s;
+}
+
+.btnfilterCricle:hover {
+  background-color: #0bda51;
+  border: 2px solid #0bda51;
+  color: #fff;
+}
+
+
 
 
 .blockheadmain {
@@ -40,35 +62,40 @@
   max-width: 100%;
   border-radius: 0px 10px 0 0;
 }
-.MaincricleBlock{
+
+.MaincricleBlock {
   position: relative;
   width: 100%;
   height: 60vh;
-  
+
   border-radius: 10px 10px 00px 10px;
   overflow: auto;
 
 
 }
+
 .MaincricleBlock::-webkit-scrollbar {
   width: 8px;
   border-radius: 25px;
 }
+
 .MaincricleBlock::-webkit-scrollbar-track {
-  background: linear-gradient(171deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(171deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
 }
+
 .MaincricleBlock::-webkit-scrollbar-thumb {
   background: #0bda51;
   border-radius: 8px;
   background-clip: padding-box;
 }
+
 .MaincricleBlock::-webkit-scrollbar-thumb:hover {
   background: #0bda51;
 }
 
 
-.oblastcricleBlock{
-  top:-7px;
+.oblastcricleBlock {
+  top: -7px;
   right: 0;
   position: absolute;
   background-color: #E5E4E2;
@@ -84,7 +111,8 @@ form {
   position: relative;
   margin: 0 auto;
 }
-.displayF{
+
+.displayF {
   display: flex;
 }
 
@@ -138,88 +166,107 @@ form {
   padding: 10px;
 }
 
-.mainFilter{
+.mainFilter {
   background-color: #ffff;
   width: 30%;
   height: 70vh;
   max-width: 100%;
   border-radius: 10px 0px 0 10px;
-  
+
 }
+
 .blockfilter {
-   padding: 9% 10% 0 10% ;
+  padding: 9% 10% 0 10%;
 }
-.textStylefilter{
+
+.textStylefilter {
   text-align: center;
   padding-top: 8px
 }
 
-.circleFiltter{
+.circleFiltter {
   height: 4vh;
-  margin :0px;
-  padding:  0 10px;
+  margin: 0px;
+  padding: 0 10px;
 
 }
-.ClassUser{
-  padding: 27% 0 0 0 ;
+
+.ClassUser {
+  padding: 27% 0 0 0;
 }
-.chekInputFilter{
+
+.chekInputFilter {
   margin: 0;
   padding: 0;
   display: flex;
   width: 60%;
   padding-right: 5px;
 }
-.chekF{
+
+.chekF {
   display: flex;
   padding: 10% 0 0 0;
 }
-.QuantityUser{
+
+.QuantityUser {
   padding: 15% 0 0 0;
 }
-.chaekSloi{
+
+.chaekSloi {
   width: 100%;
 }
-.stulenumberfilter{
+
+.stulenumberfilter {
   padding-right: 10px;
 }
 
-.CreatCirle{
+.CreatCirle {
   margin: 110% 0 0 0;
 }
 
-.Filteraccept,.CreatCirle{
-  margin: 30% 0 0 0;
+.Filteraccept,
+.CreatCirle {
+  margin-top: 30%;
+  display: flex;
+  justify-content: center;
+}
+.flexcent{
   display: flex;
   justify-content: center;
 }
 
-.posblockcirle{
+.posblockcirle {
   padding: 1%;
 }
-.btnaccept,.Creatbnt{
+
+.btnaccept,
+.Creatbnt {
   cursor: pointer;
-  box-shadow:  none;
+  box-shadow: none;
   width: 30%;
   border: #fff;
   position: relative;
   height: 5vh;
 }
-.Creatbnt{
+
+.Creatbnt {
   width: 30%;
 }
-.styleaccept,.stylecreat{
+
+.styleaccept,
+.stylecreat {
   position: absolute;
   top: 14px;
   right: 17px;
 }
-.stylecreat{
+
+.stylecreat {
   right: 37px;
   top: 14px;
 }
 
 
-.blockcirle{
+.blockcirle {
   background-color: #fff;
   width: 100%;
   height: 20vh;
@@ -228,155 +275,182 @@ form {
   border-radius: 10px 10px 10px 10px;
 }
 
-.StyleTetxCircle{
+.StyleTetxCircle {
   margin: 3%;
   font-size: 25px;
   font-weight: 600;
 }
-.linkstulecircle{
+
+.linkstulecircle {
   font-size: 18px;
   font-weight: 400;
 
 }
-.Joinbtn{
+
+.Joinbtn {
   border: 0;
-  width: 24%; 
-  height: 6vh;
-  margin: 12% 3% 1% 1%; 
+  width: 200px;
+  height: 52px;
+  margin: auto 3%;
 
 }
-.flexCriclebtn{
+
+.flexCriclebtn {
   display: flex;
   justify-content: space-between;
 }
-.cocntetnCricle{
+
+.cocntetnCricle {
   width: 100%;
 }
-.Joinbtn{
+
+.Joinbtn {
   padding: 0;
   color: #fff;
   transition: .5s;
 }
-.filterBut{
+
+.filterBut {
   display: none;
 }
-.CreatCirleApap{
+
+.CreatCirleApap {
   display: none;
 }
-.cenAdapt{
+
+.cenAdapt {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
+
   .mainFilter,
   .mainblock {
-      width: 100%;
+    width: 100%;
 
   }
-  .mainFilter{
+
+  .mainFilter {
     height: 10%;
   }
 
   .blockheadmain {
-      height: auto;
+    height: auto;
   }
 
   .posmainblock {
-      padding: 5%;
+    padding: 5%;
   }
 
   .blockcirle {
-      height: auto;
+    height: auto;
   }
 
   .FlexCriclebtn {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .Joinbtn {
-      margin: 3% 0;
-      width: 100%;
+    margin: 3% 0;
+    width: 100%;
   }
-  .filterBut{
+
+  .filterBut {
     color: #fff;
     display: block;
     padding: 10px 10px;
     background-color: #0bda51;
-    border-radius: 10px  ;
+    border-radius: 10px;
     border: 1px solid #fff;
     color: #FFF;
     box-shadow: 0 0 0px gainsboro;
     transition: all .4s;
     cursor: pointer;
   }
+
   .filterPanel {
     position: fixed;
     right: -107%;
-    top: 35% ; /* Скрываем панель за пределами экрана */
+    top: 35%;
+    /* Скрываем панель за пределами экрана */
     width: 100%;
     height: 100%;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease-out;
     z-index: 1000;
-  }  
+  }
 
   /* Анимация для выдвигающейся боковой панели */
   .filterPanel.active {
     right: 0;
   }
-  .mainblock{
+
+  .mainblock {
     margin: 0 auto;
-    
+
     max-width: 95%;
     width: 100%;
     height: 63vh;
   }
+
   .displayF {
     display: block;
   }
-  .MaincricleBlock{
+
+  .MaincricleBlock {
     position: relative;
     width: 100%;
     height: 60vh;
     margin-top: 14%;
   }
-  .blockfilter{
+
+  .blockfilter {
     padding: 3% 5%;
-    
-    
+
+
   }
-  .blockheadmain{
+
+  .blockheadmain {
     border-radius: 0px;
   }
-  .mainFilter{
+
+  .mainFilter {
     border-radius: 0px
   }
+
   .d1 input {
     font-size: 12px;
   }
-  .d1 button{
+
+  .d1 button {
     width: 24%;
     font-size: 14px;
   }
-  .contentbtn{
+
+  .contentbtn {
     top: -19px;
     right: -35px;
   }
-  .QuantityUser{
+
+  .QuantityUser {
     padding: 8%;
   }
-  .ClassUser{
+
+  .ClassUser {
     padding: 10% 5% 0% 5%;
   }
-  .mainFilter{
+
+  .mainFilter {
     display: flex;
   }
-  .CreatCirleApap{
+
+  .CreatCirleApap {
     display: block;
     padding: 6% 00% 0% 23%;
   }
-  .btnSucMainApap{
+
+  .btnSucMainApap {
     padding: 10px 22px;
     background-color: #FFF;
     border-radius: 10px;
@@ -384,25 +458,31 @@ form {
     color: #0bda51;
     transition: all .4s;
   }
-  .StyleTetxCircle{
+
+  .StyleTetxCircle {
     font-size: 18px;
   }
-  .linkstulecircle{
+
+  .linkstulecircle {
     font-size: 16px;
   }
-  .Joinbtn{
+
+  .Joinbtn {
     width: 55%;
     height: 4vh;
     margin: 14% 2% 0%;
   }
-  .CreatCirle{
+
+  .CreatCirle {
     display: none;
   }
-  .textCircle{
+
+  .textCircle {
     font-size: 20px;
     padding: 8% 3%;
   }
-  .btnSerchAdap{
+
+  .btnSerchAdap {
     padding: 5% 18%;
     background-color: #FFF;
     border-radius: 10px;
@@ -410,19 +490,22 @@ form {
     border: 1px solid #0bda51;
     color: #0bda51;
     transition: all .4s;
-    
+
   }
-  .bntAcceptAdapt{
+
+  .bntAcceptAdapt {
     top: -19px;
     right: -42px;
   }
-  .cenAdapt{
+
+  .cenAdapt {
     display: flex;
     justify-content: right;
     margin: 0 5%;
   }
-  .Filteraccept{
+
+  .Filteraccept {
     margin: 0 0 0 5%;
   }
-  
+
 }
