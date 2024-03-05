@@ -185,17 +185,12 @@ app.post('/createCricle', async (req, res) => {
           VALUES (${cricleID}, ${interestId})
         `;
       }
-
     }
-
   } catch (err) {
     console.error('Error registering user', err);
     res.status(500).send(err.message);
   }
-
 });
-
-
 app.get('/interesFind', async (req, res) => {
 
   const interes = await sql`select * from Interests`;
@@ -231,7 +226,6 @@ app.post('/getSercle', async (req, res) => {
     INNER JOIN InterestsUser iu ON ic.InterestsId = iu.InterestsId
     WHERE iu.UserId = ${req.cookies.userid}
   `;
-
   const circleIds = matchingCircles.map(cricleid =>cricleid.cricleid);
   const role = req.cookies.role;
   
@@ -263,14 +257,6 @@ app.post('/getSercle', async (req, res) => {
     // console.log(select);
     res.send(select)
   }
-
-
-  
-
-
-
-
-  
 
 });
 app.get('/SerchCricleBlock', async (req, res) => () => {
@@ -334,7 +320,7 @@ const start = async () => {
     )`
 
   await sql`CREATE TABLE if not exists RoleUser(
-      UserInterestId SERIAL PRIMARY KEY,
+      UserRoleId SERIAL PRIMARY KEY,
       UserId INT REFERENCES Users(UserId),
       RoleId INT REFERENCES Role(RoleId),
       UNIQUE(UserId, RoleId)
