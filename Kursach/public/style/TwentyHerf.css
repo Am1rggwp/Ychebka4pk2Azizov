@@ -1,6 +1,6 @@
 .borderHeading{
-    border:1px #808080 solid;
-    width: 99%;
+    /* border:1px #808080 solid;
+    width: 99%; */
 }
 .posBorder{
     padding: 1%;
@@ -15,10 +15,8 @@
 .imgavacircle{
     clip-path: circle(30%);
     height: 5vh;
-}
-.radiusimgava{
-    
-}
+} 
+
 .headBlock{
     display: flex;
 }
@@ -27,3 +25,175 @@
     font-weight: 400;
     font-family: 'Montserrat';
 }
+
+.bntnews{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    
+}
+.news{
+    padding: 10px 50px;
+    background-color: #FFF;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #0bda51;
+    transition: all .4s;
+}
+.news:hover{
+    background-color: #0bda51;
+    border: 2px solid #0bda51;
+    color: #fff;
+}
+.centr{
+    text-align: center;
+}
+.padtop{
+    padding-top: 3%;
+}
+.polemessnews{
+    height: 20vh;
+    width: 100%;
+    resize: none;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    padding: 10px;
+    font-family: 'Montserrat';
+    outline:none;
+    overflow: auto;
+}
+.posmessnews{
+    padding-top: 20px;
+}
+.flexnews{
+    display: flex;
+    justify-content: space-around;
+}
+.CreateMess{
+    width: 50%;
+}
+.Createphoto{
+    width: 30%;
+}
+.shetchik{
+    display: flex;
+    justify-content: flex-end;
+    color: #808080;
+}
+/* Стили для бегунка (ползунка) в textarea */
+.polemessnews::-webkit-scrollbar {
+    width: 6px; /* Ширина бегунка */
+}
+
+.polemessnews::-webkit-scrollbar-thumb {
+    background-color: #0bda51; /* Цвет бегунка */
+    border-radius: 6px; /* Скругление углов бегунка */
+}
+
+.polemessnews::-webkit-scrollbar-thumb:hover {
+    background-color: #0bda51; /* Цвет бегунка при наведении */
+}
+
+.photocalss{
+    margin-top: 20px;
+}
+.custom-file-upload {
+    padding: 10px 50px;
+    background-color: #FFF;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #0bda51;
+    transition: all .4s;
+    box-shadow: 0 0 20px gainsboro;
+}
+.custom-file-upload:hover {
+    background-color: #0bda51;
+    border: 2px solid #0bda51;
+    color: #fff;
+}
+
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+.posfileimg{
+    padding-top: 50px;
+}
+.menegerpos{
+    padding-top: 20px;
+}
+.filemeneger{
+    background-color: gainsboro;
+    width: 100%;
+    border: 1px solid gainsboro;
+    color: #808080;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+
+
+  
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Расстояние между фотографиями */
+  }
+  
+  .imgnews {
+    max-width: calc(33.33% - 10px); /* 33.33% ширины блока минус промежутки */
+    height: auto;
+  }
+  
+  .modal {
+    display: none; /* Скрыть модальное окно по умолчанию */
+    position: fixed; 
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+  }
+  
+  /* Закрыть кнопку (крестик) */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.whos{
+    display: flex;
+
+}
+
+
+
+  @media screen and (max-width: 768px) {
+    .imgnews {
+      max-width: calc(50% - 10px); 
+    }
+  }

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../allStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Главная страница</title>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <div class="link_head">
+                <div class="maoy">
+                    <div class="herfLink paddHead">
+                        <a class="fullver" href="../hiwin.html">
+                            <div> МАОУ Школа</div>
+                            <div>Экодолье</div>
+                        </a>
+                        <div class="mobtitle">Создания поста</div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+                </div>
+                <div>
+                    <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+                </div>
+                <div>
+                    <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+                </div>
+                <div>
+                    <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+                </div>
+                <div>
+                    <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="posBlockfir">
+            <div class="block relev">
+                <div class="textCircle">Выберете день для встречи <br> для куржка <label id="namecircle"></label></div>
+                <div class="mainblock createMain">
+                    <div class="posblockheadmain">
+                        <form action="" method="post" onsubmit="FunCreateMeetings(event)" enctype="multipart/form-data">
+                            <div class="mainFilter CreatCirleWi">
+                                <div class="blockfilter paddcreat flex">
+                                    <div class="QuantityUser paddcreat">
+                                        <div>
+                                            <div class="flexmeent">
+                                                <div class="hedingdatetime">
+                                                    <div class="hedingMeetings">
+                                                        <label for="">Напишите тему для встречи</label>
+                                                        <input class="hedinginput" type="text" name="heding"
+                                                            id="hedingMeen" maxlength="100" required>
+                                                    </div>
+                                                    <div class="datetimeMeetings">
+                                                        <div>
+                                                            <label for="meetingDate">Выберите дату</label>
+                                                            <input type="date" name="meetingDate" id="meetingDate"
+                                                                required>
+                                                        </div>
+                                                        <div class="posTime">
+                                                            <label for="meetingTime">Выберите время</label>
+                                                            <input type="time" name="meetingTime" id="meetingTime"
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="createinfo">
+                                                    <label for="">Можете написать дополнительную информацию для данной
+                                                        встнречи:</label>
+                                                    <div class="posmessmeetn">
+                                                        <textarea class="AdditionInfo" type="text" name="mess"
+                                                            id="additiInfo" maxlength="200"></textarea>
+                                                        <div class="shetchik" id="charCount"></div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BtnsCreat">
+                                    <div class="PosCreatebtnCircle">
+                                        <a href="CricleVstrechi.html" class="btnBack">Назад</a>
+                                    </div>
+                                    <div class="BtnsCreated">
+                                        <button class="btnCreateMain bntCreateMainAdapt" id="BntMeet">Назначить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation_main">
+            <div class="block_nav">
+                <a class="herflinkhov " href="FourHerf.html ">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/supportNoAc.svg" alt="">
+                        <p class="textNav noac">Поддержка</p>
+
+                    </div>
+                </a>
+                <a class="herflinkhov " href="FirstHerf.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+                        <p class="textNav noac">Главная</p>
+                    </div>
+                </a>
+                <a class="herflinkhov " href="ThridHerf.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/cricle.svg" alt="">
+                        <p class="textNav">Кружки</p>
+                    </div>
+                </a>
+                <a class="herflinkhov " href="Profil.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+                        <p class="textNav noac ">Кабинет</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="conbalck"></div>
+    </section>
+    <footer></footer>
+    <script>
+
+        function displaySelectedFiles() {
+            const files = document.getElementById('photo').files;
+            var selectedFilesContainer = document.getElementById('selectedFiles');
+
+            var block = document.getElementById('linkselect');
+            block.style.display.block = 'none'
+
+            if (files.length > 0) {
+                selectedFilesContainer.style.display = 'block';
+                block.style.display.block = 'block'
+                selectedFilesContainer.innerHTML = ''; // Очищаем содержимое контейнера перед обновлением
+
+                var fileList = document.createElement('ul');
+                for (var i = 0; i < files.length; i++) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = files[i].name;
+                    fileList.appendChild(listItem);
+                }
+                selectedFilesContainer.appendChild(fileList);
+            } else {
+                selectedFilesContainer.style.display = 'none'; // Скрываем контейнер, если файлы не выбраны
+            }
+        }
+
+
+
+
+
+        function updateCharCount() {
+            var textarea = document.getElementById('additiInfo');
+            var charCount = document.getElementById('charCount');
+            charCount.textContent = textarea.value.length + ' / 200';
+        }
+        document.getElementById('additiInfo').addEventListener('input', updateCharCount);
+        window.addEventListener('load', updateCharCount);
+
+
+
+        function FunCreateMeetings(event) {
+            event.preventDefault();
+
+
+            fetch('/CreateMetings', {
+                method: 'POST',
+                mode: "cors",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    hedingMeen: document.getElementById('hedingMeen').value,
+                    meetingDate: document.getElementById('meetingDate').value,
+                    meetingTime: document.getElementById('meetingTime').value,
+                    additiInfo: document.getElementById('additiInfo').value,
+                })
+
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok. Status: ${response.status}`);
+                }
+            })
+            window.location.href = 'CricleVstrechi.html'
+        }
+
+        function getCookie(name) {
+            let cookie = {};
+            document.cookie.split(';').forEach(function (el) {
+                let split = el.split('=');
+                cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+            })
+            return cookie[name];
+        }
+        const confirmDeleteBtn = document.getElementById('confirmDelete');
+        confirmDeleteBtn.onclick = function () {
+            const circleIdToDelete = getCookie("creator")
+
+            fetch(`/deleteCircle`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ circleId: circleIdToDelete })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                    modal.style.display = 'none';
+
+                })
+                .catch(error => {
+                    console.error('Error deleting circle:', error);
+                    // Обработка ошибки при удалении кружка
+                    // Здесь вы можете добавить код для отображения сообщения об ошибке пользователю
+                });
+            window.location.href = './ThridHerf.html';
+            modal.style.display = 'none';
+        }
+
+        window.onload = () => {
+
+            const loginLinkElement = document.getElementById('UsName');
+            loginLinkElement.innerHTML = getCookie('username');
+            displaySelectedFiles();
+            const namecircle = document.getElementById('namecircle');
+            namecircle.innerHTML = getCookie('namecricel');
+            FunCreateNews(event);
+            const modal = document.getElementById('myModal');
+            const openModalBtn = document.getElementById('openModalBtn');
+            const closebnt = document.getElementById('closebnt');
+            const closeModalBtn = document.getElementsByClassName('close')[0];
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+
+            openModalBtn.onclick = function () {
+                modal.style.display = 'block';
+            }
+
+            closeModalBtn.onclick = function () {
+                modal.style.display = 'none';
+            }
+            closebnt.onclick = function () {
+                modal.style.display = 'none';
+            }
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

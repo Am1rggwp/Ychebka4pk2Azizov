@@ -1,0 +1,99 @@
+.polemeetings{
+    width: 100%;
+}
+.conpoleMeet{
+    width: 80%;
+    height: 80.5%;
+}
+.posbntcreatmeetngs{
+    padding: 40px 0 30px 59px;
+}
+.hedingMeetings{
+    width: 90%;
+    height: 50px;
+    margin-bottom: 60px;
+}
+.createinfo{
+    width: 52%;
+    height: 10%;
+}
+.flexmeent{
+    display: flex;
+}
+.AdditionInfo{
+    height: 10vh;
+    width: 100%;
+    resize: none;
+    border: 1px solid #E5E9F5;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Montserrat';
+    overflow: auto;
+    background: #f6f7fa;
+
+}
+.hedingdatetime{
+    width: 50%;
+    height: 100%;
+}
+.datetimeMeetings{
+    width: 100%;
+    display: flex;
+    
+}
+.posTime{
+    margin-left: 50px;
+    width: 30%;
+}
+.posmessmeetn{
+    padding-top: 10px;
+}
+.blockMeetings{
+    width: 100%;
+    background: #fff;
+    height: 100%;
+}
+.poleblockmeen{
+    height: 100px;
+}
+
+
+
+
+.blockMeetings{
+    width: 100%;
+    height: 100%;
+    margin: 5px 0 15px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+.datetimecreate{
+    font-size: 12px;
+    color: #949494;
+    display: flex;
+    justify-content: right;
+}
+.hedfing{
+    font-size: 32px;
+    font-weight: 600;
+}
+.dateTimemee{
+    display: flex;
+}
+.time{
+    padding-top: 7px;
+}
+.posaddinfo{
+    padding-top: 20px;
+}
+.addinfo{
+    background-color: gainsboro;
+    width: 50%;
+    padding: 10px;
+    border: 1px;
+    border-radius: 7px;
+}  
+.bntwidth{
+    width: 300px;
+} 

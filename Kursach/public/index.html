@@ -2,148 +2,53 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="allStyle.css">
+  <link rel="stylesheet" href="../allStyle.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-
-  <title>Главная страница</title>
+  <title>Document</title>
 </head>
 
 <body>
-  <header>
-    <div class="head">
-      <div class="link_head">
-        <div class="maoy">
-          <div class="herfLink paddHead">
-            <a class="fullver" href="index.html">
-              <div> МАОУ Школа</div>
-              <div>Экодолье</div>
-            </a>
-            <div class="mobtitle">Добро пожаловать</div>
-          </div>
 
+  <div id="form-container">
+    <div id="form-inner-container">
+      <!-- Sign up form -->
+      <div id="sign-in-container">
+        <div class="img_logo">
+          <div class="imgcon">
+            <img src="../img/logo.png" alt="">
+          </div>
+          <div class="textcon">
+            <h3 class="colorShcool paddReg">МАОУ "Школа Экодолье"</h3>
+          </div>
         </div>
-        <div>
-          <div class="herfLink"><a href="window/FirstHerf.html">О нас</a></div>
-        </div>
-        <div>
-          <div class="herfLink"> <a href="window/TwelfHerf.html"> Новости</a></div>
-        </div>
-        <div>
-          <div class="herfLink"><a href="window/ThridHerf.html"> Кружки</a></div>
-        </div>
-        <div>
-          <div class="herfLink"><a href="window/FourHerf.html"> Поддержка</a></div>
-        </div>
-        <div>
-          <div class="herfLink"><a href="window/Profil.html" id="UsName"></a></div>
-        </div>
+
+        <form action="/window/login.html" method="post">
+          <label for="name">Введите логи, почту или номер телефона</label>
+          <input type="text" name="name" id="name" placeholder="ФМО, ***@mail.ru, +79**">
+
+          <label for="password">Пароль</label>
+          <input type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+
+          <div id="form-controls">
+            <button class="btnLog1" type="submit">Войти</button>
+            <button type="button" id="toggleSignIn"> <a class="adapt" href="./window/reg.html">Зарегистрироватся</a></button>
+          </div>
+        </form>
+      </div>
+      <!-- Lottie animation -->
+      <div id="animation-container">
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_aesgckiv.json" background="transparent"
+          speed="1" style="width: 520px; height: 520px;" loop autoplay></lottie-player>
       </div>
     </div>
-  </header>
-  <section>
-    <div class="flexMain">
-      <div>
-        <div class="posBlock">
-          <div class="block">
-            <div class="headIndex1">
-              <div id="UsName" class="styleFontHead headingIndex">Привествую <samp>, </samp> <samp class="styleFontHead"
-                  id="userrole"></samp><samp id="russynx"></samp><a href="window/Profil.html" class="headingIndex"
-                  id="users"></a></div>
-            </div>
-            <div class="link_Text">
-              <div class="text">
-                <div class="linkPosText"> 🌟Добро пожаловать на наш сайт "Общение на основе интересов"!🌟</div> <br>
-                <div class="textMain">
-                  Здесь каждый школьник найдет свой круг общения и место для самовыражения.
-                  Присоединяйтесь к кружкам, где творчество и увлечения станут вашими верными спутниками.
-                  Вместе с единомышленниками вы откроете новые горизонты, обменяетесь идеями и найдете настоящих друзей.
-                  Погрузитесь в мир общения с единомышленниками и дайте волю своим талантам!😀
-                </div>
-
-              </div>
-            </div>
-
-          </div>
+  </div>
 
 
-        </div>
-      </div>
-      <div class="navigation_main">
-        <div class="block_nav">
-          <a class="herflinkhov " href="window/FourHerf.html ">
-            <div class="profil">
-              <img class="profilImg " src="./img/support.svg" alt="">
-              <p class="textNav ">Поддержка</p>
-
-            </div>
-          </a>
-          <a class="herflinkhov " href="window/FirstHerf.html">
-            <div class="profil">
-              <img class="profilImg " src="./img/home.svg" alt="">
-              <p class="textNav ">Главная</p>
-            </div>
-          </a>
-          <a class="herflinkhov " href="window/ThridHerf.html">
-            <div class="profil">
-              <img class="profilImg " src="./img/cricle.svg" alt="">
-              <p class="textNav ">Кружки</p>
-            </div>
-          </a>
-          <a class="herflinkhov " href="window/Profil.html">
-            <div class="profil">
-              <img class="profilImg " src="./img/Profil.svg" alt="">
-              <p class="textNav ">Кабинет</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="conbalck"></div>
-    </div>
-  </section>
-  <footer></footer>
-  <script>
-
-
-
-    window.onload = () => {
-
-
-
-      function getCookie(name) {
-        let cookie = {};
-        document.cookie.split(';').forEach(function (el) {
-          let split = el.split('=');
-          cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
-        })
-        return cookie[name];
-      }
-      const loginLinkElement = document.getElementById('UsName');
-      loginLinkElement.innerHTML = getCookie('username')
-      const hellowuser = document.getElementById('users');
-      hellowuser.innerHTML = getCookie('username')
-      const userrolename = document.getElementById('userrole');
-      userrolename.innerHTML = getCookie('rolename');
-
-
-      var role = getCookie('role');
-      var element = document.getElementById('russynx');
-      if (role === '1') {
-        if (element) {
-          element.innerHTML = 'ь';
-        } else {
-          element.innerHTML = '';
-
-
-        }
-
-      }
-    }
-  </script>
 </body>
 
 </html>

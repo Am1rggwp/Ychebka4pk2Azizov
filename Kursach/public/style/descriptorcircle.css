@@ -1,0 +1,114 @@
+
+.flexConsec{
+    display: flex;
+    height: 100%;
+}
+.conForm{
+    display: flex;
+    width: 90%;
+
+}
+.posform{
+    width: 100%;
+    height: 100%;
+    padding-top: 80px;
+}
+.sectorinfo{
+    width: 100%;
+}
+.postdata{
+    width: 100%;
+    height: 330px;
+}
+.stylepole{
+    width: 100%;
+    height: 95%;
+    resize: none;
+    border: 2px solid #FFF;
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    padding: 15px;
+    font-family: 'Montserrat';
+    outline: none;
+    overflow: auto;
+}
+.styletext{
+    height: 100%;
+}
+.polephoto{
+    width: 50%;
+}
+.criclephoto{
+    width: 150px;
+}
+.bntformedit,.bntformotmena,.styleacceptphoto{
+    max-width: 100%;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #0bda51;
+    transition: all .4s;
+    box-shadow: 0 0 20px gainsboro;
+    
+}
+.bntformedit:hover{
+    background-color: #0bda51;
+    border: 2px solid #0bda51;
+    color: #ffff;
+}
+.styleacceptphoto:hover{
+    background-color: #0bda51;
+    border: 2px solid #0bda51;
+    color: #ffff;
+}
+#otmena:hover {
+    background-color: red;
+    border: 2px solid red;
+    color: #fff;
+}
+.notaccept:hover{
+    background-color: #0bda51;
+    border: 2px solid red;
+    color: #ffff; 
+}
+.conbnt{
+    display: flex;
+    justify-content: right;
+}
+.posbntform{
+    padding: 10px 0 0 20px;
+}
+.accept,.notaccept{
+    display: none;
+}
+#selectphoto{
+    display: none;
+}
+#formdatacircle{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.contentpodsca{
+    display: none;
+    color: #0bda51;
+}
+.editphoto{
+    border: 1px solid #fff;
+}
+.editphoto:hover{
+    border: 1px solid #0bda51;
+}
+
+.none{
+    display: none;
+}
+.btnsphoto{
+    display: flex;
+    justify-content: center;
+}
+.ots{
+    padding-top: 20px;
+}

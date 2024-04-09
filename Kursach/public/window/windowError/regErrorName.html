@@ -25,18 +25,20 @@
           </div>
         </div>
         <form action="/reg.html" method="post">
-          <div id="errorTable" class="error-table">
-            <p>Такое ФИО уже используется</p>
+          <div id="errorTable" >
+            <div class="error-table">
+              <p>Такое ФИО уже используется</p>
+            </div>
             <label for="name">ФИО</label>
             <input type="text" name="name" id="name" placeholder="фио обучающего"
               pattern="^[а-яА-ЯёЁ]{2,}(\s[а-яА-ЯёЁ]{2,}){2,}$" required>
-  
+
             <label for="email">Почта</label>
             <input type="email" name="email" id="email" placeholder="почта" required>
-  
+
             <label for="tel">Телефон</label>
             <input type="tel" name="tel" id="tel" pattern="89\d{9}" required>
-  
+
             <div class="form-group">
               <div>
                 <label for="schoolClass" class="form-label" required>Класс</label>
@@ -90,26 +92,26 @@
                   </optgroup>
                 </select>
               </div>
-  
+
             </div>
-  
+
             <label for="password">Пароль</label>
-  
+
             <input type="password" name="password" id="password"
               placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
 
-          <div id="form-controls">
-            <button type="submit">Зарегистрироватся</button>
-            <button class="btnLog" type="button" id="toggleSignIn"> <a href="../login.html">Войти</a></button>
+            <div id="form-controls">
+              <button type="submit">Зарегистрироватся</button>
+              <button class="btnLog" type="button" id="toggleSignIn"> <a href="../../Index.html">Войти</a></button>
+            </div>
+          </div>
+          <!-- Lottie animation -->
+          <div id="animation-container">
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_aesgckiv.json" background="transparent"
+              speed="1" style="width: 520px; height: 520px;" loop autoplay></lottie-player>
           </div>
       </div>
-      <!-- Lottie animation -->
-      <div id="animation-container">
-        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_aesgckiv.json" background="transparent"
-          speed="1" style="width: 520px; height: 520px;" loop autoplay></lottie-player>
-      </div>
     </div>
-  </div>
 </body>
 
 </html>

@@ -13,12 +13,12 @@
 </head>
 
 <body>
-  <header>
+  <header id="header" class="fixed-header">
     <div class="head">
       <div class="link_head">
         <div class="maoy">
           <div class="herfLink paddHead">
-            <a class="fullver" href="../index.html">
+            <a class="fullver" href="./hiwin.html">
               <div> МАОУ Школа</div>
               <div>Экодолье</div>
             </a>
@@ -38,24 +38,33 @@
         <div>
           <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
         </div>
-        <div>
-          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
-        </div>
+        <div class="headimg">
+          <div class="headots">
+              <div class="userhead" id="headimg"> </div>
+          </div>
+          <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
+      </div>
       </div>
     </div>
   </header>
   <section>
-    <div class="posBlockfir">
+    <div class="posBlockfir newsblock">
       <div class="block">
-        <div class="headIndex1">
-          <div class="styleFontHead">Новости</div>
+        <div class="padtop">
+          <div class="styleFontHead centr">Школьные Новости</div>
+        </div>
+        <div class="bntnews">
+          <a class="news" href="formNew.html" id="newsCreate">Написать новость</a>
         </div>
         <div class="posBorder">
           <div class="borderHeading"></div>
         </div>
-        <div class="MainPostBlock">В разработке...
+        <div class="MainPostBlock">
           <div class="posheadBlock">
-            <div>
+            <!-- <img class = "imgnews" src="http://192.168.0.108:8189/Kursach/public/uploads/1711544463823.jpg" alt=""> -->
+            <div class="blocks" id="news">
+
+
             </div>
           </div>
         </div>
@@ -82,29 +91,134 @@
             <p class="textNav noac">Кружки</p>
           </div>
         </a>
+
         <a class="herflinkhov " href="Profil.html">
-        <div class="profil">
-          <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
-          <p class="textNav noac">Кабинет</p>
-        </div>
+          <div class="profil">
+            <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+            <p class="textNav noac">Кабинет</p>
+          </div>
+
         </a>
       </div>
     </div>
     <div class="conbalck"></div>
   </section>
   <footer></footer>
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+  
   <script>
-    window.onload = () => {
-      function getCookie(name) {
-        let cookie = {};
-        document.cookie.split(';').forEach(function (el) {
-          let split = el.split('=');
-          cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+    function imguser() {
+            fetch("/imgUser"
+            )
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const imghead = document.getElementById('headimg')
+                    imghead.innerHTML = ""
+                    data.forEach(el => {
+                        imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        }
+    function getIntNews() {
+      fetch('/getNews', {
+        method: 'GET',
+        mode: 'cors',
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
         })
-        return cookie[name];
-      }
+        .then(data => {
+          const btn = document.getElementById('news');
+          btn.innerHTML = "";
+          let prevDescription = null;
+          let prevDate = null;
+          data.forEach(el => {
+            // Проверяем, если текущий элемент имеет тот же Description и date, что и предыдущий элемент
+            if (el.Description === prevDescription && el.date === prevDate) {
+              // Если да, добавляем фотку к предыдущему блоку
+              const poleblock = btn.lastElementChild;
+              const imgContainer = poleblock.querySelector('.images');
+              imgContainer.innerHTML += `<img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">`;
+            } else {
+              // В противном случае, создаем новый блок
+              btn.innerHTML += `
+                <div class="poleblock">
+                  <div class ="whos">
+                    <div class="blockImg">
+                      <img class="imguser" src="http://192.168.0.108:8189/${el.photopathuser}" alt="">
+                    </div>
+                    <div class = "blocknews">
+                      <div class ="content">${el.FIO}</div> 
+                      <div class ="content">${el.date}</div>
+                    </div>
+                  </div>
+                   
+                    <div class=textpos>
+                      <div class ="content">${el.Description}</div>     
+                    </div>
+                    
+                    <div class="images">
+                        <img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">
+                    </div>
+                </div>`;
+            }
+            // Обновляем предыдущий Description и date
+            prevDescription = el.Description;
+            prevDate = el.date;
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+
+    function getCookie(name) {
+            let cookie = {};
+            document.cookie.split(';').forEach(function (el) {
+                let split = el.split('=');
+                cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("="));
+            })
+            return cookie[name];
+        }
+
+    window.onload = () => {
+    
       const loginLinkElement = document.getElementById('UsName');
-      loginLinkElement.innerHTML = getCookie('username')
+      loginLinkElement.innerHTML = getCookie('username');
+
+      // const images = document.getElementsByClassName('imgnews');
+
+      // // Проходим по каждому изображению и добавляем обработчик события для открытия модального окна
+      // for (let i = 0; i < images.length; i++) {
+      //   images[i].addEventListener('click', function () {
+      //     modal.style.display = 'block'; // Показываем модальное окно
+      //     modalImg.src = this.src; // Устанавливаем src изображения в модальное окно
+      //     captionText.innerHTML = this.alt; // Устанавливаем описание изображения
+      //   });
+      // }
+      var element = document.getElementById('newsCreate');
+      var role = getCookie('role');
+      if (role === '1') element.style.display = 'block';
+      else element.style.display = 'none';
+      
+
+      imguser();
+      getIntNews();
 
     }
   </script>

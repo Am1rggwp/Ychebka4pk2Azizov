@@ -18,7 +18,7 @@
       <div class="link_head">
         <div class="maoy">
           <div class="herfLink paddHead">
-            <a class="fullver" href="../index.html">
+            <a class="fullver" href="./hiwin.html">
               <div> МАОУ Школа</div>
               <div>Экодолье</div>
             </a>
@@ -38,9 +38,12 @@
         <div>
           <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
         </div>
-        <div>
-          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
-        </div>
+        <div class="headimg">
+          <div class="headots">
+              <div class="userhead" id="headimg"> </div>
+          </div>
+          <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
+      </div>
       </div>
     </div>
   </header>
@@ -84,17 +87,17 @@
         </div>
 
         <!-- Модальное окно -->
-        <div class="css-modal-target" id="css-modal-target"> 
+        <div class="css-modal-target" id="css-modal-target">
           <div class="cmt">
             <form action="mailto:amirazizov19@gmail.com" id="formSupport" method="post">
-              <textarea class="textareaForm" type="text" id="tetxProblema" name="text" placeholder="Опишите свою проблему"
-                required></textarea>
-                <div class="mail"> 
-                    <label for="">
-                      Почта на которую придет обратная связь:
-                      <label for=""id="MailUser"></label>
-                    </label>
-                </div>
+              <textarea class="textareaForm" type="text" id="tetxProblema" name="text"
+                placeholder="Опишите свою проблему" required></textarea>
+              <div class="mail">
+                <label for="">
+                  Почта на которую придет обратная связь:
+                  <label for="" id="MailUser"></label>
+                </label>
+              </div>
               <div class="posbtnform">
                 <input class="btnFormSup" type="submit"></input>
 
@@ -149,7 +152,26 @@
 
 
 
-
+    function imguser() {
+      fetch("/imgUser"
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const imghead = document.getElementById('headimg')
+          imghead.innerHTML = ""
+          data.forEach(el => {
+            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
     window.onload = () => {
       function getCookie(name) {
         let cookie = {};
@@ -163,7 +185,7 @@
       loginLinkElement.innerHTML = getCookie('username')
       const emailUser = document.getElementById('MailUser');
       emailUser.innerHTML = getCookie('email')
-      
+      imguser()
 
     }
 

@@ -19,7 +19,7 @@
             <div class="link_head">
                 <div class="maoy">
                     <div class="herfLink paddHead">
-                        <a class="fullver" href="../index.html">
+                        <a class="fullver" href="./hiwin.html">
                             <div> МАОУ Школа</div>
                             <div>Экодолье</div>
                         </a>
@@ -38,8 +38,11 @@
                 <div>
                     <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
                 </div>
-                <div>
-                    <div class="herfLink"><a href="Profil.html" id="UsName"> Войти</a></div>
+                <div class="headimg">
+                    <div class="headots">
+                        <div class="userhead" id="headimg"> </div>
+                    </div>
+                    <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
                 </div>
             </div>
         </div>
@@ -52,6 +55,20 @@
                     Личный кабинет <samp id="userrole"></samp><samp id="schoolhuman"></samp>
                 </div>
                 <div class="paddBlock">
+                    <div class="imgUser">
+                        <div class="posblockimg">
+                            <div class="imguserkab" id="imgeuserfile"></div>
+                            <div class="btnPosImg">
+                                <label for="photo" class="userphoto">
+                                    <span>Выбрать файл</span>
+                                    <input type="file" id="photo" name="photo" accept="image/*"
+                                        onchange="uploadUserPhoto()">
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
                     <div class="posBlockdata">
 
                         <div class="blockLable">
@@ -65,16 +82,22 @@
                                 <div class="name">телефон:</div>
                             </div>
                             <div class="poslable padata">
+                                <div class="name" id="Namecricel">Кружок:</div>
+                            </div>
+                            <div class="poslable padata">
                                 <div class="name" id="classuse">Класс:</div>
                             </div>
+
                             <div class="poslable padata">
                                 <div class="name" id="interesId">Интересы:</div>
                             </div>
+
                         </div>
                         <div class="blockdata">
                             <div class="Userdata padata" id="UsNameProfil"></div>
                             <div class="Userdata padata" id="pochtaUserIDProfil"></div>
                             <div class="Userdata padata" id="NumberUserIDProfil"></div>
+                            <div class="Userdata padata" id="Namecricelvalue"></div>
                             <div class="Userdata padata" id="classUserIDProfil"></div>
                             <div class="contenerbnt" id="InteresBtn" onclick=""></div>
                             <div class="btnOtsup"></div>
@@ -124,11 +147,10 @@
 
 
     <script>
-
         function out() {
             clearCookies();
             fetch('/out')
-                .then(res => window.location.href = '/window/login.html')
+                .then(res => window.location.href = '../Index.html')
         }
         function clearCookies() {
             document.cookie.split(';').forEach(function (c) {
@@ -203,8 +225,54 @@
                 })
         }
 
-        window.onload = () => {
+        
 
+        function imguser() {
+            fetch("/imgUser"
+            )
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const img = document.getElementById('imgeuserfile')
+                    const imghead = document.getElementById('headimg')
+                    img.innerHTML = ""
+                    data.forEach(el => {
+                        img.innerHTML += `<img class= "imguserimg" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+                        imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        }
+
+        function uploadUserPhoto() {
+            const fileInput = document.getElementById('photo');
+            const formData = new FormData();
+            formData.append('photos', fileInput.files[0]);
+
+            fetch('/imgUser', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+            window.location.reload();
+        }
+
+        window.onload = () => {
+            // getnamecricle();
             const Fio = document.getElementById('UsNameProfil');
             Fio.innerHTML = getCookie('username')
 
@@ -220,6 +288,16 @@
             const userrolename = document.getElementById('userrole');
             userrolename.innerHTML = getCookie('rolename');
 
+            const namecricle = document.getElementById('Namecricelvalue');
+            var name =  getCookie('namecricel');
+            if(name === "j:null" ){
+                namecricle.innerHTML = '-';
+            }
+            else{
+                namecricle.innerHTML = name;
+            }
+            
+
             var role = getCookie('role'); // Получение значения role из cookie
             var element = document.getElementById('classUserIDProfil'); // Находим элемент по ID
             var element1 = document.getElementById('classuse');
@@ -230,6 +308,7 @@
             if (role === '1') {
                 if (element) {
                     element.style.display = 'none';
+                    element.style.padding = '0';
                     element1.style.display = 'none';
                     element2.style.display = 'none';
                     element3.style.display = 'none';
@@ -246,8 +325,9 @@
                 }
             }
 
-            getInt()
 
+            getInt()
+            imguser()
             const loginLinkElement = document.getElementById('UsName');
             loginLinkElement.innerHTML = getCookie('username')
 

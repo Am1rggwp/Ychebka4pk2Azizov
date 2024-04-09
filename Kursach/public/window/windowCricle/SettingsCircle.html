@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Главная страница</title>
+</head>
+
+<body>
+  <header>
+    <div class="head">
+      <div class="link_head">
+        <div class="maoy">
+          <div class="herfLink paddHead">
+            <a class="fullver" href="../hiwin.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Кружок</div>
+          </div>
+
+        </div>
+        <div>
+          <div class="herfLink"><a href="../FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="../TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="../ThridHerf.html"> Кружки</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="../FourHerf.html"> Поддержка</a></div>
+        </div>
+        <div class="headimg">
+          <div class="headots">
+            <div class="userhead" id="headimg"> </div>
+          </div>
+          <div class="herfLink "><a href="../Profil.html" id="UsName"> Войти</a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="posBlockfir">
+      <div class="block blocklich paddcriclekab">
+        <div>
+          <div class="hedlichcr">Настройки кружка <label class="namecr" id="namecircle"></label>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="flexConsec">
+          <div class="navigationlich newslist setingsnav">
+            <div class="polegreen setingcircle">
+              <div class="stylepanel headpole">Наивгационная панель</div>
+              <div class="otstupbnt">
+                <div class="stylepanel polebnt "><a class="bntnavlich" href="../CricleLichKab.html">Основная
+                    информация</a>
+                </div>
+                <div class="stylepanel polebnt"><a class="bntnavlich" href="../CricleNews.html">Новости
+                    кружка</a></div>
+                <div class="stylepanel polebnt"><a class="bntnavlich" href="./CricleVstrechi.html">Следующие
+                    встречи</a></div>
+                <div class="stylepanel polebnt"><a class="bntnavlich" href="./SettingsCircle.html">Настройки
+                    кружка</a></div>
+                <div id="blockdelete" class="cobbtndelete">
+                  <button class="deletecircle" id="openModalBtn">Удалить кружок</button>
+                </div>
+              </div>
+            </div>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <div>Вы действиетльно хотите удалить кружок?</div>
+                <div class="conbtndelete">
+                  <button class="bntdelete" id="confirmDelete">Да</button>
+                  <button class="bntdelete" id="closebnt">Нет</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <form action="" method="post" onsubmit="FunCreateCricle(event)">
+              <div class="mainFilter CreatCirleWi">
+                <div class="blockfilter paddcreat flex">
+                  <div class="QuantityUser paddcreat">
+                    <div>
+                      <div>
+                        <div class="CreatName">
+                          <label for="">Введите названия вашего будущего кружка:</label>
+                          <input class="inputCreatname" type="text" name="name" id="name" required>
+                        </div>
+                        <div class="CreateclassUser">
+                          <label for="">Выбирете какие классы могут вступить в ваш кружок:</label>
+                          <select name="schoolClass" id="schoolClass" class="form-control creatCriclew" required>
+                            <optgroup label="Класс">
+                              <option>-</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                            </optgroup>
+                          </select>
+                        </div>
+                        <div class="CreatquantyHuman">
+                          <label for="">Выберете максимальное количетво людей для кружка:</label>
+                          <div class="paddDivRadio">
+                            <div class="">
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">15</label>
+                                <input class="chekInputFilter CreateCircleRadio" type="radio" id="Fifteen" name="radbnt"
+                                  value="15">
+                              </div>
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">12</label>
+                                <input class="chekInputFilter CreateCircleRadio" type="radio" id="Twety" name="radbnt"
+                                  value="12">
+                              </div>
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">10</label>
+                                <input class="chekInputFilter CreateCircleRadio" type="radio" id="Ten" name="radbnt"
+                                  value="10">
+                              </div>
+                            </div>
+                            <div class=" heightRadio">
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter">8</label>
+                                <input class="chekInputFilter CreateCircleRadio2" type="radio" id="enght" name="radbnt"
+                                  value="8">
+                              </div>
+
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter ">6</label>
+                                <input class="chekInputFilter CreateCircleRadio2" type="radio" id="six" name="radbnt"
+                                  value="6">
+                              </div>
+                              <div class="ChekFlex">
+                                <label for="" class="stulenumberfilter">4</label>
+                                <input class="chekInputFilter CreateCircleRadio2" type="radio" id="four" name="radbnt"
+                                  value="4">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="conbnt">
+                    <div class="interestText">
+                      <label for="">Выберете интересы для вашего кружка!</label>
+                      <div id="InteresBtn" class="interscon" onclick=""></div>
+                      <div class="btnOtsup"></div>
+                    </div>
+
+
+                  </div>
+                </div>
+                <div class="BtnsCreat">
+                  <div class="PosCreatebtnCircle">
+                    <a href="ThridHerf.html" class="btnBack">Назад</a>
+                  </div>
+                  <div class="BtnsCreated">
+                    <button class="btnCreateMain bntCreateMainAdapt">Отредактировать</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="navigation_main">
+      <div class="block_nav">
+        <a class="herflinkhov " href="FourHerf.html ">
+          <div class="profil">
+            <img class="profilImg " src="../img/support.svg" alt="">
+            <p class="textNav ">Поддержка</p>
+
+          </div>
+        </a>
+        <a class="herflinkhov " href="FirstHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+            <p class="textNav noac">Главная</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="ThridHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+            <p class="textNav noac">Кружки</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="Profil.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+            <p class="textNav noac">Кабинет</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+
+
+
+  </section>
+  <footer></footer>
+  <script>
+    function imguser() {
+      fetch("/imgUser"
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const imghead = document.getElementById('headimg')
+          imghead.innerHTML = ""
+          data.forEach(el => {
+            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+
+    function getCookie(name) {
+      let cookie = {};
+      document.cookie.split(';').forEach(function (el) {
+        let split = el.split('=');
+        cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+      })
+      return cookie[name];
+    }
+
+
+    function getCircleSetings() {
+      fetch('/getsetingscircle')
+        .then(response => response.json())
+        .then(data => {
+          const circleData = data.circle[0];
+          document.getElementById('name').value = circleData.name;
+          document.getElementById('schoolClass').value = circleData.class;
+          const quantityUsers = circleData.users;
+          document.querySelector(`input[name="radbnt"][value="${quantityUsers}"]`).checked = true;
+
+          const interesbnt = document.getElementById('InteresBtn');
+          interesbnt.innerHTML = "";
+          data.allInterests.forEach(el => {
+            interesbnt.innerHTML += `<font class ="btnOtsup"> <button type='button' class="intbtn marginintbnt" style='background: ${el.joined ? "green" : "#E5E4E2"}; color: ${el.joined ? "#fff" : "#000"}' onclick="${el.joined ? `removeFrom(${el.interestsid})` : `addTo(${el.interestsid})`}">${el.name}</button></font>`;
+
+          });
+
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    const addTo = async (id) => {
+      fetch("/addInterestToCircle", {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: id
+        })
+      })
+        .then(data => data.json())
+        .then(data => {
+          // console.log(data);
+          getCircleSetings()
+        })
+    }
+    const removeFrom = async (id) => {
+      fetch("/removeInterestToCircle", {
+        method: 'DELETE',
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: id
+        })
+      })
+        .then(data => data.json())
+        .then(data => {
+          // console.log(data);
+          getCircleSetings()
+        })
+    }
+
+
+    function FunCreateCricle(event) {
+      event.preventDefault();
+
+      var checkedList = document.querySelector("input:checked");
+
+      // console.log(checkedList);
+      fetch('/editcircle', {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: document.getElementById('name').value,
+          schoolClass: document.getElementById('schoolClass').value,
+          counthuman: checkedList.value
+        })
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok. Status: ${response.status}`);
+        }
+        location.reload();
+      })
+
+
+
+
+
+    }
+
+
+    const confirmDeleteBtn = document.getElementById('confirmDelete');
+    confirmDeleteBtn.onclick = function () {
+      const circleIdToDelete = getCookie("creator")
+
+      fetch(`/deleteCircle`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ circleId: circleIdToDelete })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          modal.style.display = 'none';
+
+        })
+        .catch(error => {
+          console.error('Error deleting circle:', error);
+          // Обработка ошибки при удалении кружка
+          // Здесь вы можете добавить код для отображения сообщения об ошибке пользователю
+        });
+      window.location.href = './ThridHerf.html';
+      modal.style.display = 'none';
+    }
+
+
+
+    window.onload = () => {
+      imguser();
+      getCircleSetings();
+
+
+      const loginLinkElement = document.getElementById('UsName');
+      loginLinkElement.innerHTML = getCookie('username')
+      const namecircle = document.getElementById('namecircle');
+      namecircle.innerHTML = getCookie('namecricel');
+
+      const modal = document.getElementById('myModal');
+      const openModalBtn = document.getElementById('openModalBtn');
+      const closebnt = document.getElementById('closebnt');
+      const closeModalBtn = document.getElementsByClassName('close')[0];
+      const confirmDeleteBtn = document.getElementById('confirmDelete');
+
+      openModalBtn.onclick = function () {
+        modal.style.display = 'block';
+      }
+
+      closeModalBtn.onclick = function () {
+        modal.style.display = 'none';
+      }
+      closebnt.onclick = function () {
+        modal.style.display = 'none';
+      }
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+
+
+    }
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

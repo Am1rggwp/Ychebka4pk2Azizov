@@ -19,7 +19,7 @@
       <div class="link_head">
         <div class="maoy">
           <div class="herfLink paddHead">
-            <a class="fullver" href="../index.html">
+            <a class="fullver" href="./hiwin.html">
               <div> МАОУ Школа</div>
               <div>Экодолье</div>
             </a>
@@ -39,8 +39,11 @@
         <div>
           <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
         </div>
-        <div>
-          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
+        <div class="headimg">
+          <div class="headots">
+            <div class="userhead" id="headimg"> </div>
+          </div>
+          <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
         </div>
       </div>
     </div>
@@ -121,14 +124,18 @@
                             </button>
                           </div>
                         </div>
-                        <div class="Filteraccept">
+                        <div id="nonecirclebnt" >
+                          <div class="Filteraccept"> 
+                            <a class="bntcieclelich"href="CricleLichKab.html"> Перейти в <div for="" id="namecirclebnt"></div></a> 
+                            </div>
+                          <div class="flexcent"></div>
                         </div>
-                        <div class="flexcent">
-                          <div class="CreatCirle" id="bntcreatecirle">
+                        <div class="posbntcreatecircle">
+                          <div class="CreatCirle" id="bntcreate">
                             <a class="btnSucMain" href="CreateCircle.html">Создать</a>
                           </div>
                         </div>
-                        
+
                         <div class="cenAdapt">
                           <button class="btnSerch btnSerchAdap" type="button" onclick="getInt()">
                             <div class="ablostBtn"> <span class="contentbtn bntAcceptAdapt">Применить</span></div>
@@ -139,7 +146,7 @@
                   </div>
                 </div>
                 <div class="CreatCirleApap">
-                  <a class="btnSucMainApap" href="CreateCircle.html">Создать</a>
+                  <a class="btnSucMainApap"  href="CreateCircle.html">Создать</a>
                 </div>
 
               </div>
@@ -231,7 +238,26 @@
       maxPeople.push(e.value)
     }
   }
-
+  function imguser() {
+    fetch("/imgUser"
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok. Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const imghead = document.getElementById('headimg')
+        imghead.innerHTML = ""
+        data.forEach(el => {
+          imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+        });
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error.message);
+      });
+  }
   function Joinbtn(id) {
     if (id == getCookie("idcircle")) {
       fetch('/outcricle', {
@@ -255,6 +281,7 @@
           getInt()
         })
     }
+    location.reload();
   }
 
 
@@ -285,12 +312,20 @@
                                 <div class="posblockcirle ">
                                     <div class="blockcirle">
                                     <div class = "flexCriclebtn ">
+                                      <div class = "posconimgcircle">
+                                        <div class = "imgcirclecon"><img class ="imgcircle"src="http://192.168.0.108:8189/${el.photopath}" alt=""></div>
+                                      </div>
                                       <div class= "cocntetnCricle">
                                         <div class= "StyleTetxCircle">${el.namecricel}</div>
                                         <div class= "StyleTetxCircle linkstulecircle">Максимальное количсетво участников: ${el.quantityuser}</div>
                                         <div class= "StyleTetxCircle linkstulecircle">Для учеников ${el.userclass}-x классов</div>
                                       </div>
-                                      <button onclick="Joinbtn(${el.cricleid})" class = "Joinbtn" style="${el.cricleid == getCookie("idcircle") ? "background-color: red" : "background-color: #0bda51"}" type='button'>${el.cricleid == getCookie("idcircle") ? "Выйти" : "Вступить"}</button>
+                                      <div class="posbtncricle" >
+                                          <a id="goToBtn-${el.cricleid}" style="display: ${el.cricleid == getCookie("idcircle") ? "inline" : "none"};" class="Joinbtn hefrcricle" href="./CricleLichKab.html">Перейти</a>
+                                          <div class = "btnjoincircle" style = "display: ${getCookie("creator") == getCookie("idcircle") &&  getCookie("role") == "1" ? "none":"block" }";>
+                                            <button id="bntjoin" onclick="Joinbtn(${el.cricleid})" class="Joinbtn" style="${el.cricleid == getCookie("idcircle") ? "background-color: red" : "background-color: #0bda51"};" type="button">${el.cricleid == getCookie("idcircle") ? "Выйти" : "Вступить"}</button>
+                                          </div>
+                                      </div>
                                     </div>
                                   </div>`
         });
@@ -303,8 +338,6 @@
   function kk(e) {
     console.log(select.value);
   }
-
-
 
   document.getElementById('filterButton').addEventListener('click', toggleFilterPanel);
 
@@ -330,9 +363,7 @@
     const filterPanel = document.querySelector('.filterPanel');
     const btnSerchAdap = document.querySelector('.btnSerchAdap');
 
-    // Обработчик события клика на кнопке
     btnSerchAdap.addEventListener('click', function () {
-      // Добавление/удаление класса active у панели с фильтрами
       filterPanel.classList.toggle('active');
     });
   });
@@ -341,29 +372,45 @@
 
   window.onload = () => {
     const loginLinkElement = document.getElementById('UsName');
-    loginLinkElement.innerHTML = getCookie('username')
+    loginLinkElement.innerHTML = getCookie('username');
 
-    var role = getCookie('role'); // Получение значения role из cookie
-    var element = document.getElementById('bntcreatecirle'); // Находим элемент по ID
-    var element1 = document.getElementById('classuserselect');
-    if (role === '2') {
+    const namec = document.getElementById('namecirclebnt');
+    namec.innerHTML = getCookie('namecricel');
 
-      if (element) {
-        element.style.display = 'none';
-        element1.style.display = 'none';
-      }
+    var creator = getCookie('creator');
+    var idcircle = getCookie('idcircle');
+    var bntcircle = document.getElementById('nonecirclebnt');
+    
+    if (idcircle ===  "j:null") {
+      bntcircle.style.display = 'none';
     } else {
-      if (element) {
-        element.style.display = 'block';
-        element1.style.display = 'block';
-      }
+      bntcircle.style.display = 'block';
     }
 
+    var creator = getCookie('creator');
+    var role = getCookie('role');
+
+    var element = document.getElementById('bntcreate'); 
+    var element1 = document.getElementById('classuserselect');
+    var element2 = document.getElementById('posbtncricle');
+
+
+    if (role === '2'|| creator !==  "j:null" ) {
+      element.style.display = 'none';
+      element1.style.display = 'none';
+    }
+    else {
+      element.style.display = 'block';
+      element1.style.display = 'block';
+    }
+
+
+    imguser();
     getInt();
 
 
 
 
-  }
+  };
 
 </script>

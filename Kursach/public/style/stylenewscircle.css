@@ -1,0 +1,65 @@
+.conpolenews{
+    width: 80%;
+    height: 94.5%;
+    padding: 70px 0 0 0 ;
+
+}
+.polebg{
+    position: relative;
+    background-color: gainsboro;
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px gainsboro solid;
+    border-radius: 10px;
+    overflow: auto;
+}
+.bntformnewsCircle,.deletenews{
+    padding: 12px 40px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    color: #0bda51;
+    transition: all .4s;
+    border: 1px solid #fff;
+}
+.bntformnewsCircle:hover{
+    background-color: #0bda51;
+    color: #fff;
+    border: 1px solid #0bda51;
+}
+.deletenews:hover{
+    background-color: #0bda51;
+    color: #fff;
+    border: 1px solid #0bda51;
+}
+.conbntnews{
+    width: 20%;
+    height: 80%;
+}
+.padotstup{
+    margin-top: 100%;
+}
+.newslist{
+    width: 350px;
+}
+.posbntcreatnews{
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.posbntdeletnews{
+    display: flex;
+    justify-content: center;
+}
+.polebg::-webkit-scrollbar-thumb {
+    background: #0bda51;
+    border-radius: 10px;
+    background-clip: padding-box;
+}
+.polebg::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+
+}

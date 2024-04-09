@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Главная страница</title>
+</head>
+
+<body>
+  <header>
+    <div class="head">
+      <div class="link_head">
+        <div class="maoy">
+          <div class="herfLink paddHead">
+            <a class="fullver" href="./hiwin.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Кружок </div>
+          </div>
+
+        </div>
+        <div>
+          <div class="herfLink"><a href="./FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+        </div>
+        <div class="headimg">
+          <div class="headots">
+            <div class="userhead" id="headimg"> </div>
+          </div>
+          <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="posBlockfir">
+      <div class="block blocklich paddcriclekab">
+        <div>
+          <div class="hedlichcr">Кружок <label class="namecr" id="namecircle"></label>
+            <div>Подробная информация</div>
+          </div>
+        </div>
+        <div class="flexConsec">
+          <div class="navigationlich">
+            <div class="polegreen">
+              <div class="stylepanel headpole">Наивгационная панель</div>
+              <div class="otstupbnt">
+                <div class="stylepanel polebnt "><a class="bntnavlich" href="./CricleLichKab.html">Основная
+                    информация</a>
+                </div>
+                <div class="stylepanel polebnt"><a class="bntnavlich" href="./CricleNews.html">Новости
+                    кружка</a></div>
+                <div class="stylepanel polebnt"><a class="bntnavlich"
+                    href="./windowCricle/CricleVstrechi.html">Следующие
+                    встречи</a></div>
+                <div id="setings" class="stylepanel polebnt"><a class="bntnavlich"
+                    href="./windowCricle/SettingsCircle.html">Настройки кружка</a></div>
+              </div>
+              <div id="blockdelete" class="cobbtndelete">
+                <button class="deletecircle" id="openModalBtn">Удалить кружок</button>
+              </div>
+            </div>
+          </div>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div>Вы действиетльно хотите удалить кружок?</div>
+              <div class="conbtndelete">
+                <button class="bntdelete" id="confirmDelete">Да</button>
+                <button class="bntdelete" id="closebnt">Нет</button>
+              </div>
+
+            </div>
+          </div>
+          <div class="sectorinfo">
+            <div class="posform">
+              <div class="conForm">
+                <div class="polephoto">
+                  <div class="imguserkab" id="imgeCirclefile"></div>
+                  <div class="btnPosImg">
+                    <label for="photo" class="userphoto criclephoto" id="selectphoto">
+                      <span>Выбрать файл</span>
+                      <input type="file" id="photo" name="photos" accept="image/*" onchange="uploadCirclePhoto()">
+                    </label>
+                  </div>
+                  <div class="">
+                    <div class="btnsphoto"><button class="editphoto" id="editphoto" type="button">Изменить фото</button>
+                    </div>
+                    <div class="btnsphoto ots"><button class="editphoto none styleacceptphoto"
+                        id="acceptphoto">Применить</button></div>
+                  </div>
+                </div>
+                <form id="formdatacircle" action="/postdatacircle" method="post" onsubmit="FunCreateNews(event)">
+                  <div class="postdata">
+                    <div class="styletext">
+                      <textarea type="text" id="opisanie" name="opisanie" class="stylepole" maxlength="1000"
+                        readonly></textarea>
+                      <div class="shetchik" id="charCount"></div>
+                    </div>
+                    <div class="conbnt">
+                      <div class="posbntform"><button type="button" class="bntformotmena notaccept"
+                          id="otmena">Отменить</button></div>
+                      <div class="posbntform"><button class="bntformedit accept" id="accept">Применить</button>
+                      </div>
+                      <div class="posbntform"><button type="button" class="bntformedit"
+                          id="editform">Отредактировать/Добавить</button></div>
+                    </div>
+                    <div class="contentpodsca" id="conpod"> Для сохранения изменений нажмите кнопку "Применить"</div>
+                  </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+        <div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="navigation_main">
+      <div class="block_nav">
+        <a class="herflinkhov " href="FourHerf.html ">
+          <div class="profil">
+            <img class="profilImg " src="../img/support.svg" alt="">
+            <p class="textNav ">Поддержка</p>
+
+          </div>
+        </a>
+        <a class="herflinkhov " href="FirstHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+            <p class="textNav noac">Главная</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="ThridHerf.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+            <p class="textNav noac">Кружки</p>
+          </div>
+        </a>
+        <a class="herflinkhov " href="Profil.html">
+          <div class="profil">
+            <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+            <p class="textNav noac">Кабинет</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+
+
+
+  </section>
+  <footer></footer>
+  <script>
+
+
+
+
+    document.getElementById('editform').addEventListener('click', function (event) {
+      const dntedit = document.getElementById('editform');
+      const otmena = document.getElementById('otmena');
+      const accept = document.getElementById('accept');
+      const textfrom = document.getElementById('opisanie');
+      const con = document.getElementById('conpod');
+
+
+      dntedit.style.display = 'none'
+      otmena.style.display = 'block'
+      accept.style.display = 'block'
+      textfrom.removeAttribute('readonly');
+      textfrom.style.border = 'gainsboro';
+      textfrom.style.background = 'gainsboro';
+      con.style.display = 'block';
+
+      function updateCharCount() {
+        var textarea = document.getElementById('opisanie');
+        var charCount = document.getElementById('charCount');
+        charCount.textContent = textarea.value.length + ' / 1000';
+      }
+      charCount.style.display = 'block'
+      charCount.style.display = 'flex'
+      charCount.style.display = 'left'
+
+
+
+      document.getElementById('opisanie').addEventListener('input', updateCharCount);
+      window.addEventListener('load', updateCharCount);
+
+
+
+    });
+
+    document.getElementById('otmena').addEventListener('click', function (event) {
+      const dntedit = document.getElementById('editform');
+      const otmena = document.getElementById('otmena');
+      const accept = document.getElementById('accept');
+      const textfrom = document.getElementById('opisanie');
+      var charCount = document.getElementById('charCount');
+      const con = document.getElementById('conpod');
+
+
+
+      dntedit.style.display = 'block'
+      otmena.style.display = 'none'
+      accept.style.display = 'none'
+      textfrom.setAttribute('readonly', 'true');
+      textfrom.style.border = '#fff';
+      textfrom.style.background = '#fff';
+      charCount.style.display = 'none'
+      con.style.display = 'block';
+      window.location.reload();
+
+    });
+
+    document.getElementById('editphoto').addEventListener('click', function (event) {
+
+      const photo = document.getElementById('selectphoto');
+      const photoedit = document.getElementById('editphoto');
+      const photoaccept = document.getElementById('acceptphoto');
+
+
+      photoedit.style.display = 'none'
+      photo.style.display = 'block'
+      photoaccept.style.display = 'block'
+
+    });
+    document.getElementById('acceptphoto').addEventListener('click', function (event) {
+      window.location.reload();
+    });
+
+
+
+
+
+    function FunCreateCricle(event) {
+      event.preventDefault();
+      fetch('/postdatacircle', {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          opisanie: document.getElementById('opisanie').value
+        })
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok. Status: ${response.status}`);
+        }
+        window.location.reload();
+      })
+    }
+
+
+
+    function imguser() {
+      fetch("/imgUser"
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const imghead = document.getElementById('headimg')
+          imghead.innerHTML = ""
+          data.forEach(el => {
+            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+
+
+
+
+
+    function imgCircle() {
+      fetch("/imggetCircle"
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const img = document.getElementById('imgeCirclefile')
+          img.innerHTML = ""
+          data.forEach(el => {
+            img.innerHTML += `<img class= "imguserimg" src=" http://192.168.0.108:8189/${el.PhotoPathCircle}" alt="">`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+
+    function DesCircle() {
+      fetch("/desget")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Обновляем описание на странице
+          const opisanie = document.getElementById('opisanie');
+          opisanie.textContent = data.opisanie;
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+
+    function uploadCirclePhoto() {
+      const fileInput = document.getElementById('photo');
+      const formData = new FormData();
+      formData.append('photos', fileInput.files[0]);
+
+      fetch('/imgpostCircle', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+    function getCookie(name) {
+      let cookie = {};
+      document.cookie.split(';').forEach(function (el) {
+        let split = el.split('=');
+        cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+      })
+      return cookie[name];
+    }
+
+
+    function Namecricel() {
+      fetch("/namecirleget")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Обновляем описание на странице
+          const opisanie = document.getElementById('namecircle');
+          opisanie.textContent = data.name;
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+    const confirmDeleteBtn = document.getElementById('confirmDelete');
+    confirmDeleteBtn.onclick = function () {
+      const circleIdToDelete = getCookie("creator")
+
+      fetch(`/deleteCircle`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ circleId: circleIdToDelete })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          modal.style.display = 'none';
+
+        })
+        .catch(error => {
+          console.error('Error deleting circle:', error);
+          // Обработка ошибки при удалении кружка
+          // Здесь вы можете добавить код для отображения сообщения об ошибке пользователю
+        });
+      window.location.href = './ThridHerf.html';
+      modal.style.display = 'none';
+    }
+
+
+    window.onload = () => {
+      var circle = getCookie('idcircle');
+      var creator = getCookie('creator');
+      var role = getCookie('role');
+      const editform = document.getElementById('editform')
+      const editphoto = document.getElementById('editphoto')
+      const setings = document.getElementById('setings')
+      const delet = document.getElementById('blockdelete')
+      if (circle == creator && role === '1') {
+        editform.style.display = 'block'
+        editphoto.style.display = 'block'
+        setings.style.display = 'block'
+        delet.style.display = 'block'
+      }
+      else {
+        editform.style.display = 'none'
+        editphoto.style.display = 'none'
+        delet.style.display = 'none'
+        setings.style.display = 'none'
+      }
+
+      const loginLinkElement = document.getElementById('UsName');
+      loginLinkElement.innerHTML = getCookie('username')
+
+      const namecircle = document.getElementById('namecircle');
+      namecircle.innerHTML = getCookie('namecircle');
+
+      Namecricel();
+      imgCircle();
+      DesCircle();
+      imguser();
+
+
+      const modal = document.getElementById('myModal');
+      const openModalBtn = document.getElementById('openModalBtn');
+      const closebnt = document.getElementById('closebnt');
+      const closeModalBtn = document.getElementsByClassName('close')[0];
+      const confirmDeleteBtn = document.getElementById('confirmDelete');
+
+      openModalBtn.onclick = function () {
+        modal.style.display = 'block';
+      }
+
+      closeModalBtn.onclick = function () {
+        modal.style.display = 'none';
+      }
+      closebnt.onclick = function () {
+        modal.style.display = 'none';
+      }
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+    }
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

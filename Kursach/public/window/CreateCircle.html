@@ -19,7 +19,7 @@
       <div class="link_head">
         <div class="maoy">
           <div class="herfLink paddHead">
-            <a class="fullver" href="../index.html">
+            <a class="fullver" href="./hiwin.html">
               <div> МАОУ Школа</div>
               <div>Экодолье</div>
             </a>
@@ -39,8 +39,11 @@
         <div>
           <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
         </div>
-        <div>
-          <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
+        <div class="headimg">
+          <div class="headots">
+            <div class="userhead" id="headimg"> </div>
+          </div>
+          <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
         </div>
       </div>
     </div>
@@ -61,7 +64,7 @@
                           <label for="">Введите названия вашего будущего кружка:</label>
                           <input class="inputCreatname" type="text" name="name" id="name" required>
                         </div>
-                        <div class="CreateclassUser" >
+                        <div class="CreateclassUser">
                           <label for="">Выбирете какие классы могут вступить в ваш кружок:</label>
                           <select name="schoolClass" id="schoolClass" class="form-control creatCriclew" required>
                             <optgroup label="Класс">
@@ -121,13 +124,15 @@
                       </div>
                     </div>
                   </div>
-                  <div class="conbnt">
+                  <div class="">
                     <div class="interestText">
-                      <label for="" >Выберете интересы для вашего кружка!</label>
+                      <label for="">Выберете интересы для вашего кружка!</label>
+                    </div>
+                    <div>
+                      <div id="InteresBtn" class="interscon" onclick=""></div>
+                      <div class="btnOtsup"></div>
                     </div>
 
-                    <div id="InteresBtn" class="interscon" onclick=""></div>
-                    <div class="btnOtsup"></div>
                   </div>
                 </div>
                 <div class="BtnsCreat">
@@ -200,7 +205,28 @@
           console.error('There was a problem with the fetch operation:', error.message);
         });
     }
-
+    function imguser() {
+      fetch("/imgUser"
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const img = document.getElementById('imgeuserfile')
+          const imghead = document.getElementById('headimg')
+          img.innerHTML = ""
+          data.forEach(el => {
+            img.innerHTML += `<img class= "imguserimg" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
     function FunCreateCricle(event) {
       event.preventDefault();
 
@@ -251,38 +277,58 @@
       });
     }
 
-
-    window.onload = () => {
-      function getCookie(name) {
-        let cookie = {};
-        document.cookie.split(';').forEach(function (el) {
-          let split = el.split('=');
-          cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+    function imguser() {
+      fetch("/imgUser"
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
         })
-        return cookie[name];
-      }
-
+        .then(data => {
+          const imghead = document.getElementById('headimg')
+          imghead.innerHTML = ""
+          data.forEach(el => {
+            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+    function getCookie(name) {
+      let cookie = {};
+      document.cookie.split(';').forEach(function (el) {
+        let split = el.split('=');
+        cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+      })
+      return cookie[name];
+    }
+    window.onload = () => {
+      const loginLinkElement = document.getElementById('UsName');
+      loginLinkElement.innerHTML = getCookie('username')
+      imguser()
       getInt()
 
       var element3 = document.getElementById('InteresBtn');
-            if (role === '1') {
-                if (element) {
-                    element.style.display = 'none';
-                    element1.style.display = 'none';
-                    element2.style.display = 'none';
-                    element3.style.display = 'none';
-                }
-            } else {
-                if (element) {
-                    element.style.display = 'block';
-                    element1.style.display = 'block';
-                    element2.style.display = 'block';
-                    element3.style.display = 'block';
+      if (role === '1') {
+        if (element) {
+          element.style.display = 'none';
+          element1.style.display = 'none';
+          element2.style.display = 'none';
+          element3.style.display = 'none';
+        }
+      } else {
+        if (element) {
+          element.style.display = 'block';
+          element1.style.display = 'block';
+          element2.style.display = 'block';
+          element3.style.display = 'block';
 
-                }
-            }
-      const loginLinkElement = document.getElementById('UsName');
-      loginLinkElement.innerHTML = getCookie('username')
+        }
+      }
+
 
 
     }

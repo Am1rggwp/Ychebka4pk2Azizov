@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../allStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Главная страница</title>
+</head>
+
+<body>
+  <header>
+    <div class="head">
+      <div class="link_head">
+        <div class="maoy">
+          <div class="herfLink paddHead">
+            <a class="fullver" href="./hiwin.html">
+              <div> МАОУ Школа</div>
+              <div>Экодолье</div>
+            </a>
+            <div class="mobtitle">Кружок</div>
+          </div>
+
+        </div>
+        <div>
+          <div class="herfLink"><a href="./FirstHerf.html">О нас</a></div>
+        </div>
+        <div>
+          <div class="herfLink"> <a href="./TwelfHerf.html"> Новости</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="./ThridHerf.html"> Кружки</a></div>
+        </div>
+        <div>
+          <div class="herfLink"><a href="./FourHerf.html"> Поддержка</a></div>
+        </div>
+        <div class="headimg">
+          <div class="headots">
+            <div class="userhead" id="headimg"> </div>
+          </div>
+          <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="posBlockfir">
+    <div class="block blocklich paddcriclekab">
+      <div>
+        <div class="hedlichcr">Кружок <label class="namecr" id="namecircle"></label>
+          <div>Новости</div>
+        </div>
+      </div>
+      <div class="flexConsec">
+        <div class="navigationlich newslist">
+          <div class="polegreen">
+            <div class="stylepanel headpole">Наивгационная панель</div>
+            <div class="otstupbnt">
+              <div class="stylepanel polebnt "><a class="bntnavlich" href="./CricleLichKab.html">Основная
+                  информация</a>
+              </div>
+              <div class="stylepanel polebnt"><a class="bntnavlich" href="./CricleNews.html">Новости
+                  кружка</a></div>
+              <div class="stylepanel polebnt"><a class="bntnavlich" href="./windowCricle/CricleVstrechi.html">Следующие
+                  встречи</a></div>
+              <div id="setings" class="stylepanel polebnt"><a class="bntnavlich"
+                  href="./windowCricle/SettingsCircle.html">Настройки
+                  кружка</a></div>
+              <div id="blockdelete" class="cobbtndelete">
+                <button class="deletecircle" id="openModalBtn">Удалить кружок</button>
+              </div>
+            </div>
+          </div>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div>Вы действиетльно хотите удалить кружок?</div>
+              <div class="conbtndelete">
+                <button class="bntdelete" id="confirmDelete">Да</button>
+                <button class="bntdelete" id="closebnt">Нет</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="conpolenews">
+          <div class="polebg">
+            <div id="news"></div>
+          </div>
+        </div>
+        <div class="conbntnews">
+          <div class="padotstup" id="btneditnews">
+            <div class="posbntcreatnews"><a href="formNewCircle.html" class="bntformnewsCircle">Опубликовать новость</a>
+            </div>
+            <!-- <div class="posbntdeletnews"><button class="deletenews">Удалить</button></div> -->
+          </div>
+
+        </div>
+      </div>
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="navigation_main">
+    <div class="block_nav">
+      <a class="herflinkhov " href="FourHerf.html ">
+        <div class="profil">
+          <img class="profilImg " src="../img/support.svg" alt="">
+          <p class="textNav ">Поддержка</p>
+
+        </div>
+      </a>
+      <a class="herflinkhov " href="FirstHerf.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+          <p class="textNav noac">Главная</p>
+        </div>
+      </a>
+      <a class="herflinkhov " href="ThridHerf.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+          <p class="textNav noac">Кружки</p>
+        </div>
+      </a>
+      <a class="herflinkhov " href="Profil.html">
+        <div class="profil">
+          <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+          <p class="textNav noac">Кабинет</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+
+
+
+  </section>
+  <footer></footer>
+  <script>
+
+    function imguser() {
+      fetch("/imgUser"
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const imghead = document.getElementById('headimg')
+          imghead.innerHTML = ""
+          data.forEach(el => {
+            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+
+    function getCookie(name) {
+      let cookie = {};
+      document.cookie.split(';').forEach(function (el) {
+        let split = el.split('=');
+        cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("=")); // Декодирование значения куки
+      })
+      return cookie[name];
+    };
+
+    function getIntNewsCirecle() {
+      fetch('/getCircleNews', {
+        method: 'GET',
+        mode: 'cors',
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const btn = document.getElementById('news');
+          btn.innerHTML = "";
+          let prevDescription = null;
+          let prevDate = null;
+          data.forEach(el => {
+            if (el.Description === prevDescription && el.date === prevDate) {
+              const poleblock = btn.lastElementChild;
+              const imgContainer = poleblock.querySelector('.images');
+              imgContainer.innerHTML += `<img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">`;
+            } else {
+              btn.innerHTML += `
+                <div class="poleblock circlenews">
+                  <div class ="whos">
+                    <div class="blockImg">
+                      <img class="imguser" src="http://192.168.0.108:8189/${el.photopathCircle}" alt="">
+                    </div>
+                    <div class = "blocknews">
+                      <div class ="content">${el.namecricel}</div> 
+                      <div class ="content">${el.date}</div>
+                    </div>
+                  </div>
+                   
+                    <div class=textpos>
+                      <div class ="content">${el.Description}</div>     
+                    </div>
+                    
+                    <div class="images">
+                        <img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">
+                    </div>
+                </div>`;
+            }
+            // Обновляем предыдущий Description и date
+            prevDescription = el.Description;
+            prevDate = el.date;
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error.message);
+        });
+    }
+    const confirmDeleteBtn = document.getElementById('confirmDelete');
+    confirmDeleteBtn.onclick = function () {
+      const circleIdToDelete = getCookie("creator")
+
+      fetch(`/deleteCircle`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ circleId: circleIdToDelete })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+          }
+          modal.style.display = 'none';
+
+        })
+        .catch(error => {
+          console.error('Error deleting circle:', error);
+          // Обработка ошибки при удалении кружка
+          // Здесь вы можете добавить код для отображения сообщения об ошибке пользователю
+        });
+      window.location.href = './ThridHerf.html';
+      modal.style.display = 'none';
+    }
+
+
+    window.onload = () => {
+
+      const loginLinkElement = document.getElementById('UsName');
+      loginLinkElement.innerHTML = getCookie('username');
+      const namecircle = document.getElementById('namecircle');
+      namecircle.innerHTML = getCookie('namecricel');
+
+      var circle = getCookie('idcircle');
+      var element = document.getElementById('btneditnews');
+      var element1 = document.getElementById('setings');
+      var role = getCookie('role');
+      var creator = getCookie('creator');
+      const delet = document.getElementById('blockdelete')
+
+      if (circle == creator && role === '1') {
+        element.style.display = 'block';
+        element1.style.display = 'block';
+        delet.style.display = 'block'
+      }
+      else {
+        element.style.display = 'none';
+        element1.style.display = 'none';
+        delet.style.display = 'none'
+
+
+      };
+
+      imguser();
+      getIntNewsCirecle();
+
+      const modal = document.getElementById('myModal');
+      const openModalBtn = document.getElementById('openModalBtn');
+      const closebnt = document.getElementById('closebnt');
+      const closeModalBtn = document.getElementsByClassName('close')[0];
+      const confirmDeleteBtn = document.getElementById('confirmDelete');
+
+      openModalBtn.onclick = function () {
+        modal.style.display = 'block';
+      }
+
+      closeModalBtn.onclick = function () {
+        modal.style.display = 'none';
+      }
+      closebnt.onclick = function () {
+        modal.style.display = 'none';
+      }
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+    }
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -39,7 +39,7 @@
     transition: all .4s;
 }
 .posExitbtn{
-    margin: 1% 1% 1% 5%;
+    margin: 5% 1% 1% 1%;;
     position: absolute;
 }
 .posBlockfir{
@@ -65,6 +65,53 @@
     width: 70%;
 }
 
+.userphoto{
+    width: 35%;
+    max-width: 100%;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #0bda51;
+    transition: all .4s;
+    box-shadow: 0 0 20px gainsboro;
+}
+.userphoto:hover{
+    background-color: #0bda51;
+    border: 2px solid #0bda51;
+    color: #fff;
+}
+
+.userphoto input[type="file"] {
+    display: none;
+}
+.imgUser{
+    width: 30%;
+}
+.imguserimg{
+    border-radius:100%;
+    object-fit: cover;
+    
+}
+.imguserkab{
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border: 2px solid #0bda51;
+    border-radius: 100%;
+    width: 100%;
+    margin: 0 auto;
+
+    
+}
+.btnPosImg{
+   display: flex;
+   justify-content: center;
+   padding-top: 30px;
+   
+}
 
 
 @media screen and (max-width: 768px) {
