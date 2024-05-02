@@ -31,17 +31,16 @@
 .answer{
     font-size: 20px;
     font-weight: 400;
-    padding: 5px 0 0 25px;
-    background:#E5E4E2 ;
-    height: 30px;
-    border: 1px solid #E5E4E2 ;
-    border-radius:0px 0px 10px 10px;
-    width: 97%;
+    padding: 5px 0 10px 25px;
+    background: #E5E4E2;
+    border: 1px solid #E5E4E2;
+    border-radius: 0px 0px 10px 10px;
+    height: 100%;
 }
 .quest{
     font-size: 22px;
     font-weight: 600;
-    width: 95%;
+    width: 92%;
 }
 
 
@@ -96,7 +95,7 @@ details{
 
 .blockFon{
     background: #fff;
-    width: 50%; 
+    width: 90%; 
     border: 1px solid #fff;
     border-radius: 10px;
     box-shadow: 0 0 20px gainsboro;
@@ -289,8 +288,21 @@ details{
     padding-top: 20px;
 }
 
-
-
+@media (max-width: 1024px){
+    .glav{
+        font-size: 22px;
+    }
+    .quest{
+        font-size: 18px;
+    }
+    .answer{
+        font-size: 16px;
+    }
+    .css-modal-open{
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
 
 @media (max-width: 768px) {
     .glav{
@@ -301,12 +313,26 @@ details{
     .answer{
         font-size: 14px;
         font-weight: 400;
-        padding: 5px 0 0 25px;
     }
     .quest{
         font-size: 16px;
         font-weight: 600;
-        padding: 20px 0 0 0 ;
     }
     
+}
+@media (max-width: 425px) {
+    .glav{
+        font-size: 20px;
+    }
+    .quest{
+        font-size: 16px;
+    }
+    .answer{
+        font-size: 14px;
+    }
+    .css-modal-open{
+        font-size: 14px;
+        padding: 12px 10px;
+    }
+
 }

@@ -1,35 +1,41 @@
-.BlockAva{
+.BlockAva {
     width: 20%;
 }
-.posvavaprof{
+
+.posvavaprof {
     padding: 10%;
 }
-.paddBlock{
+
+.paddBlock {
     padding: 2% 2% 0 2%;
     display: flex;
 }
 
-.posBlockdata{
+.posBlockdata {
     padding: 1% 0 0 5%;
     width: 100%;
     display: flex;
 }
-.poslable{
+
+.poslable {
     display: flex;
 
 
 }
-.blockdata{
+
+.blockdata {
     padding-left: 1%;
 }
-.padata{
+
+.padata {
     padding-bottom: 10px;
 }
-.btndow{
+
+.btndow {
     padding: 10px;
 }
 
-.intbtn{
+.intbtn {
     border: 0;
     padding: 14px 45px;
     margin: 0.8%;
@@ -38,35 +44,44 @@
     color: #000;
     transition: all .4s;
 }
-.posExitbtn{
-    margin: 5% 1% 1% 1%;;
+
+.posExitbtn {
+    margin: 5% 1% 1% 1%;
+    ;
     position: absolute;
 }
-.posBlockfir{
+
+.posBlockfir {
     position: relative;
 }
-.btnBack{
+
+.profilBlock {
+    height: 700px;
+}
+
+.btnBack {
     border: 0;
 }
-.golovok{
+
+.golovok {
     font-size: 28px;
     font-weight: 600;
     margin: 30px 0 0 5%;
-    
+
 
 }
-.edit{
-    
+
+.edit {
+
     margin: 5% 1% 1% 5%;
-    
+
 }
 
-.contenerbnt{
+.contenerbnt {
     width: 70%;
 }
 
-.userphoto{
-    width: 35%;
+.userphoto {
     max-width: 100%;
     padding: 10px;
     background-color: #FFF;
@@ -76,7 +91,8 @@
     transition: all .4s;
     box-shadow: 0 0 20px gainsboro;
 }
-.userphoto:hover{
+
+.userphoto:hover {
     background-color: #0bda51;
     border: 2px solid #0bda51;
     color: #fff;
@@ -85,15 +101,18 @@
 .userphoto input[type="file"] {
     display: none;
 }
-.imgUser{
+
+.imgUser {
     width: 30%;
 }
-.imguserimg{
-    border-radius:100%;
+
+.imguserimg {
+    border-radius: 100%;
     object-fit: cover;
-    
+
 }
-.imguserkab{
+
+.imguserkab {
     display: flex;
     justify-content: center;
     max-width: 300px;
@@ -104,21 +123,116 @@
     width: 100%;
     margin: 0 auto;
 
-    
-}
-.btnPosImg{
-   display: flex;
-   justify-content: center;
-   padding-top: 30px;
-   
+
 }
 
+.btnPosImg {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+
+}
+
+@media (max-width: 1440px) {
+    .imguserkab {
+        height: 250px;
+        width: 250px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .imguserkab {
+        height: 200px;
+        width: 200px;
+    }
+
+    .intbtn {
+        padding: 10px 41px;
+        font-size: 14px;
+    }
+
+    .golovok {
+        font-size: 24px;
+    }
+
+    .btnBack {
+        font-size: 14px;
+        padding: 13px 65px;
+    }
+
+
+}
 
 @media screen and (max-width: 768px) {
-    .intbtn{
+    .intbtn {
         padding: 3% 7%;
         margin: 1.2%;
     }
 
+    .imguserkab {
+        height: 150px;
+        width: 150px;
+    }
 
+    .posBlockdata {
+        font-size: 14px;
+    }
+
+
+}
+
+@media screen and (max-width: 508px) {
+    .userphoto{
+        font-size: 12px;
+        padding: 7px;
+        text-align: center;
+    }
+
+    .imguserkab {
+        height: 100px;
+        width: 100px;
+    }
+    .intbtn{
+        font-size: 12px;
+    }
+    .intbtn {
+        font-size: 12px;
+    }
+
+    .golovok {
+        font-size: 18px;
+    }
+    .posBlockdata{
+        font-size: 12px;
+    }
+    .btnBack {
+        padding: 8px 19px;
+        font-size: 12px;
+    }
+
+}
+@media (max-width:365px) {
+    .userphoto{
+        font-size: 10px;
+        padding: 2px;
+        text-align: center;
+    }
+
+    .imguserkab {
+        height: 50px;
+        width: 50px;
+    }
+    .intbtn{
+        font-size: 10px;
+    }
+    .intbtn {
+        font-size: 10px;
+    }
+
+    .golovok {
+        font-size: 14px;
+    }
+    .posBlockdata{
+        font-size: 10px;
+    }
 }

@@ -1,63 +1,77 @@
-a{
+a {
     -webkit-tap-highlight-color: transparent;
 }
 
-.headIndex{
+.headIndex {
     display: flex;
     padding: 3% 0 0 4%;
 }
-.headIndex1{
+
+.headIndex1 {
     display: flex;
     padding: 3% 0 0 4%;
     justify-content: center;
 }
-.styleFontHead,.headIndex2{
+
+.styleFontHead,
+.headIndex2 {
     font-size: 25px;
     font-weight: 600;
     font-family: 'Montserrat';
 }
-.headIndex2{
+
+.headIndex2 {
     padding-top: 3%;
 }
-.headingIndex{
+
+.headingIndex {
     display: flex;
     padding-left: 10px;
 
 }
 
-.posBlock{
+.block_adap {
+    height: 60px;
+}
+
+.posBlock {
     display: flex;
     justify-content: center;
-   padding-top: 2%;
 }
-.posBlockfir{
+
+.posBlockfir {
     display: flex;
-   justify-content: center;
-   height: 75vh;
-   padding-top: 2%;
-   margin-top: 70px;
+    justify-content: center;
+    height: 75vh;
+    padding-top: 2%;
+    margin-top: 70px;
 }
-.block{
+
+.block {
     background-color: white;
     max-width: 100%;
     border-radius: 8px;
     box-shadow: 0 0 20px gainsboro;
     width: 88%;
-    
+
 }
-.link_Text{
+
+.link_Text {
     padding: 2% 4%;
 }
-.link_Text2{
+
+.link_Text2 {
     padding-top: 3%;
 }
-.text{
+
+.text {
     font-size: 20px;
-    font-weight:300;
+    font-weight: 300;
     font-family: 'Montserrat';
     line-height: 2;
 }
-.linkPosText{
+
+.linkPosText {
     text-align: center;
 }
 
@@ -66,18 +80,22 @@ body {
 }
 
 
-.famili{
+.famili {
     font-family: 'Montserrat';
 }
 
 /* Стили для хедера */
 .head {
-    padding: 0% 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
 }
 
 .link_head {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-evenly;
     gap: 10px;
 }
 
@@ -90,7 +108,7 @@ body {
 .block {
     width: 100%;
     max-width: 100%;
-    
+
 }
 
 .headIndex,
@@ -112,32 +130,85 @@ body {
     font-size: 16px;
 }
 
-.navigation{
+.navigation {
     display: none;
 }
-.blokFeck{
+
+.blokFeck {
     display: none;
 }
-.conbalck{
+
+.conbalck {
     display: none;
 }
-.block_nav{
+
+.block_nav {
     display: none;
 }
-.mobtitle{
+
+.mobtitle {
     display: none;
 }
 
 
-/* Медиа-запросы для мобильных устройств */
-@media (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+
+    .herfLink {
+        font-size: 14px;
+        padding: 0;
+    }
+
+    .paddHead {
+        padding: 0 0 0 0;
+    }
+
+    .userhead {
+        width: 35px;
+        height: 35px;
+    }
+
+    .headots {
+        height: 90%;
+        margin: auto 0;
+    }
+
+    .link_head {
+        align-items: center;
+    }
+
+    .user_profil {
+        padding: 4% 0 0 0;
+    }
+
+    .head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    .link_head {
+        padding: 5px 0 0 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .headIndex {
-        padding:4% 3% 0px 4%;
+        padding: 4% 3% 0px 4%;
     }
+
     .link_Text {
-        padding:4% 0%;
+        padding: 4% 0%;
     }
-    
+
+    .block_adap {
+        height: 85px;
+    }
+
 
     .styleFontHead,
     .headIndex2 {
@@ -146,25 +217,28 @@ body {
         padding-left: 0;
         text-align: center;
     }
-    .linkPosText{
+
+    .linkPosText {
         margin: 0 1%;
     }
-    
-    .navigation_main{
+
+    .navigation_main {
         position: fixed;
         bottom: 0;
         width: 100%;
         max-width: 100%;
-        height: 8.7vh;
+        height: 85px;
         background-color: #03c03c;
         display: flex;
         /* margin: 97.9% 0 0 0 ; */
 
     }
-    .flexMain{
+
+    .flexMain {
         align-items: end;
     }
-    .conbalck{
+
+    .conbalck {
         display: block;
         background-color: #000;
         height: 2vh;
@@ -173,100 +247,114 @@ body {
         bottom: 0;
         display: flex;
     }
-    .block_nav{
+
+    .block_nav {
         display: flex;
         width: 100%;
         justify-content: space-around;
         padding: 0 10px;
-        
+
     }
-    .profilImg{
+
+    .profilImg {
         width: 30px;
         height: 30px;
         width: 100%;
         margin: 0 auto;
     }
-    .textNav{
+
+    .textNav {
         color: #fff;
-        font-size: 8px ;
+        font-size: 8px;
         font-weight: 600;
         text-align: center;
     }
-    .profil{
+
+    .profil {
         padding-top: 6px;
         justify-content: center;
     }
-    .herfLink{
+
+    .herfLink {
         display: none;
     }
-    .paddHead{
+
+    .paddHead {
         display: block;
     }
-    .maoy{
-        padding: 32px 0 0 1px;
 
-    }
-    .herflinkhov{
-        
-        width:60px;
+    .herflinkhov {
+
+        width: 60px;
         height: 6.5vh;
         transition: 0.1s;
         text-decoration: none;
 
 
     }
-    .herflinkhov:hover{
+
+    .herflinkhov:hover {
         opacity: 0.1;
         z-index: 1000;
         border-radius: 40px;
         background: #013220;
-        
-        
+
+
     }
-    .posBlockfir{
+
+    .posBlockfir {
         height: 106vh;
     }
-    .fullver{
+
+    .fullver {
         display: none;
     }
-    .mobtitle{
+
+    .mobtitle {
         display: block;
         font-size: 17px;
         font-weight: 400;
     }
-    .noac{
+
+    .noac {
         color: #888888;
     }
-
-}
-@media screen and (max-width: 768px) {
+    .headots{
+        padding: 0;
+    }
+    .userhead{
+        width: 45px;
+        height: 45px;
+    }
     .link_head {
-        padding: 2% 0px 0;
-        
+        padding: 0;
+
     }
 
     .herfLink {
-        padding-top:0.01% ;
+        padding-top: 0.01%;
         font-size: 12px;
     }
+
     .head {
         width: auto;
-        height: 10vh;
         background: #03c03c;
-        padding: 2% 2%;
-        
+
     }
-    .textMain{
+
+    .textMain {
         text-align: center;
         margin: 0 1%;
     }
-}
-@media screen and (max-height: 770px) {
-    .head{
-    height: 8vh;
 
+}
+
+@media screen and (max-width: 425px) {
+    .userhead{
+        width: 35px;
+        height: 35px;
     }
-    .maoy{
-        padding: 10px 0 0 1px;
+    .mobtitle{
+        font-size: 14px;
     }
 }

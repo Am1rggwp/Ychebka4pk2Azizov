@@ -30,6 +30,9 @@ app.use(cookieParser());
 app.use(cors())
 
 
+const setCookie = (res, name, value) => {
+  res.cookie(name, value, { maxAge: 9000000000, httpOnly: false });
+};
 ////////////////////////////////////////////////////////////////// вход
 
 app.post('/window/login.html' || '/window/loginError.html', async (req, res) => {
@@ -145,21 +148,15 @@ app.get('/imgUser', async (req, res) => {
     }));
     res.send(datanew);
   } catch (error) {
-
+    console.error('Error loading photo', err);
   }
-
-
-
 })
 
 app.post('/imgUser', uploadUser.single('photos'), async (req, res) => {
 
   const photoPath = req.file.path.replace(/\\/g, '/');
-
   try {
-
     const resulselect = await sql`SELECT PhotoPathUser FROM Users WHERE UserId = ${req.cookies.userid}`;
-
     if (resulselect.length > 0) {
       const photoPathdel = resulselect[0].photopathuser;
       console.log(photoPathdel);
@@ -170,7 +167,6 @@ app.post('/imgUser', uploadUser.single('photos'), async (req, res) => {
           console.error('Error deleting file', err);
         }
       }
-
     }
     await sql`
           UPDATE Users
@@ -296,9 +292,6 @@ app.post('/getSercle', async (req, res) => {
   `;
   const circleIds = matchingCircles.map(cricleid => cricleid.cricleid);
   const role = req.cookies.role;
-
-
-
   if (role == 1) {
     let select = await sql`select * from Circle`
 
@@ -335,8 +328,6 @@ app.post('/getSercle', async (req, res) => {
 
     }
     catch { }
-
-
     res.send(sortedCircles)
   }
   else {
@@ -418,7 +409,6 @@ app.post('/postdatacircle', async (req, res) => {
     console.error('Error updating Circle:', error);
     res.status(500).send('Ошибка обновления описания круга');
   }
-
 });
 ///////////////////////////////////////////////////////////Добовление дополнительной информации у кружка фото
 app.post('/imgpostCircle', uploadCircle.single('photos'), async (req, res) => {
@@ -446,8 +436,7 @@ app.post('/imgpostCircle', uploadCircle.single('photos'), async (req, res) => {
 
   }
   catch (error) {
-    console.error('Error updating Circle:', error);
-    res.status(500).send('Ошибка обновления описания круга');
+    console.error(error);
   }
 
 });
@@ -506,17 +495,12 @@ app.get('/getsetingscircle', async (req, res) => {
   JOIN Circle AS C ON IC.CricleID = C.CricleID
   WHERE C.CricleID = ${req.cookies.idcircle};`
     const interes = await sql`select*from Interests`
-    // console.log(interes);
-    // console.log(intCir); 
-
     const result = interes.map(el => {
       el.joined = intCir.find((item, index, array) => {
         if (item.interestid == el.interestsid) return true
       }) ? true : false
       return el
     })
-
-
     const circleData = select.map(el => {
       return {
         name: el.namecricel,
@@ -536,9 +520,6 @@ app.get('/getsetingscircle', async (req, res) => {
       interests: interestData,
       allInterests: result
     };
-
-    // console.log(combinedData);
-    // console.log(data);
     res.json(combinedData);
   }
   catch (error) {
@@ -614,22 +595,11 @@ app.delete('/deleteCircle', async (req, res) => {
 
 })
 
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////Создание новостей
 app.post('/createNews', upload.array('photos', 10), async (req, res) => {
-
   const formData = req.body;
   const photos = req.files;
   const photoPaths = photos.map(photo => photo.path.replace(/\\/g, '/'));
-  // console.log(photoPaths);
-  // console.log(formData);
   try {
     for (let i = 0; i < photoPaths.length; i++) {
       const photoPath = photoPaths[i];
@@ -637,38 +607,13 @@ app.post('/createNews', upload.array('photos', 10), async (req, res) => {
         INSERT INTO News (Description, PhotoPath, UserID) 
         VALUES (${formData.mess}, ${photoPath}, ${req.cookies.userid})`;
     }
-
-
   } catch (err) {
     console.error('Error creating news', err);
     res.status(500).send(err.message);
   }
 });
-///////////////////////////////////////////////////////////Создание новостей кружка
-app.post('/createNewsCircle', uploadCircleNews.array('photos', 10), async (req, res) => {
-
-  const formData = req.body;
-  const photos = req.files;
-  const photoPaths = photos.map(photo => photo.path.replace(/\\/g, '/'));
-  // console.log(formData);
-  // console.log(photoPaths);
-  try {
-    for (let i = 0; i < photoPaths.length; i++) {
-      const photoPath = photoPaths[i];
-      console.log(photoPath);
-      await sql`
-        INSERT INTO NewsCircle (Description, PhotoPathImg, CricleID ) 
-        VALUES (${formData.mess}, ${photoPath}, ${req.cookies.idcircle})`;
-    }
-  } catch (err) {
-    console.error('Error creating news', err);
-    res.status(500).send(err.message);
-  }
-});
-
 //////////////////////////////////////////////////////////Получения новостей
 app.use('/upload', express.static('public'));
-
 app.get('/getNews', async (req, res) => {
   try {
     const selectnews = await sql` SELECT News.*, Users.*
@@ -683,9 +628,7 @@ app.get('/getNews', async (req, res) => {
       const day = ('0' + dateo.getDate()).slice(-2);
       const hours = ('0' + dateo.getHours()).slice(-2);
       const minutes = ('0' + dateo.getMinutes()).slice(-2);
-
       const formattedDateTime = `${day}/${month} ${hours}:${minutes}`;
-
       return {
         NewID: news.newid,
         Description: news.description,
@@ -703,6 +646,25 @@ app.get('/getNews', async (req, res) => {
   }
 });
 
+
+///////////////////////////////////////////////////////////Создание новостей кружка
+app.post('/createNewsCircle', uploadCircleNews.array('photos', 10), async (req, res) => {
+  const formData = req.body;
+  const photos = req.files;
+  const photoPaths = photos.map(photo => photo.path.replace(/\\/g, '/'));
+  try {
+    for (let i = 0; i < photoPaths.length; i++) {
+      const photoPath = photoPaths[i];
+      console.log(photoPath);
+      await sql`
+        INSERT INTO NewsCircle (Description, PhotoPathImg, CricleID ) 
+        VALUES (${formData.mess}, ${photoPath}, ${req.cookies.idcircle})`;
+    }
+  } catch (err) {
+    console.error('Error creating news', err);
+    res.status(500).send(err.message);
+  }
+});
 //////////////////////////////////////////////////////////Получения новостей кружков
 app.get('/getCircleNews', async (req, res) => {
   try {
@@ -711,8 +673,6 @@ app.get('/getCircleNews', async (req, res) => {
     JOIN Circle ON NewsCircle.CricleID = Circle.CricleID
     where Circle.CricleID = ${req.cookies.idcircle}
     ORDER BY NewsCircle.creatednews DESC ;`;
-
-
     const datanew = selectnewsCircle.map(news => {
       const dates = news.creatednews;
       const dateo = new Date(dates);
@@ -720,9 +680,7 @@ app.get('/getCircleNews', async (req, res) => {
       const day = ('0' + dateo.getDate()).slice(-2);
       const hours = ('0' + dateo.getHours()).slice(-2);
       const minutes = ('0' + dateo.getMinutes()).slice(-2);
-
       const formattedDateTime = `${day}/${month} ${hours}:${minutes}`;
-
       return {
         NewCircleID: news.newid,
         Description: news.description,
@@ -763,11 +721,8 @@ app.post('/CreateMetings', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
-
 //////////////////////////////////////////////////////////Получение встреч
 app.get('/getMeetings', async (req, res) => {
-
   try {
     const select = await sql`select*from Meetings  where CricleID = ${req.cookies.idcircle} ORDER BY creatednews DESC`
 
@@ -776,7 +731,6 @@ app.get('/getMeetings', async (req, res) => {
       const time = el.eventtime.substring(0, 5);
       const createt = new Date(el.creatednews).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }) + ' ' +
         new Date(el.creatednews).toLocaleDateString('ru-RU');
-
       return {
         heding: el.heading,
         date: date,
@@ -785,7 +739,6 @@ app.get('/getMeetings', async (req, res) => {
         createt: createt
       }
     })
-    // console.log(dataMeetn);
     res.json(dataMeetn);
   }
   catch (error) {
@@ -871,8 +824,8 @@ const start = async () => {
           ) `;
   await sql`CREATE TABLE if not exists NewsCircle(
         NewID SERIAL PRIMARY KEY,
-        Description varchar(2000) NOT NULL,
-        PhotoPathImg text NULL,
+        Description varchar(2000) NOT NULL,  
+        PhotoPathImg text NULL, 
         creatednews TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         CricleID int REFERENCES Circle(CricleID)
     ) `;
@@ -891,6 +844,9 @@ const start = async () => {
   // await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role,PhotoPathUser )
   //       VALUES ('Махаури Влад Олегович', 'amir.azizov2015@mil.ru', '89619370939',1, 1, 'photoUser/17116223670001.jpg')`
 
+  // await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role,PhotoPathUser )
+  //    VALUES ('Христофорома Татьяна Алексеивна', 'Hrist2015@mail.ru', '89619370990',1, 1, 'photoUser/17116223670001.jpg')`
+
   // await sql`INSERT INTO Role (NameRole) VALUES
   // ('учител'),
   // ('ученик')`;
@@ -908,8 +864,8 @@ const start = async () => {
   // ('Программирование')`;
 
   app.listen(port, () => {
-    // console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
-    console.log(`Сервер запущен  http://192.168.0.108:${port}/Index.html`);
+    console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
+    // console.log(`Сервер запущен  http://192.168.0.108:${port}/Index.html`);
 
   });
 

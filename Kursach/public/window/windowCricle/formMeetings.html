@@ -212,33 +212,7 @@
             })
             return cookie[name];
         }
-        const confirmDeleteBtn = document.getElementById('confirmDelete');
-        confirmDeleteBtn.onclick = function () {
-            const circleIdToDelete = getCookie("creator")
-
-            fetch(`/deleteCircle`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ circleId: circleIdToDelete })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Network response was not ok. Status: ${response.status}`);
-                    }
-                    modal.style.display = 'none';
-
-                })
-                .catch(error => {
-                    console.error('Error deleting circle:', error);
-                    // Обработка ошибки при удалении кружка
-                    // Здесь вы можете добавить код для отображения сообщения об ошибке пользователю
-                });
-            window.location.href = './ThridHerf.html';
-            modal.style.display = 'none';
-        }
-
+        
         window.onload = () => {
 
             const loginLinkElement = document.getElementById('UsName');
@@ -247,28 +221,7 @@
             const namecircle = document.getElementById('namecircle');
             namecircle.innerHTML = getCookie('namecricel');
             FunCreateNews(event);
-            const modal = document.getElementById('myModal');
-            const openModalBtn = document.getElementById('openModalBtn');
-            const closebnt = document.getElementById('closebnt');
-            const closeModalBtn = document.getElementsByClassName('close')[0];
-            const confirmDeleteBtn = document.getElementById('confirmDelete');
 
-            openModalBtn.onclick = function () {
-                modal.style.display = 'block';
-            }
-
-            closeModalBtn.onclick = function () {
-                modal.style.display = 'none';
-            }
-            closebnt.onclick = function () {
-                modal.style.display = 'none';
-            }
-
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            }
 
         }
     </script>

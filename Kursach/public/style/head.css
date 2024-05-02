@@ -15,7 +15,7 @@ header {
 .link_head{
     display: flex;
     color: #ffff;
-    padding: 0.75% 50px 0;
+    width: 100%;
     font-size: 16px;
     font-weight: 400;
     justify-content: center;
@@ -78,9 +78,7 @@ header {
     }
     .head {
         width: auto;
-        height: 9vh;
         background: #03c03c;
-        padding: 2% 2%;
     }
     
 }
