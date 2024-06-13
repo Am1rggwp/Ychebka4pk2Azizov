@@ -57,7 +57,10 @@
         </div>
 
         <div class="flexConsec">
-          <div class="navigationlich newslist">
+          <div class="navigationlich">
+            <div class="menu-button" id="menuButton">
+              <div class="menu-icon"></div>
+            </div>
             <div class="polegreen">
               <div class="stylepanel headpole">Наивгационная панель</div>
               <div class="otstupbnt">
@@ -68,6 +71,8 @@
                     кружка</a></div>
                 <div class="stylepanel polebnt"><a class="bntnavlich" href="./CricleVstrechi.html">Следующие
                     встречи</a></div>
+                    <div class="stylepanel polebnt"><a class="bntnavlich"
+                      href="./CricleStudents.html">Участники</a></div>
                 <div id="setings" class="stylepanel polebnt"><a class="bntnavlich"
                     href="./SettingsCircle.html">Настройки
                     кружка</a></div>
@@ -107,28 +112,28 @@
 
     <div class="navigation_main">
       <div class="block_nav">
-        <a class="herflinkhov " href="FourHerf.html ">
+        <a class="herflinkhov " href="../FourHerf.html ">
           <div class="profil">
-            <img class="profilImg " src="../img/support.svg" alt="">
+            <img class="profilImg " src="../../img/support.svg" alt="">
             <p class="textNav ">Поддержка</p>
 
           </div>
         </a>
-        <a class="herflinkhov " href="FirstHerf.html">
+        <a class="herflinkhov " href="../FirstHerf.html">
           <div class="profil">
-            <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+            <img class="profilImg " src="../../img/homeNoAc.svg" alt="">
             <p class="textNav noac">Главная</p>
           </div>
         </a>
-        <a class="herflinkhov " href="ThridHerf.html">
+        <a class="herflinkhov " href="../ThridHerf.html">
           <div class="profil">
-            <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+            <img class="profilImg " src="../../img/cricleNoAc.svg" alt="">
             <p class="textNav noac">Кружки</p>
           </div>
         </a>
-        <a class="herflinkhov " href="Profil.html">
+        <a class="herflinkhov " href="../Profil.html">
           <div class="profil">
-            <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+            <img class="profilImg " src="../../img/ProfilNoAc.svg" alt="">
             <p class="textNav noac">Кабинет</p>
           </div>
         </a>
@@ -143,7 +148,7 @@
   <footer></footer>
   <script>
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -155,7 +160,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src="../../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {
@@ -224,6 +229,15 @@
       window.location.href = './ThridHerf.html';
       modal.style.display = 'none';
     }
+
+    const menu = document.querySelector('.navigationlich');
+    const openMenuBtn = document.getElementById('menuButton');
+
+    // При клике на кнопку открываем/закрываем меню
+    openMenuBtn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
 
     window.onload = () => {
       imguser();

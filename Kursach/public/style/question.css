@@ -1,0 +1,112 @@
+.blockQuestion{
+    height: auto;
+}
+
+.question_block {
+    padding: 50px 35px;
+    display: flex;
+    width: auto;
+    justify-content: center;
+}
+.qusetion_mar{
+    width: auto;
+    margin: 0 auto;
+}
+
+.question_zagolovok {
+    font-size: 28px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.block_answer {
+    display: flex;
+    padding: 10px 0 0 0;
+}
+
+/* Скрытие стандартных радиокнопок */
+.radioquestion {
+    margin: 0 10px 0 0;
+    width: auto;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+}
+.qusetion_con{
+    margin: 20px 0 30px;
+}
+.qusetLink{
+    font-size: 18px;
+}
+.bnt_question{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+.bntsend{
+    padding: 16px 85px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gainsboro;
+    color: #0bda51;
+    transition: all .4s;
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+.bntsend:hover{
+    color: #FFF;
+    background-color: #0bda51;
+    border: 2px solid #0bda51;
+}   
+.con_btnBack{
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 768px) {
+
+    .bntsend{
+        padding: 13px 30px;
+        font-size: 14px;
+    }
+    .question_zagolovok{
+        font-size: 24px;
+        text-align: center;
+    }
+
+
+
+}
+
+@media (max-width: 508px){
+    .bntsend{
+        padding: 11px 25px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 425px){
+    .bnt_question{
+        padding: 10px 0 0 0;
+    }
+}
+@media (max-width: 340px){
+    .bnt_question{
+        display: block;
+        width: auto;
+        margin: 0 auto;
+    }
+    .con_btnBack{
+        display: block;
+    }
+    .qusetion_bakc{
+        display: flex;
+        justify-content: center;
+    }
+    .bnt_send{
+        margin-top: 35px;
+        display: flex;
+        justify-content: center;
+    }
+
+}

@@ -122,10 +122,10 @@
                 </a>
                 <a class="herflinkhov " href="TwelfHerf.html">
                     <div class="profil">
-                      <img class="profilImg " src="../img/newsNoAc.svg" alt="">
-                      <p class="textNav noac">Новости</p>
+                        <img class="profilImg " src="../img/newsNoAc.svg" alt="">
+                        <p class="textNav noac">Новости</p>
                     </div>
-                  </a>
+                </a>
                 <a class="herflinkhov " href="ThridHerf.html">
                     <div class="profil">
                         <img class="profilImg " src="../img/cricle.svg" alt="">
@@ -140,7 +140,7 @@
                 </a>
             </div>
         </div>
-        <div class="conbalck"></div>
+
     </section>
     <footer></footer>
     <script>
@@ -203,8 +203,9 @@
                 return response.json();
             })
                 .then(data => {
-                    console.log(data); // Выводим ответ от сервера в консоль
-                    window.location.href = 'CircleNews.html';
+                    console.log(data);
+                    window.location.href = data.redirectUrl;
+                    
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -223,7 +224,7 @@
 
 
         function imguser() {
-            fetch("/imgUser"
+            fetch("/imgUserAva"
             )
                 .then(response => {
                     if (!response.ok) {
@@ -235,7 +236,7 @@
                     const imghead = document.getElementById('headimg')
                     imghead.innerHTML = ""
                     data.forEach(el => {
-                        imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+                        imghead.innerHTML += `<img class="imghead" src="../${el.PhotoPathUser}" alt="">`
                     });
                 })
                 .catch(error => {
@@ -249,13 +250,11 @@
             displaySelectedFiles();
             const namecircle = document.getElementById('namecircle');
             namecircle.innerHTML = getCookie('namecricel');
-            FunCreateNews(event);
+             
 
             const publishButton = document.getElementById('publishButton');
             imguser();
-            publishButton.addEventListener('click', () => {
-                window.location.href = './CricleNews.html';
-            });
+
 
         }
     </script>

@@ -54,30 +54,30 @@
           <div class="glav"> Часто задаваемы вопросы:</div>
           <div class="blockFon">
             <details class="radius">
-              <summary class="quest">Почему этот сайт работает не корректо?</summary>
-              <p class="answer">Ответ: потому что этот сайт делал студент, а что вы хотели?</p>
+              <summary class="quest">Как изменить личные данные в моем профиле?</summary>
+              <p class="answer">Ответ: Для изменения личных данных в вашем профиле необходимо написать в поддержку и предоставить правильные данные. В своем личном кабинете вы можете изменить только фото в профиле и интересы.</p>
             </details>
           </div>
 
           <div class="blockFon">
             <details>
-              <summary class="quest"> Почему этот сайт работает?</summary>
-              <p class="answer">Ответ: пупупупупу, а че? </p>
+              <summary class="quest">Как мне связаться с поддержкой, если возникла техническая проблема?</summary>
+              <p class="answer">Ответ: Если у вас возникла техническая проблема, войдите в систему и перейдите в раздел "Поддержка". Ниже последнего вопроса есть кнопка "Написать в поддержку". Нажмите на нее, и откроется модульное окно, в котором вы сможете подробно описать свою проблему. Наша команда поддержки свяжется с вами в ближайшее время.</p>
             </details>
           </div>
 
           <div class="blockFon">
             <details>
-              <summary class="quest">Почему долго грузит сай?</summary>
-              <p class="answer">Ответ: потому что разработчик проел деньги для сервака</p>
+              <summary class="quest">Как удалить свой аккаунт?</summary>
+              <p class="answer">Ответ: Чтобы удалить свой аккаунт, необходимо написать в поддержку с просьбой и указанием причины удаления аккаунта.</p>
               </detalis>
           </div>
         </div>
 
         <div class="blockFon">
           <details>
-            <summary class="quest">Почему 10 и 11 классам нельзя зарегистрироватся на данном сайте?</summary>
-            <p class="answer">Ответ: выросли уже идите работать</p>
+            <summary class="quest">Почему учащиеся 10 и 11 классов не могут зарегистрироваться на сайте?</summary>
+            <p class="answer">Ответ: Учащиеся 10 и 11 классов не могут зарегистрироваться на данном сайте, так как он предназначен для учеников младших и средних классов, чтобы помочь им найти и развивать свои интересы в раннем возрасте. Мы надеемся, что это поможет создать более целенаправленное и эффективное сообщество для младших школьников.</p>
             </detalis>
         </div>
 
@@ -112,6 +112,7 @@
     </div>
     </div>
     </div>
+    <div class="otstup_footer"></div>
     <div class="navigation_main">
       <div class="block_nav">
         <a class="herflinkhov " href="FourHerf.html ">
@@ -146,7 +147,7 @@
           </div>
         </a>
       </div>
-      <div class="conbalck"></div>
+      
     </div>
 
 
@@ -160,7 +161,7 @@
 
 
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -172,7 +173,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src="../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {

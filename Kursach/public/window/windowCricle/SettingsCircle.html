@@ -57,8 +57,11 @@
         </div>
 
         <div class="flexConsec">
-          <div class="navigationlich newslist setingsnav">
-            <div class="polegreen setingcircle">
+          <div class="navigationlich setingsnav">
+            <div class="menu-button" id="menuButton">
+              <div class="menu-icon"></div>
+            </div>
+            <div class="polegreen">
               <div class="stylepanel headpole">Наивгационная панель</div>
               <div class="otstupbnt">
                 <div class="stylepanel polebnt "><a class="bntnavlich" href="../CricleLichKab.html">Основная
@@ -66,9 +69,10 @@
                 </div>
                 <div class="stylepanel polebnt"><a class="bntnavlich" href="../CricleNews.html">Новости
                     кружка</a></div>
-                <div class="stylepanel polebnt"><a class="bntnavlich" href="./CricleVstrechi.html">Следующие
+                <div class="stylepanel polebnt"><a class="bntnavlich" href="CricleVstrechi.html">Следующие
                     встречи</a></div>
-                <div class="stylepanel polebnt"><a class="bntnavlich" href="./SettingsCircle.html">Настройки
+                <div class="stylepanel polebnt"><a class="bntnavlich" href="./CricleStudents.html">Участники</a></div>
+                <div class="stylepanel polebnt"><a class="bntnavlich" href="SettingsCircle.html">Настройки
                     кружка</a></div>
                 <div id="blockdelete" class="cobbtndelete">
                   <button class="deletecircle" id="openModalBtn">Удалить кружок</button>
@@ -168,9 +172,6 @@
                   </div>
                 </div>
                 <div class="BtnsCreat">
-                  <div class="PosCreatebtnCircle">
-                    <a href="ThridHerf.html" class="btnBack">Назад</a>
-                  </div>
                   <div class="BtnsCreated">
                     <button class="btnCreateMain bntCreateMainAdapt">Отредактировать</button>
                   </div>
@@ -200,28 +201,28 @@
 
     <div class="navigation_main">
       <div class="block_nav">
-        <a class="herflinkhov " href="FourHerf.html ">
+        <a class="herflinkhov " href="../FourHerf.html ">
           <div class="profil">
-            <img class="profilImg " src="../img/support.svg" alt="">
+            <img class="profilImg " src="../../img/supportNoAc.svg" alt="">
             <p class="textNav ">Поддержка</p>
 
           </div>
         </a>
-        <a class="herflinkhov " href="FirstHerf.html">
+        <a class="herflinkhov " href="../FirstHerf.html">
           <div class="profil">
-            <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+            <img class="profilImg " src="../../img/homeNoAc.svg" alt="">
             <p class="textNav noac">Главная</p>
           </div>
         </a>
         <a class="herflinkhov " href="ThridHerf.html">
           <div class="profil">
-            <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+            <img class="profilImg " src="../../img/cricle.svg" alt="">
             <p class="textNav noac">Кружки</p>
           </div>
         </a>
-        <a class="herflinkhov " href="Profil.html">
+        <a class="herflinkhov " href="../Profil.html">
           <div class="profil">
-            <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+            <img class="profilImg " src="../../img/ProfilNoAc.svg" alt="">
             <p class="textNav noac">Кабинет</p>
           </div>
         </a>
@@ -236,7 +237,7 @@
   <footer></footer>
   <script>
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -248,7 +249,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src="../../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {
@@ -381,6 +382,13 @@
     }
 
 
+    const menu = document.querySelector('.navigationlich');
+    const openMenuBtn = document.getElementById('menuButton');
+
+    // При клике на кнопку открываем/закрываем меню
+    openMenuBtn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
 
     window.onload = () => {
       imguser();

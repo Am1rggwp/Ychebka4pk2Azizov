@@ -20,7 +20,7 @@
             <div class="link_head">
                 <div class="maoy">
                     <div class="herfLink paddHead">
-                        <a class="fullver" href="../hiwin.html">
+                        <a class="fullver" href="../../hiwin.html">
                             <div> МАОУ Школа</div>
                             <div>Экодолье</div>
                         </a>
@@ -29,20 +29,23 @@
 
                 </div>
                 <div>
-                    <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+                    <div class="herfLink"><a href="../FirstHerf.html">О нас</a></div>
                 </div>
                 <div>
-                    <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+                    <div class="herfLink"> <a href="../TwelfHerf.html"> Новости</a></div>
                 </div>
                 <div>
-                    <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+                    <div class="herfLink"><a href="../ThridHerf.html"> Кружки</a></div>
                 </div>
                 <div>
-                    <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+                    <div class="herfLink"><a href="../FourHerf.html"> Поддержка</a></div>
                 </div>
-                <div>
-                    <div class="herfLink"><a href="Profil.html" id="UsName"></a></div>
-                </div>
+                <div class="headimg">
+                    <div class="headots">
+                      <div class="userhead" id="headimg"> </div>
+                    </div>
+                    <div class="herfLink "><a href="../Profil.html" id="UsName"> Войти</a></div>
+                  </div>
             </div>
         </div>
     </header>
@@ -95,7 +98,7 @@
                                 </div>
                                 <div class="BtnsCreat">
                                     <div class="PosCreatebtnCircle">
-                                        <a href="CricleVstrechi.html" class="btnBack">Назад</a>
+                                        <a href="CricleVstrechi.html" class="btnBack meetingsbackbtn">Назад</a>
                                     </div>
                                     <div class="BtnsCreated">
                                         <button class="btnCreateMain bntCreateMainAdapt" id="BntMeet">Назначить</button>
@@ -109,34 +112,34 @@
         </div>
         <div class="navigation_main">
             <div class="block_nav">
-                <a class="herflinkhov " href="FourHerf.html ">
+                <a class="herflinkhov " href="../FourHerf.html ">
                     <div class="profil">
-                        <img class="profilImg " src="../img/supportNoAc.svg" alt="">
+                        <img class="profilImg " src="../../img/supportNoAc.svg" alt="">
                         <p class="textNav noac">Поддержка</p>
 
                     </div>
                 </a>
-                <a class="herflinkhov " href="FirstHerf.html">
+                <a class="herflinkhov " href="../FirstHerf.html">
                     <div class="profil">
-                        <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+                        <img class="profilImg " src="../../img/homeNoAc.svg" alt="">
                         <p class="textNav noac">Главная</p>
                     </div>
                 </a>
-                <a class="herflinkhov " href="ThridHerf.html">
+                <a class="herflinkhov " href="../ThridHerf.html">
                     <div class="profil">
-                        <img class="profilImg " src="../img/cricle.svg" alt="">
+                        <img class="profilImg " src="../../img/cricle.svg" alt="">
                         <p class="textNav">Кружки</p>
                     </div>
                 </a>
-                <a class="herflinkhov " href="Profil.html">
+                <a class="herflinkhov " href="../Profil.html">
                     <div class="profil">
-                        <img class="profilImg " src="../img/ProfilNoAc.svg" alt="">
+                        <img class="profilImg " src="../../img/ProfilNoAc.svg" alt="">
                         <p class="textNav noac ">Кабинет</p>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="conbalck"></div>
+
     </section>
     <footer></footer>
     <script>
@@ -212,9 +215,29 @@
             })
             return cookie[name];
         }
-        
-        window.onload = () => {
+        function imguser() {
+            fetch("/imgUserAva"
+            )
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const imghead = document.getElementById('headimg')
+                    imghead.innerHTML = ""
+                    data.forEach(el => {
+                        imghead.innerHTML += `<img class="imghead" src=" ../../${el.PhotoPathUser}" alt="">`
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        }
 
+        window.onload = () => {
+            imguser();
             const loginLinkElement = document.getElementById('UsName');
             loginLinkElement.innerHTML = getCookie('username');
             displaySelectedFiles();

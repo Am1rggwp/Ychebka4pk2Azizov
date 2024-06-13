@@ -47,8 +47,6 @@
 
 .posExitbtn {
     margin: 5% 1% 1% 1%;
-    ;
-    position: absolute;
 }
 
 .posBlockfir {
@@ -107,7 +105,10 @@
 }
 
 .imguserimg {
-    border-radius: 100%;
+    width: 100%;
+    height: auto; 
+    display: block; 
+    border-radius: 50%; 
     object-fit: cover;
 
 }
@@ -130,6 +131,20 @@
     display: flex;
     justify-content: center;
     padding-top: 30px;
+
+}
+.question_herf{
+    color: #0bda51;
+    transition: all .5s;
+}
+.question_herf:hover{
+    color: #09a73d;
+    font-size: 18px;
+}
+.question{
+    padding-top: 20px;
+    height: 30px;
+    width: auto;
 
 }
 
@@ -156,7 +171,6 @@
     }
 
     .btnBack {
-        font-size: 14px;
         padding: 13px 65px;
     }
 
@@ -177,11 +191,84 @@
     .posBlockdata {
         font-size: 14px;
     }
+    .paddBlock{
+        display: block;
+    }
+    .posblockimg{
+        max-width: 50%;
+        margin: 0 auto;
+    }
+    .imgUser{
+        width: 100%;
+        margin: 20px 0 ;
+    }
+    .posBlock, .block{
+        height: auto;
+    }
+    .posExitbtn {
+        display: flex;
+        justify-content: center;
+        margin: 40px auto;
+    }
+    .otstup_footer {
+        height: 80px;
+    }
+    .profilBlock {
+        height: auto;
+    }
+    
 
 
 }
 
 @media screen and (max-width: 508px) {
+    .userphoto{
+        font-size: 14px;
+        padding: 7px;
+        text-align: center;
+    }
+    .bntCreateMainAdapt{
+        font-size: 14px;
+    }
+    
+    
+    .imguserkab {
+        height: 200px;
+        width: 200px;
+    }
+    .intbtn{
+        font-size: 14px;
+    }
+    .intbtn {
+        font-size: 14px;
+    }
+
+    .golovok {
+        font-size: 18px;
+    }
+    .posBlockdata{
+        font-size: 14px;
+    }
+    .btnBack {
+        padding: 10px 45px;
+        font-size: 14px;
+    }
+    .profilBlock{
+        height: 80%;
+    }
+    .contenerbnt{
+        width: 100%;
+    }
+    .golovok{
+        text-align: center;
+    }
+    .posblockimg {
+        max-width: 100%;
+    }
+    
+
+}
+@media (max-width:365px) {
     .userphoto{
         font-size: 12px;
         padding: 7px;
@@ -189,50 +276,21 @@
     }
 
     .imguserkab {
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
     }
     .intbtn{
         font-size: 12px;
     }
     .intbtn {
         font-size: 12px;
-    }
-
-    .golovok {
-        font-size: 18px;
-    }
-    .posBlockdata{
-        font-size: 12px;
-    }
-    .btnBack {
-        padding: 8px 19px;
-        font-size: 12px;
-    }
-
-}
-@media (max-width:365px) {
-    .userphoto{
-        font-size: 10px;
-        padding: 2px;
-        text-align: center;
-    }
-
-    .imguserkab {
-        height: 50px;
-        width: 50px;
-    }
-    .intbtn{
-        font-size: 10px;
-    }
-    .intbtn {
-        font-size: 10px;
     }
 
     .golovok {
         font-size: 14px;
     }
     .posBlockdata{
-        font-size: 10px;
+        font-size: 12px;
     }
+    
 }

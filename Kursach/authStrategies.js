@@ -1,4 +1,6 @@
 import { sql } from './db.js';
+import bcrypt  from "bcrypt";
+import { generateAccessToken } from './utils/generateToken.js';
  
 
 class AuthStrategy {
@@ -20,42 +22,58 @@ class MultiAuthStrategy {
       try {
         const result = await strategy.authenticate(credentials);
         if (result) {
-          return result;
+          const token = generateAccessToken(result.id, result.role);
+          return { token, user: result };
         }
       } catch (error) {
         console.error(`Ошибка при аутентификации с использованием: ${strategy.constructor.name}: ${error.message}`);
       }
     }
     return 'Неверные учетные данные';
+
   }
 }
 
 const authenticateByLogin = async (credentials) => {
   const input = credentials.input;
   const password = credentials.password;
-  const result = await sql`SELECT * FROM users WHERE FIO = ${input} AND PasswordHash = ${password}`;
-  return result[0]
-  
+  const result = await sql`SELECT * FROM users where FIO = ${input}`;
+  if (result.length > 0) {
+    const user = result[0];
+    const passwordMatch = await bcrypt.compare(password, user.passwordhash); // Асинхронная функция
+    if (passwordMatch) {
+      return user;
+    }
+  }
+  return null;
 };
 
 const authenticateByEmail = async (credentials) => {
   const input = credentials.input;
   const password = credentials.password;
-  const result = await sql`SELECT * FROM users WHERE email = ${input} AND PasswordHash = ${password}`;
-  return result[0]
-  
-
+  const result = await sql`SELECT * FROM users where email = ${input}`;
+  if (result.length > 0) {
+    const user = result[0];
+    const passwordMatch = await bcrypt.compare(password, user.passwordhash); // Асинхронная функция
+    if (passwordMatch) {
+      return user;
+    }
+  }
+  return null;
 };
 
 const authenticateByPhoneNumber = async (credentials) => {
   const input = credentials.input;
   const password = credentials.password;
-  const result = await sql`SELECT * FROM users WHERE tel = ${input} AND PasswordHash = ${password}`;
-  return result[0]
-  
-  
- 
-
+  const result = await sql`SELECT * FROM users where tel = ${input}`;
+  if (result.length > 0) {
+    const user = result[0];
+    const passwordMatch = await bcrypt.compare(password, user.passwordhash); // Асинхронная функция
+    if (passwordMatch) {
+      return user;
+    }
+  }
+  return null;
 };
 
 
@@ -64,6 +82,7 @@ const multiAuthStrategy = new MultiAuthStrategy([
   new AuthStrategy(authenticateByEmail),
   new AuthStrategy(authenticateByPhoneNumber),
   new AuthStrategy(authenticateByLogin),
+  
 ]);
 
 

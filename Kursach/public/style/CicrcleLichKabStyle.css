@@ -1,58 +1,67 @@
-.hedlichcr{
+.hedlichcr {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
 }
 
-.paddcriclekab{
-    padding: 3% 3% 0 0;
+.paddcriclekab {
+    padding: 3% 3% 3% 0;
 }
-.navigationlich{
+
+.navigationlich {
     width: 350px;
     height: 92.5%;
 }
-.polegreen{
+
+.polegreen {
     width: 100%;
     height: 100%;
-    background: #03c03c ;
+    background: #03c03c;
 }
-.stylepanel{
+
+.stylepanel {
     color: #fff;
     font-size: 18px;
 }
-.headpole{
+
+.headpole {
     text-align: center;
     padding: 20px;
 }
-.bntnavlich{
+
+.bntnavlich {
     padding: 20px;
     display: flex;
     justify-content: left;
     transition: .3s all;
 }
-.bntnavlich:hover{
+
+.bntnavlich:hover {
     background: #fff;
     color: #03c03c;
 }
-.blocklich{
-    height: 89vh;
+
+.blocklich {
+    height:90vh;
 }
-.polebnt{
+
+.polebnt {
     width: 100%;
 }
-.otstupbnt{
+
+.otstupbnt {
     padding-top: 20px;
 }
-.setingcircle{
-    width: 294px;
-}
-.setingsnav{
+
+
+.setingsnav {
     padding-top: 27px;
 }
 
 
 .modal {
-    display: none; /* Скрыть модальное окно по умолчанию */
+    display: none;
+    /* Скрыть модальное окно по умолчанию */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -60,10 +69,10 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-  }
-  
-  .modal-content {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
@@ -72,46 +81,51 @@
     width: 30%;
     text-align: center;
     font-size: 18px;
-  }
-  
-  .close {
+}
+
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
-.cobbtndelete{
+}
+
+.cobbtndelete {
     height: 20%;
     display: flex;
-    align-items: flex-end;   
+    align-items: flex-end;
 }
-.deletecircle{
-   width: 100%;
-   text-align: left;
-   padding: 20px;
-   background-color: #03c03c;
-   border: 1px solid #03c03c;
-   color: #fff;
-   font-size: 18px;
-   transition: .3s all;
+
+.deletecircle {
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    background-color: #03c03c;
+    border: 1px solid #03c03c;
+    color: #fff;
+    font-size: 18px;
+    transition: .3s all;
 
 }
-.deletecircle:hover{
+
+.deletecircle:hover {
     background-color: red;
-    border: 1px solid red; 
+    border: 1px solid red;
 
 }
-.conbtndelete{
+
+.conbtndelete {
     padding-top: 15px;
 }
-.bntdelete{
+
+.bntdelete {
     width: 100px;
     height: 30px;
     background-color: #fff;
@@ -121,8 +135,106 @@
     color: #03c03c;
     transition: .5s all;
 }
-.bntdelete:hover{
+
+.bntdelete:hover {
     background-color: #03c03c;
     border: 1px solid #03c03c;
     color: #fff;
+}
+
+@media (max-width:768px) {
+    .navigationlich {
+        position: fixed;
+        top: 175px;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #f4f4f4;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .navigationlich.open .menu-icon {
+        transform: translate(-50%, -50%) rotate(-45deg);
+        height: 4px;
+    }
+    .navigationlich.open{
+        left: 0px;
+    }
+    .blocklich{
+        height: 100%;
+    }
+    
+    .navigationlich.open .menu-icon::before,
+    .navigationlich.open .menu-icon::after {
+        content: '';
+        width: 25px;
+        height: 4px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        transition: transform 0.3s ease;
+    }
+    
+    
+    .menu-button {
+        width: 40px;
+        height: 40px;
+        background-color: #03c03c;
+        position: fixed;
+        top: 175px;
+        left: 0px;
+        cursor: pointer;
+        z-index: 999;
+    }
+    
+    .menu-icon {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s ease;
+    }
+
+    .menu-icon {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s ease;
+    }
+
+    .menu-icon::before {
+        content: '';
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateY(-8px);
+    }
+    
+    .menu-icon::after {
+        content: '';
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateY(8px);
+    }
+    .modal-content{
+        width: auto;
+    }
+   
 }

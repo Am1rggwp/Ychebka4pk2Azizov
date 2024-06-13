@@ -54,7 +54,7 @@
         <div class="textCircle">Создания куржка</div>
         <div class="mainblock createMain">
           <div class="posblockheadmain">
-            <form action="" method="post" onsubmit="FunCreateCricle(event)">
+            <form action="" method="post" onsubmit="return validateForm()">
               <div class="mainFilter CreatCirleWi">
                 <div class="blockfilter paddcreat flex">
                   <div class="QuantityUser paddcreat">
@@ -184,7 +184,7 @@
         </a>
       </div>
     </div>
-    <div class="conbalck"></div>
+
   </section>
   <footer></footer>
   <script>
@@ -212,7 +212,7 @@
         });
     }
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -221,12 +221,10 @@
           return response.json();
         })
         .then(data => {
-          const img = document.getElementById('imgeuserfile')
           const imghead = document.getElementById('headimg')
-          img.innerHTML = ""
+          imghead.innerHTML = ""
           data.forEach(el => {
-            img.innerHTML += `<img class= "imguserimg" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src=" ../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {
@@ -256,13 +254,23 @@
         if (!response.ok) {
           throw new Error(`Network response was not ok. Status: ${response.status}`);
         }
-        window.location.href = 'CircleSucces.html'
+        return response.json();
       })
-
-
-
-
-
+        .then(data => {
+          console.log(data); // Выводим ответ от сервера в консоль
+          window.location.href = data.redirectUrl;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+    function validateForm() {
+      const activeButtons = document.querySelectorAll('.intbtn.active');
+      if (activeButtons.length === 0) {
+        alert('Пожалуйста выберите хотя бы один интерес');
+        return false; // Prevent form submission
+      }
+      FunCreateCricle(event);
     }
 
     const addTo = async (id) => {
@@ -284,7 +292,7 @@
     }
 
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -296,7 +304,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src=" ../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {
@@ -313,9 +321,9 @@
     }
     window.onload = () => {
       const loginLinkElement = document.getElementById('UsName');
-      loginLinkElement.innerHTML = getCookie('username')
-      imguser()
-      getInt()
+      loginLinkElement.innerHTML = getCookie('username');
+      imguser();
+      getInt();
 
       var element3 = document.getElementById('InteresBtn');
       if (role === '1') {

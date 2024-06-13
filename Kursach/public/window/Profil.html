@@ -101,24 +101,25 @@
                             <div class="Userdata padata" id="classUserIDProfil"></div>
                             <div class="contenerbnt" id="InteresBtn" onclick=""></div>
                             <div class="btnOtsup"></div>
+                            <div class="question" id="question">Если вы не знаете какие интересы выбрать, вы можете пройти <a href="./question.html" class="question_herf"> опрос</a></div>
+
                         </div>
+                        
                     </div>
                 </div>
-
                 <div class="posExitbtn">
                     <button onclick="out()" class="btnBack" id="logoutButton">Выйти</button>
                 </div>
-
-
             </div>
         </div>
+        <div class="otstup_footer"></div>
         <div class="navigation_main">
             <div class="block_nav">
                 <a class="herflinkhov " href="FourHerf.html ">
                     <div class="profil">
                         <img class="profilImg " src="../img/supportNoAc.svg" alt="">
                         <p class="textNav noac">Поддержка</p>
-
+    
                     </div>
                 </a>
                 <a class="herflinkhov " href="FirstHerf.html">
@@ -129,10 +130,10 @@
                 </a>
                 <a class="herflinkhov " href="TwelfHerf.html">
                     <div class="profil">
-                      <img class="profilImg " src="../img/newsNoAc.svg" alt="">
-                      <p class="textNav noac">Новости</p>
+                        <img class="profilImg " src="../img/newsNoAc.svg" alt="">
+                        <p class="textNav noac">Новости</p>
                     </div>
-                  </a>
+                </a>
                 <a class="herflinkhov " href="ThridHerf.html">
                     <div class="profil">
                         <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
@@ -147,7 +148,7 @@
                 </a>
             </div>
         </div>
-        <div class="conbalck"></div>
+        
     </section>
 
 
@@ -234,7 +235,7 @@
         
 
         function imguser() {
-            fetch("/imgUser"
+            fetch("/imgUserAva"
             )
                 .then(response => {
                     if (!response.ok) {
@@ -247,8 +248,8 @@
                     const imghead = document.getElementById('headimg')
                     img.innerHTML = ""
                     data.forEach(el => {
-                        img.innerHTML += `<img class= "imguserimg" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
-                        imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+                        img.innerHTML += `<img class= "imguserimg" src="../${el.PhotoPathUser}" alt="">`
+                        imghead.innerHTML += `<img class="imghead" src="../${el.PhotoPathUser}" alt="">`
                     });
                 })
                 .catch(error => {
@@ -269,12 +270,15 @@
                     if (!response.ok) {
                         throw new Error(`Network response was not ok. Status: ${response.status}`);
                     }
-
+                    return response.json();
+                })
+                .then(data => {
+                    window.location.href = data.redirectUrl;
                 })
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error.message);
                 });
-            window.location.reload();
+           
         }
 
         window.onload = () => {
@@ -310,6 +314,7 @@
             var element2 = document.getElementById('interesId');
             var element3 = document.getElementById('InteresBtn');
             var element4 = document.getElementById('schoolhuman');
+            var element5 = document.getElementById('question');
 
             if (role === '1') {
                 if (element) {
@@ -318,6 +323,7 @@
                     element1.style.display = 'none';
                     element2.style.display = 'none';
                     element3.style.display = 'none';
+                    element5.style.display = 'none';
                     element4.innerHTML = 'я';
                 }
             } else {
@@ -326,6 +332,7 @@
                     element1.style.display = 'block';
                     element2.style.display = 'block';
                     element3.style.display = 'block';
+                    element5.style.display = 'block';
                     element4.innerHTML = 'a';
 
                 }

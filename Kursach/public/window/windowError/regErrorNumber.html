@@ -24,93 +24,167 @@
             <h3 class="colorShcool paddReg">МАОУ "Школа Экодолье"</h3>
           </div>
         </div>
-        <form action="/reg.html" method="post">
-          <div id="errorTable" class="error-table">
-            <p>Этот номер уже используется</p>
+        <div class="div_btn_froma">
+          <div class="con_btn_cheter" >
+            <button class="bnt_from_student" id="btnStudens" onclick="formcharge()">Для ученика</button>
           </div>
-          <label for="name">ФИО</label>
-          <input type="text" name="name" id="name" placeholder="фио обучающего"
-            pattern="^[а-яА-ЯёЁ]{2,}(\s[а-яА-ЯёЁ]{2,}){2,}$" required>
+          <div class="con_btn_techer">
+            <button class="bnt_from_techer" id="btnTecher" onclick="formchargecheter()" >Для учителя</button>
 
-          <label for="email">Почта</label>
-          <input type="email" name="email" id="email" placeholder="почта" required>
-
-          <label for="tel">Телефон</label>
-          <input type="tel" name="tel" id="tel" pattern="89\d{9}" required>
-
-          <div class="form-group">
-            <div>
-              <label for="schoolClass" class="form-label" required>Класс</label>
+          </div>
+        </div>
+        <div class="bak_black">
+          <div class="bak_formreg">
+            <div class="error-table">
+              <p>Этот номер уже используется</p>
             </div>
-            <div>
-              <select name="schoolClass" id="schoolClass" class="form-control" required>
-                <optgroup label="1 класс">
-                  <option value="1А">1А</option>
-                  <option value="1Б">1Б</option>
-                  <option value="1В">1В</option>
-                </optgroup>
-                <optgroup label="2 класс">
-                  <option value="2А">2А</option>
-                  <option value="2Б">2Б</option>
-                  <option value="2В">2В</option>
-                </optgroup>
-                <optgroup label="3 класс">
-                  <option value="3А">3А</option>
-                  <option value="3Б">3Б</option>
-                  <option value="3В">3В</option>
-                </optgroup>
-                <optgroup label="4 класс">
-                  <option value="4А">4А</option>
-                  <option value="4Б">4Б</option>
-                  <option value="4В">4В</option>
-                </optgroup>
-                <optgroup label="5 класс">
-                  <option value="5А">5А</option>
-                  <option value="5Б">5Б</option>
-                  <option value="5В">5В</option>
-                </optgroup>
-                <optgroup label="6 класс">
-                  <option value="6А">6А</option>
-                  <option value="6Б">6Б</option>
-                  <option value="6В">6В</option>
-                </optgroup>
-                <optgroup label="7 класс">
-                  <option value="7А">7А</option>
-                  <option value="7Б">7Б</option>
-                  <option value="7В">7В</option>
-                </optgroup>
-                <optgroup label="8 класс">
-                  <option value="8А">8А</option>
-                  <option value="8Б">8Б</option>
-                  <option value="8В">8В</option>
-                </optgroup>
-                <optgroup label="9 класс">
-                  <option value="9А">9А</option>
-                  <option value="9Б">9Б</option>
-                  <option value="9В">9В</option>
-                </optgroup>
-              </select>
-            </div>
+            <form action="/reg.html" method="post">
+              <label for="name">ФИО</label>
+              <input type="text" name="name" id="name" placeholder="Иванов Иван Инванович"
+                pattern="^[а-яА-ЯёЁ]{2,}(\s[а-яА-ЯёЁ]{2,}){2,}$" required>
 
+              <label for="email">Почта</label>
+              <input type="email" name="email" id="email" placeholder="почта@" required>
+
+              <label for="tel">Телефон</label><label class="primer">(89222093284)</label>
+              <input type="tel" name="tel" id="tel" pattern="89\d{9}" placeholder="89*********" required maxlength="11">
+
+              <div class="form-group" id="class">
+                <div>
+                  <label for="schoolClass" class="form-label" required>Класс</label>
+                </div>
+                <div>
+                  <select name="schoolClass" id="schoolClass" class="form-control" required>
+                    <option>-</option>
+                    <optgroup label="1 класс">
+                      <option value="1А">1А</option>
+                      <option value="1Б">1Б</option>
+                      <option value="1В">1В</option>
+                    </optgroup>
+                    <optgroup label="2 класс">
+                      <option value="2А">2А</option>
+                      <option value="2Б">2Б</option>
+                      <option value="2В">2В</option>
+                    </optgroup>
+                    <optgroup label="3 класс">
+                      <option value="3А">3А</option>
+                      <option value="3Б">3Б</option>
+                      <option value="3В">3В</option>
+                    </optgroup>
+                    <optgroup label="4 класс">
+                      <option value="4А">4А</option>
+                      <option value="4Б">4Б</option>
+                      <option value="4В">4В</option>
+                    </optgroup>
+                    <optgroup label="5 класс">
+                      <option value="5А">5А</option>
+                      <option value="5Б">5Б</option>
+                      <option value="5В">5В</option>
+                    </optgroup>
+                    <optgroup label="6 класс">
+                      <option value="6А">6А</option>
+                      <option value="6Б">6Б</option>
+                      <option value="6В">6В</option>
+                    </optgroup>
+                    <optgroup label="7 класс">
+                      <option value="7А">7А</option>
+                      <option value="7Б">7Б</option>
+                      <option value="7В">7В</option>
+                    </optgroup>
+                    <optgroup label="8 класс">
+                      <option value="8А">8А</option>
+                      <option value="8Б">8Б</option>
+                      <option value="8В">8В</option>
+                    </optgroup>
+                    <optgroup label="9 класс">
+                      <option value="9А">9А</option>
+                      <option value="9Б">9Б</option>
+                      <option value="9В">9В</option>
+                    </optgroup>
+                  </select>
+                </div>
+
+              </div>
+
+              <label for="password">Пароль</label>
+
+              <input type="password" name="password" id="password"
+                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
+
+              <div id="con_key">
+                <label for="password">Секретный ключ для учителей</label>
+                <input type="text" name="key" id="key" placeholder="rkVib************************">
+              </div>
+
+              <div id="form-controls">
+                <button type="submit">Зарегистрироватся</button>
+                <button class="btnLog" type="button" id="toggleSignIn"> <a href="../../Index.html">Войти</a></button>
+              </div>
           </div>
-
-          <label for="password">Пароль</label>
-
-          <input type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-            required>
-
-          <div id="form-controls">
-            <button type="submit">Зарегистрироватся</button>
-            <button class="btnLog" type="button" id="toggleSignIn"> <a href="../../Index.html">Войти</a></button>
+          <div id="animation-container">
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_aesgckiv.json" background="transparent"
+              speed="1" style="width: 520px; height: 520px;" loop autoplay></lottie-player>
           </div>
-      </div>
-      <!-- Lottie animation -->
-      <div id="animation-container">
-        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_aesgckiv.json" background="transparent"
-          speed="1" style="width: 520px; height: 520px;" loop autoplay></lottie-player>
+        </div>
       </div>
     </div>
   </div>
 </body>
 
 </html>
+<script>
+  function formcharge() {
+    const key = document.getElementById("con_key");
+    key.style.display = "none";
+    const classUse = document.getElementById("class");
+    classUse.style.display = "block";
+
+
+    const bntsrudens = document.getElementById("btnStudens");
+    bntsrudens.style.color = "#fff";
+    bntsrudens.style.border = "2px solid #b6b9c2";
+    bntsrudens.style.background = "#b6b9c2";
+
+    const btnTecher= document.getElementById("btnTecher");
+    btnTecher.style.color = "#0bda51";
+    btnTecher.style.border = "2px solid #fff";
+    btnTecher.style.background = "#fff";
+    
+
+
+  }
+  function formchargecheter() {
+    const key = document.getElementById("con_key");
+    key.style.display = "block";
+    const classUse = document.getElementById("class");
+    classUse.style.display = "none";
+    
+    const bntsrudens = document.getElementById("btnStudens");
+    bntsrudens.style.color = "#0bda51";
+    bntsrudens.style.border = "2px solid #fff";
+    bntsrudens.style.background = "#fff";
+
+    const btnTecher= document.getElementById("btnTecher");
+    btnTecher.style.color = "#fff";
+    btnTecher.style.border = "2px solid #b6b9c2";
+    btnTecher.style.background = "#b6b9c2";
+
+
+  }
+  window.onload = () => {
+    const btn = document.getElementsByClassName("bnt_from_student")[0];
+
+    const color = window.getComputedStyle(btn).backgroundColor
+    console.log(color);
+    if (color === "rgb(182, 185, 194)") {
+      const key = document.getElementById("con_key");
+      key.style.display = "none";
+    } else {
+      const key = document.getElementById("con_key");
+      key.style.display = "block";
+      const classUse = document.getElementById("class");
+      classUse.style.display = "none";
+    }
+
+  }
+</script>

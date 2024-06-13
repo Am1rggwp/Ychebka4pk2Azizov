@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../allStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <div class="link_head">
+                <div class="maoy">
+                    <div class="herfLink paddHead">
+                        <a class="fullver" href="./hiwin.html">
+                            <div> МАОУ Школа</div>
+                            <div>Экодолье</div>
+                        </a>
+                        <div class="mobtitle">Личный кабинет</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="herfLink"><a href="FirstHerf.html">О нас</a></div>
+                </div>
+                <div>
+                    <div class="herfLink"> <a href="TwelfHerf.html"> Новости</a></div>
+                </div>
+                <div>
+                    <div class="herfLink"><a href="ThridHerf.html"> Кружки</a></div>
+                </div>
+                <div>
+                    <div class="herfLink"><a href="FourHerf.html"> Поддержка</a></div>
+                </div>
+                <div class="headimg">
+                    <div class="headots">
+                        <div class="userhead" id="headimg"> </div>
+                    </div>
+                    <div class="herfLink "><a href="Profil.html" id="UsName"> Войти</a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="posBlockfir blockQuestion">
+            <div class="block question_block">
+                <div class="qusetion_mar">
+                    <div class="question_zagolovok">
+                        Тест на определение личных интересов
+                    </div>
+                    <form action="" method="post" onsubmit="questionSend(event)">
+                        <div class="block_question">
+                            <div class="qusetion_con">
+                                <div class="qusetLink">
+                                    1. Как бы вы предпочли провести вечер пятницы?
+                                </div>
+                                <div class="qustion_answer">
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_a_one" name="question_one"
+                                            value="a" required>
+                                        <label for="answer_a_one" class="stulenumberfilter">a) Пойти на спортивное
+                                            мероприятие или в спортзал.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_b_one" name="question_one"
+                                            value="b" required>
+                                        <label for="answer_b_one" class="stulenumberfilter">б) Посетить концерт или
+                                            слушать музыку дома.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_c_one" name="question_one"
+                                            value="c" required>
+                                        <label for="answer_c_one" class="stulenumberfilter">в) Планировать будущее
+                                            путешествие или смотреть документальный фильм о путешествиях.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qusetion_con">
+                                <div class="qusetLink">
+                                    2. Что бы вы выбрали в свободное время?
+                                </div>
+                                <div class="qustion_answer">
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_a_two" name="question_two"
+                                            value="a" required>
+                                        <label for="answer_a_two" class="stulenumberfilter">a) Готовить новое блюдо или
+                                            испечь что-то вкусное.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_b_two" name="question_two"
+                                            value="b" required>
+                                        <label for="answer_b_two" class="stulenumberfilter">б) Читать книгу или посещать
+                                            литературные встречи.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_c_two" name="question_two"
+                                            value="c" required>
+                                        <label for="answer_c_two" class="stulenumberfilter">в) Играть в видеоигры или
+                                            настольные игры.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qusetion_con">
+                                <div class="qusetLink">
+                                    3. Какое из этих занятий вам больше всего нравится?
+                                </div>
+                                <div class="qustion_answer">
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_a_three"
+                                            name="question_three" value="a" required>
+                                        <label for="answer_a_three" class="stulenumberfilter">a) Делать фотографии на
+                                            природе или в городе.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_b_three"
+                                            name="question_three" value="b" required>
+                                        <label for="answer_b_three" class="stulenumberfilter">б) Посещать художественные
+                                            выставки или заниматься рисованием.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_c_three"
+                                            name="question_three" value="c" required>
+                                        <label for="answer_c_three" class="stulenumberfilter">в) Ходить на танцевальные
+                                            уроки или танцевальные мероприятия.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qusetion_con">
+                                <div class="qusetLink">
+                                    4. Как вы предпочитаете проводить свободное время?
+                                </div>
+                                <div class="qustion_answer">
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_a_four"
+                                            name="question_four" value="a" required>
+                                        <label for="answer_a_four" class="stulenumberfilter">a) Программировать или
+                                            изучать новый язык программирования.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_b_four"
+                                            name="question_four" value="b" required>
+                                        <label for="answer_b_four" class="stulenumberfilter">б) Участвовать в спортивных
+                                            соревнованиях или тренировках.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_c_four"
+                                            name="question_four" value="c" required>
+                                        <label for="answer_c_four" class="stulenumberfilter">в) Готовить что-то новое и
+                                            экспериментировать на кухне.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qusetion_con">
+                                <div class="qusetLink">
+                                    5. Что больше всего привлекает ваше внимание при обсуждениях с друзьями?
+                                </div>
+                                <div class="qustion_answer">
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_a_five"
+                                            name="question_five" value="a" required>
+                                        <label for="answer_a_five" class="stulenumberfilter">a) Новые музыкальные
+                                            альбомы и любимые исполнители.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_b_five"
+                                            name="question_five" value="b" required>
+                                        <label for="answer_b_five" class="stulenumberfilter">б) Места, которые вы хотите
+                                            посетить и путешествия.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_c_five"
+                                            name="question_five" value="c" required>
+                                        <label for="answer_c_five" class="stulenumberfilter">в) Интересные книги и
+                                            литературные новинки.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qusetion_con">
+                                <div class="qusetLink">
+                                    6. Какое занятие приносит вам наибольшее удовлетворение?
+                                </div>
+                                <div class="qustion_answer">
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_a_six" name="question_six"
+                                            value="a" required>
+                                        <label for="answer_a_six" class="stulenumberfilter">a) Танцевать или участвовать
+                                            в танцевальных мероприятиях.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_b_six" name="question_six"
+                                            value="b" required>
+                                        <label for="answer_b_six" class="stulenumberfilter">б) Делать фотографии и
+                                            редактировать их.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_c_six" name="question_six"
+                                            value="c" required>
+                                        <label for="answer_c_six" class="stulenumberfilter">в) Играть в видеоигры или
+                                            участвовать в игровых соревнованиях.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qusetion_con">
+                                <div class="qusetLink">
+                                    7. Какая цель наиболее привлекательна для вас в будущем?
+                                </div>
+                                <div class="qustion_answer">
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_a_seven"
+                                            name="question_seven" value="a" required>
+                                        <label for="answer_a_seven" class="stulenumberfilter">a) Создать собственное
+                                            музыкальное произведение или научиться играть на новом инструменте.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_b_seven"
+                                            name="question_seven" value="b" required>
+                                        <label for="answer_b_seven" class="stulenumberfilter">б) Посетить все континенты
+                                            и исследовать различные культуры.</label>
+                                    </div>
+                                    <div class="block_answer">
+                                        <input class="radioquestion" type="radio" id="answer_c_seven"
+                                            name="question_seven" value="c" required>
+                                        <label for="answer_c_seven" class="stulenumberfilter">в) Разработать собственное
+                                            программное приложение или игру.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bnt_question">
+                                <div class="con_btnBack qusetion_bakc"><a href="Profil.html" class="btnBack">Назад</a></div>
+                                <div class="bnt_send"><button class="bntsend">Отправить</button></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="otstup_footer"></div>
+        <div class="navigation_main">
+            <div class="block_nav">
+                <a class="herflinkhov " href="FourHerf.html ">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/supportNoAc.svg" alt="">
+                        <p class="textNav noac">Поддержка</p>
+
+                    </div>
+                </a>
+                <a class="herflinkhov " href="FirstHerf.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/homeNoAc.svg" alt="">
+                        <p class="textNav noac">Главная</p>
+                    </div>
+                </a>
+                <a class="herflinkhov " href="TwelfHerf.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/newsNoAc.svg" alt="">
+                        <p class="textNav noac">Новости</p>
+                    </div>
+                </a>
+                <a class="herflinkhov " href="ThridHerf.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
+                        <p class="textNav noac">Кружки</p>
+                    </div>
+                </a>
+                <a class="herflinkhov " href="Profil.html">
+                    <div class="profil">
+                        <img class="profilImg " src="../img/Profil.svg" alt="">
+                        <p class="textNav ">Кабинет</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <script>
+
+        function getCookie(name) {
+            let cookie = {};
+            document.cookie.split(';').forEach(function (el) {
+                let split = el.split('=');
+                cookie[split[0].trim()] = decodeURIComponent(split.slice(1).join("="));
+            })
+            return cookie[name];
+        }
+
+        function questionSend(event) {
+            event.preventDefault();
+
+            var checkedInputs = document.querySelectorAll("input:checked");
+            var counts = {
+                a: 0,
+                b: 0,
+                c: 0
+            };  
+
+            checkedInputs.forEach(function (input) {
+                counts[input.value]++;
+            });
+
+            fetch('/sendAnswer', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(counts)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return new Error(response.status)
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data); // Выводим ответ от сервера в консоль
+                    window.location.href = data.redirectUrl;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+
+        function imguser() {
+            fetch("/imgUserAva"
+            )
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const imghead = document.getElementById('headimg')
+
+                    data.forEach(el => {
+                        imghead.innerHTML += `<img class="imghead" src="../${el.PhotoPathUser}" alt="">`
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        }
+
+        window.onload = () => {
+            // getnamecricle();
+            imguser()
+            const loginLinkElement = document.getElementById('UsName');
+            loginLinkElement.innerHTML = getCookie('username')
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>

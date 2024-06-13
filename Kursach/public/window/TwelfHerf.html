@@ -61,7 +61,6 @@
         </div>
         <div class="MainPostBlock">
           <div class="posheadBlock">
-            <!-- <img class = "imgnews" src="http://192.168.0.108:8189/Kursach/public/uploads/1711544463823.jpg" alt=""> -->
             <div class="blocks" id="news">
 
 
@@ -107,7 +106,7 @@
         </a>
       </div>
     </div>
-    <div class="conbalck"></div>
+    
   </section>
   <footer></footer>
   <div id="myModal" class="modal">
@@ -118,7 +117,7 @@
   
   <script>
     function imguser() {
-            fetch("/imgUser"
+            fetch("/imgUserAva"
             )
                 .then(response => {
                     if (!response.ok) {
@@ -130,7 +129,7 @@
                     const imghead = document.getElementById('headimg')
                     imghead.innerHTML = ""
                     data.forEach(el => {
-                        imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+                        imghead.innerHTML += `<img class="imghead" src="../${el.PhotoPathUser}" alt="">`
                     });
                 })
                 .catch(error => {
@@ -159,14 +158,14 @@
               // Если да, добавляем фотку к предыдущему блоку
               const poleblock = btn.lastElementChild;
               const imgContainer = poleblock.querySelector('.images');
-              imgContainer.innerHTML += `<img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">`;
+              imgContainer.innerHTML += `<img class="imgnews" src="../${el.photopath}" alt="">`;
             } else {
               // В противном случае, создаем новый блок
               btn.innerHTML += `
                 <div class="poleblock">
                   <div class ="whos">
                     <div class="blockImg">
-                      <img class="imguser" src="http://192.168.0.108:8189/${el.photopathuser}" alt="">
+                      <img class="imguser" src="../${el.photopathuser}" alt="">
                     </div>
                     <div class = "blocknews">
                       <div class ="content">${el.FIO}</div> 
@@ -179,7 +178,7 @@
                     </div>
                     
                     <div class="images">
-                        <img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">
+                        <img class="imgnews" src="../${el.photopath}" alt="">
                     </div>
                 </div>`;
             }

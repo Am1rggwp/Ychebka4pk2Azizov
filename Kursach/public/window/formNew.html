@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="BtnsCreat">
                                     <div class="PosCreatebtnCircle">
-                                        <a href="TwelfHerf.html" class="btnBack">Назад</a>
+                                        <a href="TwelfHerf.html" class="btnBack backadap">Назад</a>
                                     </div>
                                     <div class="BtnsCreated">
                                         <button class="btnCreateMain bntCreateMainAdapt"
@@ -128,7 +128,7 @@
                   </a>
                 <a class="herflinkhov " href="ThridHerf.html">
                     <div class="profil">
-                        <img class="profilImg " src="../img/cricle.svg" alt="">
+                        <img class="profilImg " src="../img/cricleNoAc.svg" alt="">
                         <p class="textNav noac">Кружки</p>
                     </div>
                 </a>
@@ -140,7 +140,7 @@
                 </a>
             </div>
         </div>
-        <div class="conbalck"></div>
+        
     </section>
     <footer></footer>
     <script>
@@ -204,7 +204,7 @@
             })
                 .then(data => {
                     console.log(data); // Выводим ответ от сервера в консоль
-                    window.location.href = 'TwelfHerf.html';
+                    window.location.href = data.redirectUrl;
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -220,7 +220,7 @@
             return cookie[name];
         }
         function imguser() {
-            fetch("/imgUser"
+            fetch("/imgUserAva"
             )
                 .then(response => {
                     if (!response.ok) {
@@ -232,7 +232,7 @@
                     const imghead = document.getElementById('headimg')
                     imghead.innerHTML = ""
                     data.forEach(el => {
-                        imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+                        imghead.innerHTML += `<img class="imghead" src=" ../${el.PhotoPathUser}" alt="">`
                     });
                 })
                 .catch(error => {
@@ -248,9 +248,9 @@
 
             const publishButton = document.getElementById('publishButton');
 
-            publishButton.addEventListener('click', () => {
-                window.location.href = './TwelfHerf.html';
-            });
+            // publishButton.addEventListener('click', () => {
+            //     window.location.href = '';
+            // });
 
         }
     </script>

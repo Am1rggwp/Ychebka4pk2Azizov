@@ -112,3 +112,54 @@
 .ots{
     padding-top: 20px;
 }
+
+
+@media (max-width:1205px) {
+    
+    .conForm{
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 40px;
+    }
+    .polephoto{
+        width: 100%;
+    }
+    .imguserkab{
+        width: 300px;
+        height: 300px;
+    }
+    .posform{
+        padding-top: 35px;
+    }
+
+}
+@media (max-width:1024px) {
+    .navigationlich{
+        padding-top: 35px;
+    }
+}
+@media (max-width:936px) {
+    .imguserkab{
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width:768px) {
+    .imguserkab{
+        width: 200px;
+        height: 200px;
+    }
+    .navigationlich{
+        padding-top: 0;
+    }
+    .conForm{
+        margin: 0 auto;
+    }
+
+
+
+
+}
+
+

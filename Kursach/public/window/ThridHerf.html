@@ -51,7 +51,7 @@
   <section>
     <div class="posBlockfir">
       <div class="block relev">
-        <div class="textCircle">Найти свой круг общения! <br> Если нет то создай, в чем проблема?</div>
+        <div class="textCircle">Основываясь на своих интересах, <br> найди свой кружок!</div>
         <div class="mainblock">
           <div class="posblockheadmain">
             <form class="displayF" onsubmit="ok()">
@@ -119,34 +119,29 @@
                             </div>
                           </div>
                           <div class="positionbntfilter">
-                            <button class="btnfilterCricle" type="button" onclick="getInt()">
-                              <div class="ablostBtn"> <span class="">Применит</span></div>
+                            <button class="btnfilterCricle" id="btnSerchAdap" type="button" onclick="getInt()">
+                              <div class="ablostBtn"> <span class="">Применить</span></div>
                             </button>
                           </div>
                         </div>
-                        <div id="nonecirclebnt" >
-                          <div class="Filteraccept"> 
-                            <a class="bntcieclelich"href="CricleLichKab.html"> Перейти в <div for="" id="namecirclebnt"></div></a> 
-                            </div>
+                        <div id="nonecirclebnt">
+                          <div class="Filteraccept">
+                            <a class="bntcieclelich" href="CricleLichKab.html"> Перейти в <div for=""
+                                id="namecirclebnt"></div></a>
+                          </div>
                           <div class="flexcent"></div>
                         </div>
                         <div class="posbntcreatecircle">
                           <div class="CreatCirle" id="bntcreate">
-                            <a class="btnSucMain" href="CreateCircle.html">Создать</a>
+                            <a class="btnSucMain circlestylebtn" href="CreateCircle.html">Создать</a>
                           </div>
-                        </div>
-
-                        <div class="cenAdapt">
-                          <button class="btnSerch btnSerchAdap" type="button" onclick="getInt()">
-                            <div class="ablostBtn"> <span class="contentbtn bntAcceptAdapt">Применить</span></div>
-                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="CreatCirleApap">
-                  <a class="btnSucMainApap"  href="CreateCircle.html">Создать</a>
+                <div class="CreatCirleApap" id="creatCircle">
+                  <a class="btnSucMainApap " href="CreateCircle.html">Создать</a>
                 </div>
 
               </div>
@@ -175,8 +170,10 @@
     </div>
 
     </div>
+    <div class="otstup_footer"></div>
 
   </section>
+
   <div class="navigation_main">
     <div class="block_nav">
       <a class="herflinkhov " href="FourHerf.html ">
@@ -212,9 +209,13 @@
       </a>
     </div>
   </div>
-  <div class="conbalck"></div>
-  <footer>
 
+  <footer>
+    <div id="customAlert" class="modalalert">
+      <div class="modal-contentalert">
+        <p id="alertMessage"></p>
+      </div>
+    </div>
   </footer>
 </body>
 
@@ -231,6 +232,24 @@
     })
     return cookie[name];
   }
+  function showAlert(message) {
+    const modal = document.getElementById('customAlert');
+    const alertMessage = document.getElementById('alertMessage');
+    alertMessage.textContent = message;
+    modal.style.display = 'block';
+
+    window.onclick = function (event) {
+      const modal = document.getElementById('customAlert');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    };
+  }
+
+
+
+
+
 
   const select = document.getElementById("schoolClass")
   const serch = document.getElementById("serch")
@@ -245,7 +264,7 @@
     }
   }
   function imguser() {
-    fetch("/imgUser"
+    fetch("/imgUserAva"
     )
       .then(response => {
         if (!response.ok) {
@@ -257,7 +276,7 @@
         const imghead = document.getElementById('headimg')
         imghead.innerHTML = ""
         data.forEach(el => {
-          imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+          imghead.innerHTML += `<img class="imghead" src=" ../${el.PhotoPathUser}" alt="">`
         });
       })
       .catch(error => {
@@ -271,6 +290,7 @@
       })
         .then(data => {
           getInt()
+          location.reload();
         })
     } else {
       fetch('/joincricle', {
@@ -283,11 +303,24 @@
           id: id,
         })
       })
-        .then(data => {
-          getInt()
+        .then(response => {
+          if (!response.ok) {
+            return response.json().then(error => {
+              showAlert(error.error)
+              throw new Error('Произошла ошибка на сервере.');
+            });
+          }
+          return response.json();
         })
+        .then(data => {
+          // Обработка успешного ответа от сервера
+          location.reload();
+        })
+        .catch(error => {
+          console.error('Произошла ошибка:', error);
+        });
     }
-    location.reload();
+
   }
 
 
@@ -319,19 +352,22 @@
                                     <div class="blockcirle">
                                     <div class = "flexCriclebtn ">
                                       <div class = "posconimgcircle">
-                                        <div class = "imgcirclecon"><img class ="imgcircle"src="http://192.168.0.108:8189/${el.photopath}" alt=""></div>
+                                        <div class = "imgcirclecon"><img class ="imgcircle"src="../${el.photopath}" alt=""></div>
                                       </div>
                                       <div class= "cocntetnCricle">
                                         <div class= "StyleTetxCircle">${el.namecricel}</div>
-                                        <div class= "StyleTetxCircle linkstulecircle">Максимальное количсетво участников: ${el.quantityuser}</div>
+                                        <div class= "StyleTetxCircle linkstulecircle">Максимальное количество участников: ${el.quantityuser}/${el.userCount} </div>
                                         <div class= "StyleTetxCircle linkstulecircle">Для учеников ${el.userclass}-x классов</div>
                                       </div>
                                       <div class="posbtncricle" >
-                                          <a id="goToBtn-${el.cricleid}" style="display: ${el.cricleid == getCookie("idcircle") ? "inline" : "none"};" class="Joinbtn hefrcricle" href="./CricleLichKab.html">Перейти</a>
-                                          <div class = "btnjoincircle" style = "display: ${getCookie("creator") == getCookie("idcircle") &&  getCookie("role") == "1" ? "none":"block" }";>
+                                          <div class = "con_herf_lich">
+                                            <a id="goToBtn-${el.cricleid}" style="display: ${el.cricleid == getCookie("idcircle") ? "inline" : "none"};" class="Joinbtn hefrcricle" href="./CricleLichKab.html">Перейти</a>
+                                          </div>
+                                          <div class = "btnjoincircle" style = "display: ${getCookie("creator") == getCookie("idcircle") && getCookie("role") == "1" ? "none" : "block"}";>
                                             <button id="bntjoin" onclick="Joinbtn(${el.cricleid})" class="Joinbtn" style="${el.cricleid == getCookie("idcircle") ? "background-color: red" : "background-color: #0bda51"};" type="button">${el.cricleid == getCookie("idcircle") ? "Выйти" : "Вступить"}</button>
                                           </div>
                                       </div>
+                                      <div id="error-message" style="display: none; color: red;">Группа переполнена</div>
                                     </div>
                                   </div>`
         });
@@ -367,7 +403,7 @@
   });
   document.addEventListener('DOMContentLoaded', function () {
     const filterPanel = document.querySelector('.filterPanel');
-    const btnSerchAdap = document.querySelector('.btnSerchAdap');
+    const btnSerchAdap = document.getElementById('btnSerchAdap');
 
     btnSerchAdap.addEventListener('click', function () {
       filterPanel.classList.toggle('active');
@@ -386,8 +422,8 @@
     var creator = getCookie('creator');
     var idcircle = getCookie('idcircle');
     var bntcircle = document.getElementById('nonecirclebnt');
-    
-    if (idcircle ===  "j:null") {
+
+    if (idcircle === "j:null") {
       bntcircle.style.display = 'none';
     } else {
       bntcircle.style.display = 'block';
@@ -396,18 +432,22 @@
     var creator = getCookie('creator');
     var role = getCookie('role');
 
-    var element = document.getElementById('bntcreate'); 
+    var element = document.getElementById('bntcreate');
     var element1 = document.getElementById('classuserselect');
-    var element2 = document.getElementById('posbtncricle');
+    var element3 = document.getElementById('creatCircle');
 
-
-    if (role === '2'|| creator !==  "j:null" ) {
+    const filterPanel = document.querySelector('.filterPanel');
+    filterPanel.classList.remove('active');
+    if (role === '2' || creator !== "j:null") {
       element.style.display = 'none';
       element1.style.display = 'none';
+      element3.style.display = 'none';
     }
     else {
       element.style.display = 'block';
       element1.style.display = 'block';
+      element3.style.display = 'block';
+
     }
 
 

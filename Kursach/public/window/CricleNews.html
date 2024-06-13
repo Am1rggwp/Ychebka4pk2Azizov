@@ -56,6 +56,9 @@
       </div>
       <div class="flexConsec">
         <div class="navigationlich newslist">
+          <div class="menu-button" id="menuButton">
+            <div class="menu-icon"></div>
+          </div>
           <div class="polegreen">
             <div class="stylepanel headpole">Наивгационная панель</div>
             <div class="otstupbnt">
@@ -66,6 +69,8 @@
                   кружка</a></div>
               <div class="stylepanel polebnt"><a class="bntnavlich" href="./windowCricle/CricleVstrechi.html">Следующие
                   встречи</a></div>
+              <div class="stylepanel polebnt"><a class="bntnavlich"
+                  href="./windowCricle/CricleStudents.html">Участники</a></div>
               <div id="setings" class="stylepanel polebnt"><a class="bntnavlich"
                   href="./windowCricle/SettingsCircle.html">Настройки
                   кружка</a></div>
@@ -86,17 +91,13 @@
           </div>
         </div>
         <div class="conpolenews">
-          <div class="polebg">
-            <div id="news"></div>
-          </div>
-        </div>
-        <div class="conbntnews">
           <div class="padotstup" id="btneditnews">
             <div class="posbntcreatnews"><a href="formNewCircle.html" class="bntformnewsCircle">Опубликовать новость</a>
             </div>
-            <!-- <div class="posbntdeletnews"><button class="deletenews">Удалить</button></div> -->
           </div>
-
+          <div class="polebg">
+            <div id="news"></div>
+          </div>
         </div>
       </div>
       <div>
@@ -162,7 +163,7 @@
   <script>
 
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -174,7 +175,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src="../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {
@@ -211,13 +212,13 @@
             if (el.Description === prevDescription && el.date === prevDate) {
               const poleblock = btn.lastElementChild;
               const imgContainer = poleblock.querySelector('.images');
-              imgContainer.innerHTML += `<img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">`;
+              imgContainer.innerHTML += `<img class="imgnews" src="../${el.photopath}" alt="">`;
             } else {
               btn.innerHTML += `
                 <div class="poleblock circlenews">
                   <div class ="whos">
                     <div class="blockImg">
-                      <img class="imguser" src="http://192.168.0.108:8189/${el.photopathCircle}" alt="">
+                      <img class="imguser" src="../${el.photopathCircle}" alt="">
                     </div>
                     <div class = "blocknews">
                       <div class ="content">${el.namecricel}</div> 
@@ -230,7 +231,7 @@
                     </div>
                     
                     <div class="images">
-                        <img class="imgnews" src="http://192.168.0.108:8189/${el.photopath}" alt="">
+                        <img class="imgnews" src="../${el.photopath}" alt="">
                     </div>
                 </div>`;
             }
@@ -266,11 +267,16 @@
           // Обработка ошибки при удалении кружка
           // Здесь вы можете добавить код для отображения сообщения об ошибке пользователю
         });
-      window.location.href = './ThridHerf.html';
       modal.style.display = 'none';
     }
 
+    const menu = document.querySelector('.navigationlich');
+    const openMenuBtn = document.getElementById('menuButton');
 
+    // При клике на кнопку открываем/закрываем меню
+    openMenuBtn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
     window.onload = () => {
 
       const loginLinkElement = document.getElementById('UsName');

@@ -57,6 +57,9 @@
         </div>
         <div class="flexConsec">
           <div class="navigationlich">
+            <div class="menu-button" id="menuButton">
+              <div class="menu-icon"></div>
+            </div>
             <div class="polegreen">
               <div class="stylepanel headpole">Наивгационная панель</div>
               <div class="otstupbnt">
@@ -70,6 +73,8 @@
                     встречи</a></div>
                 <div id="setings" class="stylepanel polebnt"><a class="bntnavlich"
                     href="./windowCricle/SettingsCircle.html">Настройки кружка</a></div>
+                <div class="stylepanel polebnt"><a class="bntnavlich"
+                    href="./windowCricle/CricleStudents.html">Участники</a></div>
               </div>
               <div id="blockdelete" class="cobbtndelete">
                 <button class="deletecircle" id="openModalBtn">Удалить кружок</button>
@@ -282,7 +287,7 @@
 
 
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -294,7 +299,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src=" ../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {
@@ -319,7 +324,7 @@
           const img = document.getElementById('imgeCirclefile')
           img.innerHTML = ""
           data.forEach(el => {
-            img.innerHTML += `<img class= "imguserimg" src=" http://192.168.0.108:8189/${el.PhotoPathCircle}" alt="">`
+            img.innerHTML += `<img class= "imguserimg" src=" ../${el.PhotoPathCircle}" alt="">`
           });
         })
         .catch(error => {
@@ -417,6 +422,17 @@
       window.location.href = './ThridHerf.html';
       modal.style.display = 'none';
     }
+
+
+
+
+    const menu = document.querySelector('.navigationlich');
+    const openMenuBtn = document.getElementById('menuButton');
+
+    // При клике на кнопку открываем/закрываем меню
+    openMenuBtn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
 
 
     window.onload = () => {

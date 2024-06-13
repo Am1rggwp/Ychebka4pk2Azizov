@@ -77,6 +77,7 @@
 
         </div>
       </div>
+      <div class="otstup_footer"></div>
       <div class="navigation_main">
         <div class="block_nav">
           <a class="herflinkhov " href="FourHerf.html ">
@@ -111,14 +112,14 @@
           </a>
         </div>
       </div>
-      <div class="conbalck"></div>
+      
     </div>
   </section>
   <footer></footer>
   <script>
 
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -130,7 +131,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src="../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {

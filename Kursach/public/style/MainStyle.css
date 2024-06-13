@@ -155,7 +155,7 @@ body {
 
     .herfLink {
         font-size: 14px;
-        padding: 0;
+        padding: 10px;
     }
 
     .paddHead {
@@ -227,9 +227,10 @@ body {
         bottom: 0;
         width: 100%;
         max-width: 100%;
-        height: 85px;
+        height: 55px;
         background-color: #03c03c;
         display: flex;
+        z-index: 10000;
         /* margin: 97.9% 0 0 0 ; */
 
     }
@@ -265,7 +266,7 @@ body {
 
     .textNav {
         color: #fff;
-        font-size: 8px;
+        font-size: 10px;
         font-weight: 600;
         text-align: center;
     }
@@ -317,7 +318,7 @@ body {
     }
 
     .noac {
-        color: #888888;
+        color: #000;
     }
     .headots{
         padding: 0;

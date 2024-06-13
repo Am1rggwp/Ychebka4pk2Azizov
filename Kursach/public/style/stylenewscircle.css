@@ -1,5 +1,5 @@
 .conpolenews{
-    width: 80%;
+    width: 100%;
     height: 94.5%;
     padding: 70px 0 0 0 ;
 
@@ -38,17 +38,15 @@
     width: 20%;
     height: 80%;
 }
-.padotstup{
-    margin-top: 100%;
-}
-.newslist{
-    width: 350px;
-}
+
+
 .posbntcreatnews{
     padding-bottom: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    margin-left: 5%;
 }
+
 .posbntdeletnews{
     display: flex;
     justify-content: center;
@@ -62,4 +60,13 @@
     width: 6px;
     border-radius: 10px;
 
+}
+
+@media (max-width:768px) {
+    .conpolenews {
+        width: 100%;
+    }
+    .posbntcreatnews{
+        justify-content: center;
+    }
 }

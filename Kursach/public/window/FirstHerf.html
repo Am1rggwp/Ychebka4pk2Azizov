@@ -72,7 +72,7 @@
                     Изначально образовательная организация являлась филиалом МБОУ "Ивановская СОШ". В июне 2019 г. школа
                     отделилась и стала являться Муниципальным автономным общеобразовательным учреждением "Средняя
                     общеобразовательная школа Экодолье".
-                    Сегодня школе обучаются более 2250 ребят, работают 104 педагога и более 20 сотрудников.
+                    Сегодня в школе обучаются более 2250 ребят, работают 104 педагога и более 20 сотрудников.
                   </div>
                 </div>
               </div>
@@ -82,8 +82,10 @@
             </div>
           </div>
         </div>
+        <div class="otstup_footer"></div>
       </div>
     </div>
+    
     <div class="navigation_main">
       <div class="block_nav">
         <a class="herflinkhov " href="FourHerf.html ">
@@ -119,13 +121,13 @@
         </a>
       </div>
     </div>
-    <div class="conbalck"></div>
+    
   </section>
   <footer></footer>
   <script>
 
     function imguser() {
-      fetch("/imgUser"
+      fetch("/imgUserAva"
       )
         .then(response => {
           if (!response.ok) {
@@ -137,7 +139,7 @@
           const imghead = document.getElementById('headimg')
           imghead.innerHTML = ""
           data.forEach(el => {
-            imghead.innerHTML += `<img class="imghead" src=" http://192.168.0.108:8189/${el.PhotoPathUser}" alt="">`
+            imghead.innerHTML += `<img class="imghead" src=" ../${el.PhotoPathUser}" alt="">`
           });
         })
         .catch(error => {

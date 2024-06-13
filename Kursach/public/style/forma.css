@@ -20,6 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 100px 0;
 }
 
 #form-inner-container {
@@ -46,8 +47,8 @@ body {
 
 #sign-up-container,
 #sign-in-container {
-    padding: 60px 80px;
-    width: 545px;
+    padding: 60px;
+    width: 600px;
     display: inline-block;
 }
 
@@ -210,6 +211,69 @@ label[for="terms"] {
 .textcon{
     padding-top: 8px;
 }
+.primer{
+    color: #b6b9c2;
+    padding-left: 5px;
+}
+.bak_formreg{
+    background:#fff;
+    border-radius: 10px;
+    z-index: 1000;
+    padding: 15px;
+}
+.bak_black{
+    background: #b6b9c2;
+    padding: 13px;
+    border-radius: 0 0 10px 10px;
+    height: auto;
+
+}
+.div_btn_froma{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 40px;
+}
+
+.con_btn_cheter,.con_btn_techer{
+    position: relative;
+    width: 50%;
+}
+.bnt_from_student,.bnt_from_techer{
+    padding: 10px;
+    background:#fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    width: 50%;
+    box-shadow:0px -20px 20px 0px gainsboro;
+
+}
+.bnt_from_student{
+    position: absolute;
+    border: 2px solid #b6b9c2;
+    background:#b6b9c2 ;
+    border-radius: 10px 0 0 0;
+    width: 100%;   
+    color: #fff;
+}
+
+
+.bnt_from_techer{
+    position: absolute;
+    border-radius: 0 10px 0 0;
+    border: 2px solid #fff;
+    width: 100%;
+    color: #0bda51;
+}
+
+
+#form-container-autores{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
 
 
 /* responsive display */
@@ -235,6 +299,7 @@ label[for="terms"] {
     #form-container {
         height: auto;
         padding: 19% 20px 0; 
+        margin: 0;
     }
 
     #form-inner-container {
@@ -274,6 +339,28 @@ label[for="terms"] {
     .textcon{
         padding-top: 0px;
     }
+    .bnt_from_student, .bnt_from_techer{
+        padding:5px
+    }
+    .div_btn_froma{
+        height: 30px;
+
+    }
     
   
+}
+@media (max-width:391px) {
+    #form-controls button{
+        font-size: 18px;
+        padding: 13px 11px
+    }
+}
+@media (max-width:343px) {
+    #form-controls button{
+        font-size: 14px;
+        padding: 13px 11px
+    }
+    .adapt{
+        font-size: 16px;
+    }
 }

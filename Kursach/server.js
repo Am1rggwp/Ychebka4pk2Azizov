@@ -16,64 +16,53 @@ import uploadCircleNews from './uploadCircleNews.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import fs, { read } from 'fs';
+import bcrypt from "bcrypt";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 8189;
-// module.exports = app;
-
-
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(json())
 app.use(cookieParser());
 app.use(cors())
 
-
-const setCookie = (res, name, value) => {
-  res.cookie(name, value, { maxAge: 9000000000, httpOnly: false });
-};
 ////////////////////////////////////////////////////////////////// вход
+app.post(['/window/login.html', '/window/loginError.html'], async (req, res) => {
+  const { name: input, password } = req.body;
 
-app.post('/window/login.html' || '/window/loginError.html', async (req, res) => {
-  const input = req.body.name;
-  const password = req.body.password;
   try {
     const result = await multiAuthStrategy.authenticate({ input, password });
-    console.log(result)
+    
     if (typeof result === 'string') {
-      res.redirect('/window/windowError/loginError.html');
-      return;
+      return res.redirect('/window/windowError/loginError.html');
     }
-    const roleid = result.role;
-    const rolenamesql = await sql`select namerole from role where roleid = ${roleid}`;
 
-    console.log(rolenamesql);
-    const rolename = rolenamesql[0].namerole;
     if (result) {
-      res.cookie('userid', result.userid, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('idcircle', result.idcircle, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('username', result.fio, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('tel', result.tel, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('email', result.email, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('classus', result.classuser, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('role', result.role, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('rolename', rolename, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('creator', result.creator, { maxAge: 9000000000, httpOnly: false });
-      res.cookie('namecricel', '-', { maxAge: 9000000000, httpOnly: false });
-      res.redirect('/window/hiwin.html');
-    } else { }
+      const { user } = result;
+      const { role, userid, idcircle, fio, tel, email, classuser, creator } = user;
 
+      const [{ namerole: rolename }] = await sql`select NameRole from Role where RoleId = ${role}`;
+
+      const cookieOptions = { maxAge: 9000000000, httpOnly: false };
+      res.cookie('userid', userid, cookieOptions);
+      res.cookie('idcircle', idcircle, cookieOptions);
+      res.cookie('username', fio, cookieOptions);
+      res.cookie('tel', tel, cookieOptions);
+      res.cookie('email', email, cookieOptions);
+      res.cookie('classus', classuser, cookieOptions);
+      res.cookie('role', role, cookieOptions);
+      res.cookie('rolename', rolename, cookieOptions);
+      res.cookie('creator', creator, cookieOptions);
+
+      return res.redirect('/window/hiwin.html');
+    }
   } catch (err) {
     console.error('Error authenticating user', err);
-    res.status(500).send(err.message);
+    res.status(500).send('Internal Server Error');
   }
-
-
 });
-
-
-
 
 ////////////////////////////////////////////////////////// Выход
 app.get('/out', async (req, res) => {
@@ -81,16 +70,66 @@ app.get('/out', async (req, res) => {
   res.send(200)
 })
 
+////////////////////////////////////////////////////////////регистрация
+app.post('/reg.html', async (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const tel = req.body.tel;
+  const classUser = req.body.schoolClass;
+  const password = req.body.password;
+  const key = req.body.key;
+
+  try {
+    const userExistname = await sql`SELECT * FROM users WHERE FIO = ${name}`;
+    const userExistemail = await sql`SELECT * FROM users WHERE Email = ${email}`;
+    const userExisttel = await sql`SELECT * FROM users WHERE Tel = ${tel}`;
+    if (userExistname.length > 0) {
+      res.redirect('/window/windowError/regErrorName.html');
+    } else if (userExistemail.length > 0) {
+      res.redirect('/window/windowError/regErrorEmail.html');
+    } else if (userExisttel.length > 0) {
+      res.redirect('/window/windowError/regErrorNumber.html');
+    } else {
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      if (key) {
+        const slectkey = await sql`SELECT idSecritKey FROM secritKey WHERE Key = ${key}`;
+        if (slectkey.length > 0) {
+          const selectuser = await sql`SELECT UserId FROM Users WHERE idSecritKey = ${slectkey[0].idsecritkey}`;
+          if (selectuser.length == 0) {
+            const resKey = slectkey[0].idsecritkey;
+            await sql`
+              INSERT INTO users (fio, email, tel, idSecritKey, PasswordHash, Role, PhotoPathUser)
+              VALUES (${name}, ${email}, ${tel}, ${resKey}, ${hashedPassword}, 1, 'photoUser/17116223670001.jpg')
+            `;
+          } else {
+            return res.redirect('/window/windowError/regErrorNumber.html');
+          }
+        } else {
+          return res.redirect('/window/windowError/regErrorKey.html');
+        }
+      } else {
+        await sql`
+          INSERT INTO users (fio, email, tel, ClassUser, PasswordHash, Role, PhotoPathUser)
+          VALUES (${name}, ${email}, ${tel}, ${classUser}, ${hashedPassword}, 2, 'photoUser/17116223670001.jpg')
+        `;
+      }
+      res.redirect('/Index.html');
+    }
+  } catch (err) {
+    console.error('Error registering user', err);
+    res.status(500).send(err.message);
+  }
+});
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'reg.html'));
+});
 
 ////////////////////////////////////////////////////// Профиль
 app.get('/interes', async (req, res) => {
 
   const interes = await sql`select * from Interests `
   const userinteres = await sql`select * from InterestsUser where UserId = ${req.cookies.userid}`
-
-
-  // console.log(interes);
-  // console.log(userinteres);
   try {
     const result = interes.map(el => {
       el.joined = userinteres.find((item, index, array) => {
@@ -103,11 +142,7 @@ app.get('/interes', async (req, res) => {
   catch (err) {
     res.redirect('/login.html');
   }
-
-
 });
-
-
 app.post('/interes', async (req, res) => {
   const iduserInteres = req.body.id;
   const result = await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, ${iduserInteres})`
@@ -119,7 +154,6 @@ app.delete('/interes', async (req, res) => {
   const result = await sql`DELETE FROM InterestsUser WHERE UserId = ${req.cookies.userid} and InterestsId = ${iduserInteres}`
   res.send(result)
 });
-
 app.post('/namecricle', async (req, res) => {
   try {
     if (req.cookies.idcircle) {
@@ -130,28 +164,83 @@ app.post('/namecricle', async (req, res) => {
     } else {
       console.error('ID кружка не был найден в куки.');
     }
-
   } catch (error) {
     console.error('Error fetching namecricel:', error.message);
     res.status(500).send('Internal Server Error');
   }
 });
 
+/////////////////////////////////////////////////////////////////Опросник
+app.post('/sendAnswer', async (req, res) => {
+  try {
+    const answers = req.body;
+    const a = answers["a"];
+    const b = answers["b"];
+    const c = answers["c"];
+    if (a > 0 || b > 0 || c > 0) {
+      const interes = await sql`select * from Interests `
+      const userinteres = await sql`select * from InterestsUser where UserId = ${req.cookies.userid}`
+      const result = interes.map(el => {
+        el.joined = userinteres.find((item, index, array) => {
+          if (item.interestsid == el.interestsid) return true
+        }) ? true : false
+        return el
+      })
+      const interestsToDelete = result.filter(el => el.joined);
+      for (const interest of interestsToDelete) {
+        await sql`DELETE FROM InterestsUser WHERE UserId = ${req.cookies.userid} and InterestsId = ${interest.interestsid}`;
+      }
+      if (a > b && a > c) {
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 1)`
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 2)`
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 7)`
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 10)`
+        res.json({ success: true, redirectUrl: '/window/Profil.html' });
+      }
+      else if (b > c) {
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 3)`
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 8)`
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 5)`
+        res.json({ success: true, redirectUrl: '/window/Profil.html' });
+      }
+      else {
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 4)`
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 6)`
+        await sql`insert into InterestsUser(UserId, InterestsId) values(${req.cookies.userid}, 9)`
+        res.json({ success: true, redirectUrl: '/window/Profil.html' });
+      }
+    }
+    else {
+      res.json({ success: true, redirectUrl: '/window/Profil.html' });
+    }
+  }
+  catch (err) {
+    console.log("Error:" + err.message)
+  }
+});
 
 /////////////////////////////////////////////////////////////////Аватарки 
-app.get('/imgUser', async (req, res) => {
+app.get('/imgUserAva', async (req, res) => {
 
   try {
     const resulselect = await sql`select*from Users where UserId = ${req.cookies.userid}`;
     const datanew = resulselect.map(el => ({
       PhotoPathUser: el.photopathuser.replace('public/', ''),
     }));
+    if (req.cookies.idcircle != 'j:null') {
+      const select = await sql`select namecricel from circle where cricleid = ${req.cookies.idcircle}`;
+      const selectname = select[0].namecricel;
+      res.cookie('namecricel', selectname, { maxAge: 9000000000, httpOnly: false });
+
+    }
+    else {
+      res.cookie('namecricel', '-', { maxAge: 9000000000, httpOnly: false });
+    }
     res.send(datanew);
   } catch (error) {
     console.error('Error loading photo', err);
   }
 })
-
 app.post('/imgUser', uploadUser.single('photos'), async (req, res) => {
 
   const photoPath = req.file.path.replace(/\\/g, '/');
@@ -159,7 +248,6 @@ app.post('/imgUser', uploadUser.single('photos'), async (req, res) => {
     const resulselect = await sql`SELECT PhotoPathUser FROM Users WHERE UserId = ${req.cookies.userid}`;
     if (resulselect.length > 0) {
       const photoPathdel = resulselect[0].photopathuser;
-      console.log(photoPathdel);
       if (photoPathdel && photoPathdel !== '17116223670001.jpg') {
         try {
           await fs.promises.unlink(`${photoPathdel}`);
@@ -173,67 +261,28 @@ app.post('/imgUser', uploadUser.single('photos'), async (req, res) => {
           SET PhotoPathUser = ${photoPath}
           WHERE UserId = ${req.cookies.userid}
       `;
-
-    res.send('Фотография успешно загружена');
+    res.json({ success: true, redirectUrl: '/window/Profil.html' });
   } catch (err) {
     console.error('Error uploading photo', err);
     res.status(500).send(err.message);
   }
 });
 
-
-
-
-
-////////////////////////////////////////////////////////////регистрация
-app.post('/reg.html', async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const tel = req.body.tel;
-  const classUser = req.body.schoolClass;
-  const password = req.body.password;
-
-  try {
-    const userExistname = await sql`SELECT * FROM users WHERE FIO = ${name}`;
-    const userExistemail = await sql`SELECT * FROM users WHERE Email = ${email}`;
-    const userExisttel = await sql`SELECT * FROM users WHERE Tel = ${tel}`;
-    if (userExistname.length > 0) {
-      res.redirect('/window/windowError/regErrorName.html');
-    } else if (userExistemail.length > 0) {
-      res.redirect('/window/windowError/regErrorEmail.html');
-    } else if (userExisttel.length > 0) {
-      res.redirect('/window/windowError/regErrorNumber.html');
-    } else {
-      const insert = await sql`
-        INSERT INTO users (fio, email, tel, ClassUser ,PasswordHash, Role, PhotoPathUser )
-        VALUES (${name}, ${email}, ${tel},${classUser} ,${password}, 2, 'photoUser/17116223670001.jpg')
-      `;
-      res.redirect('/Index.html');
-    }
-  } catch (err) {
-    console.error('Error registering user', err);
-    res.status(500).send(err.message);
-  }
-});
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'reg.html'));
-});
-
-///////////////////////////////////////////////////////////// Создания куржка
+///////////////////////////////////////////////////////////// Создания кружка
 app.post('/createCricle', async (req, res) => {
   const name = req.body.name;
   const ClassUsers = req.body.schoolClass;
   const quantitu = req.body.counthuman;
   const interesactive = req.body.activeIntereses;
-  // console.log(quantitu)
-  const Circle = await sql`select * from Circle where namecricel = ${name}`;
+
   try {
+    const Circle = await sql`select * from Circle where namecricel = ${name}`;
     if (Circle.length > 0) {
-      res.redirect('window/windowError/CreateCircleError.html');
+      res.json({ success: true, redirectUrl: '/window/CreateCircleError.html' });
     } else {
       const insert = await sql`
         INSERT INTO Circle (NameCricel, QuantityUser, userclass, photopath )
-        VALUES (${name},${quantitu},${ClassUsers},'public/photoCircle/defaltcircle.jpg')
+        VALUES (${name},${quantitu},${ClassUsers},'public/photoCircle/17001.jpg')
       `;
       const criclecreat = await sql`select CricleID from Circle where namecricel = ${name}`;
       const cricleID = criclecreat[0].cricleid;
@@ -243,12 +292,16 @@ app.post('/createCricle', async (req, res) => {
           VALUES (${cricleID}, ${interestId})
         `;
       }
-      await sql`UPDATE Users SET creator = ${cricleID}, IdCircle = ${cricleID} 
-      where UserId = ${req.cookies.userid}`
-      const aupdate = await sql`select creator from Users where UserId = ${req.cookies.userid}`;
-      const result = aupdate[0].creator;
-      res.cookie('creator', result, { maxAge: 9000000000, httpOnly: false }).sendStatus(200);
-
+      if (insert.count > 0) {
+        await sql`UPDATE Users SET creator = ${cricleID}, IdCircle = ${cricleID} 
+        where UserId = ${req.cookies.userid}`
+        const aupdate = await sql`select creator from Users where UserId = ${req.cookies.userid}`;
+        const result = aupdate[0].creator;
+        res.cookie('creator', result, { maxAge: 9000000000, httpOnly: false });
+        res.json({ success: true, redirectUrl: '/window/ThridHerf.html' });
+      } else {
+        res.status(500).json({ success: false, error: 'Failed to insert data into Circle table' });
+      }
     }
   } catch (err) {
     console.error('Error registering user', err);
@@ -272,85 +325,135 @@ app.get('/interesFind', async (req, res) => {
 
 });
 
-
-
-
-
-
-
 //////////////////////////////////////////////////////////// Получение кружков
 app.post('/getSercle', async (req, res) => {
-  const { classNum, serch, maxPeople, interes } = req.body
-  // console.log(classNum, serch, maxPeople);
-  const classn = req.cookies.classus;
-  const classuser = classn.slice(0, 1);
-  const matchingCircles = await sql`
+  try {
+    const { classNum, serch, maxPeople, interes } = req.body
+    const classn = req.cookies.classus;
+    const classuser = classn.slice(0, 1);
+    const matchingCircles = await sql`
     SELECT DISTINCT ic.CricleID
     FROM InterestsСircle ic
     INNER JOIN InterestsUser iu ON ic.InterestsId = iu.InterestsId
     WHERE iu.UserId = ${req.cookies.userid}
   `;
-  const circleIds = matchingCircles.map(cricleid => cricleid.cricleid);
-  const role = req.cookies.role;
-  if (role == 1) {
-    let select = await sql`select * from Circle`
+    const circleIds = matchingCircles.map(cricleid => cricleid.cricleid);
+    const select = await sql`SELECT * FROM Circle`;
+    const selectids = select.map(el => el.cricleid);
+    let results = [];
+    for (const id of selectids) {
+      const selectuser = await sql`SELECT 
+      (SELECT COUNT(*) FROM Users WHERE IdCircle = ${id} AND Role = 2) AS UserCount,
+      (SELECT QuantityUser FROM Circle WHERE CricleID = ${id}) AS CircleQuantity`;
 
-    if (classNum.trim().length != 0) {
-      select = select.filter(el => el.userclass == classNum)
-    }
-    if (maxPeople.length != 0) {
-      select = select.filter(el => maxPeople.includes(`${el.quantityuser}`))
-    }
-    if (serch.trim().length != 0) {
-      select = select.filter(el => el.namecricel.includes(serch.trim()))
-    }
-    const joinedCircles = select.filter(circle => circleIds.includes(circle.cricleid));
-    const otherCircles = select.filter(circle => !circleIds.includes(circle.cricleid));
-    const sortedCircles = joinedCircles.concat(otherCircles);
+      const userCount = selectuser[0].usercount || 0;
 
-    select.forEach(item => {
-      if (item.photopath) {
-        item.photopath = item.photopath.replace('public/', '');
+      results.push({
+        cricleid: id,
+        userCount: userCount
+      });
+    }
+    const role = req.cookies.role;
+    if (role == 1) {
+      if (classNum.trim().length != 0) {
+        select = select.filter(el => el.userclass == classNum)
       }
-    });
+      if (maxPeople.length != 0) {
+        select = select.filter(el => maxPeople.includes(`${el.quantityuser}`))
+      }
+      if (serch.trim().length != 0) {
+        select = select.filter(el => el.namecricel.includes(serch.trim()))
+      }
+      const joinedCircles = select.filter(circle => circleIds.includes(circle.cricleid));
+      const otherCircles = select.filter(circle => !circleIds.includes(circle.cricleid));
+      const sortedCircles = joinedCircles.concat(otherCircles);
 
-    try {
-      const userCircles = await sql`
+
+      select.forEach(item => {
+        if (item.photopath) {
+          item.photopath = item.photopath.replace('public/', '');
+        }
+      });
+
+      try {
+        const userCircles = await sql`
       SELECT c.NameCricel
       FROM Circle c
       INNER JOIN Users u ON c.CricleID = u.IdCircle
       WHERE u.UserId = ${req.cookies.userid}`;
-      const namecricel = userCircles[0].namecricel;
-      res.cookie('namecricel', namecricel, { maxAge: 9000000000, httpOnly: false });
-      const aupdate = await sql`select creator from Users where UserId = ${req.cookies.userid}`;
-      const result = aupdate[0].creator;
-      res.cookie('idcircle', result, { maxAge: 9000000000, httpOnly: false })
+        const namecricel = userCircles[0].namecricel;
+        res.cookie('namecricel', namecricel, { maxAge: 9000000000, httpOnly: false });
+        const aupdate = await sql`select creator from Users where UserId = ${req.cookies.userid}`;
+        const result = aupdate[0].creator;
+        res.cookie('idcircle', result, { maxAge: 9000000000, httpOnly: false })
 
-    }
-    catch { }
-    res.send(sortedCircles)
-  }
-  else {
-    let select = await sql`select * from Circle where userclass = ${classuser} and cricleid in ${sql([circleIds])}`
-    if (classNum.trim().length != 0) {
-      select = select.filter(el => el.userclass == classNum)
-    }
-    if (maxPeople.length != 0) {
-      select = select.filter(el => maxPeople.includes(`${el.quantityuser}`))
-    }
-    if (serch.trim().length != 0) {
-      select = select.filter(el => el.namecricel.includes(serch.trim()))
-    }
-
-    select.forEach(item => {
-      if (item.photopath) {
-        item.photopath = item.photopath.replace('public/', '');
       }
-    });
+      catch (err) {
+        console.log(err.message);
+      }
 
-    res.send(select)
-    // console.log(sortedCircles);
+      const circle = [];
+      sortedCircles.forEach(el => {
+        const matchingResult = results.find(result => result.cricleid === el.cricleid);
+        if (matchingResult) {
+          circle.push({
+            cricleid: el.cricleid,
+            namecricel: el.namecricel,
+            quantityuser: el.quantityuser,
+            userclass: el.userclass,
+            photopath: el.photopath,
+            descriptors: el.descriptors,
+            userCount: matchingResult ? matchingResult.userCount : 0
+          });
+        } else {
 
+        }
+      });
+      console.log(circle);
+      res.send(circle)
+
+    }
+    else {
+      let select = await sql`select * from Circle where userclass = ${classuser} and cricleid in ${sql([circleIds])}`
+      if (classNum.trim().length != 0) {
+        select = select.filter(el => el.userclass == classNum)
+      }
+      if (maxPeople.length != 0) {
+        select = select.filter(el => maxPeople.includes(`${el.quantityuser}`))
+      }
+      if (serch.trim().length != 0) {
+        select = select.filter(el => el.namecricel.includes(serch.trim()))
+      }
+
+      select.forEach(item => {
+        if (item.photopath) {
+          item.photopath = item.photopath.replace('public/', '');
+        }
+      });
+
+      const circle = [];
+      select.forEach(el => {
+        const matchingResult = results.find(result => result.cricleid === el.cricleid);
+        if (matchingResult) {
+          circle.push({
+            cricleid: el.cricleid,
+            namecricel: el.namecricel,
+            quantityuser: el.quantityuser,
+            userclass: el.userclass,
+            photopath: el.photopath,
+            descriptors: el.descriptors,
+            userCount: matchingResult ? matchingResult.userCount : 0
+          });
+        } else {
+
+        }
+      });
+      res.send(circle)
+
+    }
+  }
+  catch (err) {
+    console.log(err.message)
   }
 
 });
@@ -359,30 +462,40 @@ app.get('/SerchCricleBlock', async (req, res) => () => {
   res.send(select);
 
 });
+
 ////////////////////////////////////////////////////Встуаление
 app.post('/joincricle', async (req, res) => {
 
   const { id } = req.body;
-  const numericId = parseInt(id, 10);
-  const resultname = await sql`select NameCricel from Circle where CricleID = ${numericId}`;
-  const namecricel = resultname[0].namecricel;
-  res.cookie('namecricel', namecricel, { maxAge: 9000000000, httpOnly: false });
-  if (isNaN(numericId)) {
-    return res.status(400).send({ error: 'Invalid ID format' });
+  const selectuser = await sql`SELECT 
+    (SELECT COUNT(*) FROM Users WHERE IdCircle = ${id} AND Role = 2) AS UserCount,
+    (SELECT QuantityUser FROM Circle WHERE CricleID = ${id}) AS CircleQuantity`;
+
+  if (selectuser[0].circlequantity > selectuser[0].usercount) {
+    const numericId = parseInt(id, 10);
+    const resultname = await sql`select NameCricel from Circle where CricleID = ${numericId}`;
+    const user = await sql`select IdCircle from Users`
+    const namecricel = resultname[0].namecricel;
+    res.cookie('namecricel', namecricel, { maxAge: 9000000000, httpOnly: false });
+    if (isNaN(numericId)) {
+      return res.status(400).send({ error: 'Invalid ID format' });
+    }
+    res.cookie('idcircle', numericId, { maxAge: 9000000000, httpOnly: false });
+
+    try {
+      const result = await sql`update Users set IdCircle = ${numericId} where UserId = ${req.cookies.userid}`;
+      res.send(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ error: 'An error occurred while updating the user.' });
+    }
   }
-
-  res.cookie('idcircle', numericId, { maxAge: 9000000000, httpOnly: false });
-
-  try {
-    const result = await sql`update Users set IdCircle = ${numericId} where UserId = ${req.cookies.userid}`;
-    res.send(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ error: 'An error occurred while updating the user.' });
+  else {
+    res.status(400).json({ error: 'Кружок переполнен' });
   }
-
 
 })
+
 ///////////////////////////////////////////////////////////Выход из кружка
 app.patch('/outcricle', async (req, res) => {
   const result = await sql`update Users set IdCircle = ${null} where UserId = ${req.cookies.userid}`
@@ -391,9 +504,7 @@ app.patch('/outcricle', async (req, res) => {
 
 })
 
-
 ///////////////////////////////////////////////////////////Добовление дополнительной информации у кружка
-
 app.post('/postdatacircle', async (req, res) => {
   try {
     const opisanie = req.body.opisanie;
@@ -410,6 +521,7 @@ app.post('/postdatacircle', async (req, res) => {
     res.status(500).send('Ошибка обновления описания круга');
   }
 });
+
 ///////////////////////////////////////////////////////////Добовление дополнительной информации у кружка фото
 app.post('/imgpostCircle', uploadCircle.single('photos'), async (req, res) => {
   const photoPath = req.file.path.replace(/\\/g, '/');
@@ -440,6 +552,7 @@ app.post('/imgpostCircle', uploadCircle.single('photos'), async (req, res) => {
   }
 
 });
+
 ///////////////////////////////////////////////////////////Получение дополнительной информации у кружка картинки
 app.get('/imggetCircle', async (req, res) => {
 
@@ -470,6 +583,7 @@ app.get('/desget', async (req, res) => {
   }
 
 })
+
 ///////////////////////////////////////////////////////////Получение дополнительной информации у кружка название
 app.get('/namecirleget', async (req, res) => {
   try {
@@ -482,10 +596,8 @@ app.get('/namecirleget', async (req, res) => {
 
     res.status(500).send('Ошибка получения названия');
   }
-
-
-
 })
+
 ///////////////////////////////////////////////////////////Редактор кружка
 app.get('/getsetingscircle', async (req, res) => {
   try {
@@ -527,6 +639,7 @@ app.get('/getsetingscircle', async (req, res) => {
     res.status(500).send('Ошибка получения названия');
   }
 });
+
 ///////////////////////////////////////////////////////////Редакторк кружка добовление интересов
 app.post('/addInterestToCircle', async (req, res) => {
   try {
@@ -542,6 +655,7 @@ app.post('/addInterestToCircle', async (req, res) => {
     res.status(500).send('Failed to add interest to circle');
   }
 });
+
 ///////////////////////////////////////////////////////////Редакторк кружка удаление интересов
 app.delete('/removeInterestToCircle', async (req, res) => {
   try {
@@ -562,7 +676,7 @@ app.post('/editcircle', async (req, res) => {
     const name = req.body.name;
     const schoolClass = req.body.schoolClass;
     const counthuman = req.body.counthuman;
-
+    console.log(name);
     const update = await sql`UPDATE Circle SET NameCricel = ${name}, QuantityUser = ${counthuman}, userclass = ${schoolClass} 
     WHERE CricleID = ${req.cookies.idcircle}`
     res.send(update);
@@ -573,6 +687,7 @@ app.post('/editcircle', async (req, res) => {
   }
 
 });
+
 ///////////////////////////////////////////////////////////Редакторк кружка удаление кружка
 app.delete('/deleteCircle', async (req, res) => {
   try {
@@ -580,19 +695,18 @@ app.delete('/deleteCircle', async (req, res) => {
     const idcircle = req.cookies.idcircle;
     if (idcretor == idcircle) {
       await sql`DELETE FROM interestsСircle WHERE CricleID = ${idcretor}`;
+      await sql`DELETE FROM NewsCircle WHERE CricleID = ${idcretor}`;
+      await sql`DELETE FROM Meetings WHERE CricleID = ${idcretor}`;
       await sql`DELETE FROM Circle WHERE CricleID = ${idcretor}`;
-      await sql`UPDATE Users SET IdCircle = null, creator =null  WHERE UserId = ${req.cookies.userid}`;
+      await sql`UPDATE Users SET IdCircle = null, creator = null  WHERE UserId = ${req.cookies.userid}`;
       res.cookie('namecricel', 'j:null', { maxAge: 9000000000, httpOnly: false });
       res.cookie('idcircle', 'j:null', { maxAge: 9000000000, httpOnly: false });
       res.cookie('creator', 'j:null', { maxAge: 9000000000, httpOnly: false });
-      res.send(200);
+      res.status(200).send('OK');
     }
-  } catch(err) {
+  } catch (err) {
     console.error("error" + err);
   }
-
-
-
 })
 
 ///////////////////////////////////////////////////////////Создание новостей
@@ -606,7 +720,10 @@ app.post('/createNews', upload.array('photos', 10), async (req, res) => {
       await sql`
         INSERT INTO News (Description, PhotoPath, UserID) 
         VALUES (${formData.mess}, ${photoPath}, ${req.cookies.userid})`;
+      console.log(photoPath);
     }
+    res.json({ success: true, redirectUrl: '/window/TwelfHerf.html' });
+
   } catch (err) {
     console.error('Error creating news', err);
     res.status(500).send(err.message);
@@ -646,25 +763,29 @@ app.get('/getNews', async (req, res) => {
   }
 });
 
-
 ///////////////////////////////////////////////////////////Создание новостей кружка
 app.post('/createNewsCircle', uploadCircleNews.array('photos', 10), async (req, res) => {
   const formData = req.body;
   const photos = req.files;
   const photoPaths = photos.map(photo => photo.path.replace(/\\/g, '/'));
+
   try {
     for (let i = 0; i < photoPaths.length; i++) {
       const photoPath = photoPaths[i];
-      console.log(photoPath);
+      console.log("-");
+
       await sql`
         INSERT INTO NewsCircle (Description, PhotoPathImg, CricleID ) 
         VALUES (${formData.mess}, ${photoPath}, ${req.cookies.idcircle})`;
+      console.log(photoPaths);
     }
+    res.json({ success: true, redirectUrl: '/window/CricleNews.html' });
   } catch (err) {
     console.error('Error creating news', err);
     res.status(500).send(err.message);
   }
 });
+
 //////////////////////////////////////////////////////////Получения новостей кружков
 app.get('/getCircleNews', async (req, res) => {
   try {
@@ -699,7 +820,6 @@ app.get('/getCircleNews', async (req, res) => {
 });
 
 //////////////////////////////////////////////////////////Создание встреч
-
 app.post('/CreateMetings', async (req, res) => {
 
   try {
@@ -721,6 +841,7 @@ app.post('/CreateMetings', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 //////////////////////////////////////////////////////////Получение встреч
 app.get('/getMeetings', async (req, res) => {
   try {
@@ -745,37 +866,56 @@ app.get('/getMeetings', async (req, res) => {
     console.error('Error fetching news:', error.message);
     res.status(500).send('Internal Server Error');
   }
+});
 
+//////////////////////////////////////////////////////////Получение участников кружка
+app.get('/getStudens', async (req, res) => {
+  try {
+    const select = await sql`select * from Users where IdCircle = ${req.cookies.idcircle} and ClassUser is not null`
+    const dataStudens = select.map(el => {
+      return {
+        FIO: el.fio,
+        ClassUser: el.classuser,
+        photo: el.photopathuser.replace('public/', ''),
+      }
+    })
+    res.json(dataStudens);
+
+
+  }
+  catch (error) {
+    console.error(error.mess);
+    res.status(500).send('Internal Server Error');
+
+  }
 
 });
 
-
-
-
-
-
-
-
 //////////////////////////////////////////////////////////// Запуск сервака и создания таблиц
 const start = async () => {
+  await sql`CREATE TABLE if not exists secritKey(
+    idSecritKey SERIAL PRIMARY KEY,
+    Key VARCHAR(70) NOT NULL
+  )`;
+
   await sql`CREATE TABLE if not exists Users (
     UserId SERIAL PRIMARY KEY,
-    FIO VARCHAR(70) NOT NULL unique, 
+    FIO VARCHAR(100) NOT NULL unique, 
     Email VARCHAR(70) NOT NULL unique,
-    Tel VARCHAR(11) NOT NULL unique,
-    ClassUser VARCHAR(3) NULL,
+    Tel VARCHAR(12) NOT NULL unique,
+    ClassUser VARCHAR(2) NULL,
     PasswordHash VARCHAR(100) NOT NULL,
     Role int NOT NULL,
     IdCircle int null,
     PhotoPathUser TEXT NULL,
-    creator int null
-    )`;
-  // await sql` ALTER TABLE Сircle
-  // ALTER COLUMN Descriptors TYPE  varchar(1000);`
-  // await sql `ALTER TABLE Users add `
-  // await sql`UPDATE Users
-  // SET creator = 10
-  // WHERE UserId = 2`
+    creator int null,
+    idSecritKey int references secritKey(idSecritKey) null,
+    UNIQUE(idSecritKey)
+  )`;
+
+
+
+
   await sql`CREATE TABLE if not exists Role(
       RoleId SERIAL PRIMARY KEY,
       NameRole VARCHAR(70) NOT NULL
@@ -838,12 +978,25 @@ const start = async () => {
       creatednews TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       CricleID int REFERENCES Circle(CricleID)
   ) `;
+
   // await sql `ALTER TABLE Meetings add `
   // await sql `ALTER TABLE NewsCircle RENAME COLUMN PhotoPath TO PhotoPathImg;`
 
   // await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role,PhotoPathUser )
   //       VALUES ('Махаури Влад Олегович', 'amir.azizov2015@mil.ru', '89619370939',1, 1, 'photoUser/17116223670001.jpg')`
+  //  await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role,PhotoPathUser ) values 
+  //     ('Иванов Иван Иванович', 'ivanov@example.com', '89001234567', 'passwordhash1', 1, 'photoUser/17116223670001.jpg'),
+  //     ('Петров Петр Петрович', 'petrov@example.com', '89007654321', 'passwordhash2', 1, 'photoUser/17116223670001.jpg'),
+  //     ('Сидоров Сидор Сидорович', 'sidorov@example.com', '89009876543', 'passwordhash3', 1, 'photoUser/17116223670001.jpg')`
 
+  // await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role,PhotoPathUser, ClassUser ) values
+  //   ('Кузнецова Анна Павловна', 'kuznetsova@example.com', '89003456789', 'passwordhash4', 2, 'photoUser/17116223670001.jpg', '6а'),
+  //   ('Смирнов Алексей Михайлович', 'smirnov@example.com', '89002345678', 'passwordhash5', 2, 'photoUser/17116223670001.jpg', '6б'),
+  //   ('Васильева Мария Ивановна', 'vasilieva@example.com', '89001239876', ' ', 2, 'photoUser/17116223670001.jpg', '6в'),
+  //   ('Новиков Никита Сергеевич', 'novikov@example.com', '89005678901', 'passwordhash7', 2, 'photoUser/17116223670001.jpg', '6а'),
+  //   ('Морозова Наталья Викторовна', 'morozova@example.com', '89006543210', 'passwordhash8', 2, 'photoUser/17116223670001.jpg', '6б'),
+  //   ('Фёдоров Александр Дмитриевич', 'fedorov@example.com', '89007894561', 'passwordhash9', 2, 'photoUser/17116223670001.jpg', '6в'),
+  //   ('Павлова Ольга Юрьевна', 'pavlova@example.com', '89009871234', 'passwordhash10', 2, 'photoUser/17116223670001.jpg', '6б');`
   // await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role,PhotoPathUser )
   //    VALUES ('Христофорома Татьяна Алексеивна', 'Hrist2015@mail.ru', '89619370990',1, 1, 'photoUser/17116223670001.jpg')`
 
@@ -861,16 +1014,28 @@ const start = async () => {
   // ('Фотография'),
   // ('Искусство'), 
   // ('Танцы'),
-  // ('Программирование')`;
+  // ('Программирование')`
+  // await sql`INSERT INTO secritKey (Key) VALUES
+  // ('rkVib5TZqglgRzvwMuAXDFmuEY05zpwEGqLg6h4wpqWEZx8r8789yEYgHIp7kaMyz9mE7'),
+  // ('5zMtItnRxJ5cG2rMO30RD89ljm9zlXeuj6JgjOSvqGWFt091GS5mQka3LkmNNHtjLjIL1'),
+  // ('HX09RQJdlAu8dQWgZ320AeG33Rv2lLWCfUcB0nZPewfIxCEuCPfpXhBNTQaqLaIFV1Y8k'),
+  // ('z402v5oPRQkWfQ9RwwENS5kw8Jd6FWZtVLJLVJQj2ojs7QfeREZaEyvfQLcj0UIqgN659'),
+  // ('BdLYpvSgIGwvNRsZ3rNzJdVeLXj67WNco0FgbmgkSNjYbtwoiNPjhgR7pCmQaSvIUU9WX'),
+  // ('EUCsRDoCSoSSShQpuoULIJQaGlQDEkMKA1rVkeD57FgwMS1ybkNFgTo5DN2Uav3ZyyCqz'),
+  // ('nIj4lB53ya4BHu2aVncDqVmcduuJrCO4LJhjDgZp7oDtDNlETwkliEhuH9OlUKUwdFKru'),
+  // ('m2toPTjWmAvNKasFyhjK9EJl3Xi0WwvLoAcV8sfRoJkBL4Vju4hhIG2ktXARt3xA2wcYy'),
+  // ('sHWDTCP4g4nRAtCkzEP3WVkkRRA7fVnWxC7JA4MksmVoHOuXrqp3h45UniUBuNDGrjbUP'),
+  // ('X7xN52HVbRGbJokF11A1FQSVuV0mSBKbjTmLljjiswlA2NQjxNl5kEEcKPWUpSwHytQUg')`
 
+  app.get('/', (req, res) => {
+    res.render('Index', { footer: 'footer' });
+  });
   app.listen(port, () => {
-    console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
-    // console.log(`Сервер запущен  http://192.168.0.108:${port}/Index.html`);
+    // console.log(`Сервер запущен  http://192.168.149.56:${port}/window/login.html`);
+    console.log(`Сервер запущен  http://192.168.0.105:${port}/Index.html`);
 
   });
-
 }
-
 start()
 
 
