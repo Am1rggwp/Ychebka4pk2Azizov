@@ -1000,32 +1000,32 @@ const start = async () => {
   // await sql`INSERT INTO users (fio, email, tel ,PasswordHash, Role,PhotoPathUser )
   //    VALUES ('Христофорома Татьяна Алексеивна', 'Hrist2015@mail.ru', '89619370990',1, 1, 'photoUser/17116223670001.jpg')`
 
-  // await sql`INSERT INTO Role (NameRole) VALUES
-  // ('учител'),
-  // ('ученик')`;
+  await sql`INSERT INTO Role (NameRole) VALUES
+  ('учител'),
+  ('ученик')`;
 
-  // await sql`INSERT INTO Interests (Name) VALUES
-  // ('Спорт'),
-  // ('Музыка'),
-  // ('Путешествия'),
-  // ('Кулинария'),
-  // ('Чтение'),
-  // ('Игры'),
-  // ('Фотография'),
-  // ('Искусство'), 
-  // ('Танцы'),
-  // ('Программирование')`
-  // await sql`INSERT INTO secritKey (Key) VALUES
-  // ('rkVib5TZqglgRzvwMuAXDFmuEY05zpwEGqLg6h4wpqWEZx8r8789yEYgHIp7kaMyz9mE7'),
-  // ('5zMtItnRxJ5cG2rMO30RD89ljm9zlXeuj6JgjOSvqGWFt091GS5mQka3LkmNNHtjLjIL1'),
-  // ('HX09RQJdlAu8dQWgZ320AeG33Rv2lLWCfUcB0nZPewfIxCEuCPfpXhBNTQaqLaIFV1Y8k'),
-  // ('z402v5oPRQkWfQ9RwwENS5kw8Jd6FWZtVLJLVJQj2ojs7QfeREZaEyvfQLcj0UIqgN659'),
-  // ('BdLYpvSgIGwvNRsZ3rNzJdVeLXj67WNco0FgbmgkSNjYbtwoiNPjhgR7pCmQaSvIUU9WX'),
-  // ('EUCsRDoCSoSSShQpuoULIJQaGlQDEkMKA1rVkeD57FgwMS1ybkNFgTo5DN2Uav3ZyyCqz'),
-  // ('nIj4lB53ya4BHu2aVncDqVmcduuJrCO4LJhjDgZp7oDtDNlETwkliEhuH9OlUKUwdFKru'),
-  // ('m2toPTjWmAvNKasFyhjK9EJl3Xi0WwvLoAcV8sfRoJkBL4Vju4hhIG2ktXARt3xA2wcYy'),
-  // ('sHWDTCP4g4nRAtCkzEP3WVkkRRA7fVnWxC7JA4MksmVoHOuXrqp3h45UniUBuNDGrjbUP'),
-  // ('X7xN52HVbRGbJokF11A1FQSVuV0mSBKbjTmLljjiswlA2NQjxNl5kEEcKPWUpSwHytQUg')`
+  await sql`INSERT INTO Interests (Name) VALUES
+  ('Спорт'),
+  ('Музыка'),
+  ('Путешествия'),
+  ('Кулинария'),
+  ('Чтение'),
+  ('Игры'),
+  ('Фотография'),
+  ('Искусство'), 
+  ('Танцы'),
+  ('Программирование')`
+  await sql`INSERT INTO secritKey (Key) VALUES
+  ('rkVib5TZqglgRzvwMuAXDFmuEY05zpwEGqLg6h4wpqWEZx8r8789yEYgHIp7kaMyz9mE7'),
+  ('5zMtItnRxJ5cG2rMO30RD89ljm9zlXeuj6JgjOSvqGWFt091GS5mQka3LkmNNHtjLjIL1'),
+  ('HX09RQJdlAu8dQWgZ320AeG33Rv2lLWCfUcB0nZPewfIxCEuCPfpXhBNTQaqLaIFV1Y8k'),
+  ('z402v5oPRQkWfQ9RwwENS5kw8Jd6FWZtVLJLVJQj2ojs7QfeREZaEyvfQLcj0UIqgN659'),
+  ('BdLYpvSgIGwvNRsZ3rNzJdVeLXj67WNco0FgbmgkSNjYbtwoiNPjhgR7pCmQaSvIUU9WX'),
+  ('EUCsRDoCSoSSShQpuoULIJQaGlQDEkMKA1rVkeD57FgwMS1ybkNFgTo5DN2Uav3ZyyCqz'),
+  ('nIj4lB53ya4BHu2aVncDqVmcduuJrCO4LJhjDgZp7oDtDNlETwkliEhuH9OlUKUwdFKru'),
+  ('m2toPTjWmAvNKasFyhjK9EJl3Xi0WwvLoAcV8sfRoJkBL4Vju4hhIG2ktXARt3xA2wcYy'),
+  ('sHWDTCP4g4nRAtCkzEP3WVkkRRA7fVnWxC7JA4MksmVoHOuXrqp3h45UniUBuNDGrjbUP'),
+  ('X7xN52HVbRGbJokF11A1FQSVuV0mSBKbjTmLljjiswlA2NQjxNl5kEEcKPWUpSwHytQUg')`
 
   app.get('/', (req, res) => {
     res.render('Index', { footer: 'footer' });

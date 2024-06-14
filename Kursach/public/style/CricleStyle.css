@@ -402,8 +402,8 @@ form {
 }
 
 .btnjoincircle {
-  height: 100px;
-  margin-top: 50px;
+  height: auto;
+  margin: auto 0;
 }
 
 
